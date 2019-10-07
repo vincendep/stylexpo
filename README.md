@@ -1,2 +1,2 @@
-# stylexpo-laravel5
+# stylexpo
 Web Technologies course project@UnivAQ
