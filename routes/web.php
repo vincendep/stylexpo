@@ -12,3 +12,7 @@
 */
 
 Route::get('/', 'PagesController@home');
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
