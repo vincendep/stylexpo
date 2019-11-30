@@ -196,6 +196,42 @@ class CategoriesTableSeeder extends Seeder
                 'name' => 'Category 2',
             ])->save();
         }
+
+        $category = Category::firstOrNew([
+            'slug' => 'category-3',
+        ]);
+        if (!$category->exists) {
+            $category->fill([
+                'name' => 'Category 3',
+            ])->save();
+        }
+
+        $category = Category::firstOrNew([
+            'slug' => 'category-4',
+        ]);
+        if (!$category->exists) {
+            $category->fill([
+                'name' => 'Category 4',
+            ])->save();
+        }
+
+        $category = Category::firstOrNew([
+            'slug' => 'category-5',
+        ]);
+        if (!$category->exists) {
+            $category->fill([
+                'name' => 'Category 5',
+            ])->save();
+        }
+
+        $category = Category::firstOrNew([
+            'slug' => 'category-6',
+        ]);
+        if (!$category->exists) {
+            $category->fill([
+                'name' => 'Category 6',
+            ])->save();
+        }
     }
 
     /**

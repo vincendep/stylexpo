@@ -28,6 +28,7 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('/css/bootstrap.css') }}" />
   <link rel="stylesheet" type="text/css" href="{{ asset('/css/jquery-ui.css') }}" >
   <link rel="stylesheet" type="text/css" href="{{ asset('/css/owl.carousel.css') }}" >
+  <link rel="stylesheet" type="text/css" href="{{ asset('/css/owl.theme.default.css') }}" >
   <link rel="stylesheet" type="text/css" href="{{ asset('/css/fotorama.css') }}" >
   <link rel="stylesheet" type="text/css" href="{{ asset('/css/magnific-popup.css') }}" > 
   <link rel="stylesheet" type="text/css" href="{{ asset('/css/custom.css') }}" > 

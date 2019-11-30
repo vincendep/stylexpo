@@ -1,52 +1,5 @@
 <!-- HEADER START -->
 <header class="navbar navbar-custom container-full-sm" id="header">
-    <div class="header-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-6">
-            <div class="top-link top-link-left select-dropdown">
-              <fieldset>
-                <select name="speed" class="countr option-drop">
-                  <option selected="selected">English</option>
-                  <option>Frence</option>
-                  <option>German</option>
-                </select>
-                <select name="speed" class="currenc option-drop">
-                  <option selected="selected">USD</option>
-                  <option>EURO</option>
-                  <option>POUND</option>
-                </select>
-              </fieldset>
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="top-right-link right-side">
-              <ul>
-                <li class="login-icon content">
-                  <a class="content-link">
-                  <span class="content-icon"></span> 
-                  </a> 
-                  <a href="login.html" title="Login">Login</a> or
-                  <a href="register.html" title="Register">Register</a>
-                  <div class="content-dropdown">
-                    <ul>
-                      <li class="login-icon"><a href="login.html" title="Login"><i class="fa fa-user"></i> Login</a></li>
-                      <li class="register-icon"><a href="register.html" title="Register"><i class="fa fa-user-plus"></i> Register</a></li>
-                    </ul>
-                  </div>
-                </li>
-                <li class="track-icon">
-                  <a href="" title="Track your order"><span></span> Track your order</a>
-                </li>
-                <li class="gift-icon">
-                  <a href="" title="Gift card"><span></span> Gift card</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="header-middle">
       <div class="container">
         <hr>
@@ -54,7 +7,7 @@
           <div class="col-xl-3 col-md-3 col-lgmd-20per">
             <div class="header-middle-left">
               <div class="navbar-header float-none-sm">
-                <a class="navbar-brand page-scroll" href="index.html">
+                <a class="navbar-brand page-scroll" href="/">
                   <img alt="Stylexpo" src="{{ asset('img/logo.png') }}">
                 </a> 
               </div>
@@ -520,19 +473,19 @@
                   <div class="mobilemenu-content">
                     <ul class="nav navbar-nav" id="menu-main">
                       <li class="active">
-                        <a href="index.html"><span>Home</span></a>
+                        <a href="/"><span>Home</span></a>
                       </li>
                       <li>
-                        <a href="shop.html"><span>Shop</span></a>
+                        <a href="/shop"><span>Shop</span></a>
                       </li>
                       <li>
-                        <a href="about.html"><span>About Us</span></a>
+                        <a href="/about"><span>About Us</span></a>
                       </li>
                       <li>
-                        <a href="blog.html"><span>Blog</span></a>
+                        <a href="/blog"><span>Blog</span></a>
                       </li>
                       <li>
-                        <a href="contact.html"><span>Contact</span></a>
+                        <a href="/contact"><span>Contact</span></a>
                       </li>
                       <li class="level dropdown ">
                         <span class="opener plus"></span>

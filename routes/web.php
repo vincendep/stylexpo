@@ -12,6 +12,10 @@
 */
 
 Route::get('/', 'PagesController@home');
+Route::get('/shop', 'PagesController@shop');
+Route::get('/about', 'PagesController@about');
+Route::get('/blog', 'PagesController@blog');
+Route::get('/contact', 'PagesController@contact');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
