@@ -14,30 +14,14 @@ class BrandsTableSeeder extends Seeder
     {
         if (Brand::count() == 0)
         {
-        	Brand::create([
-        		'name' => 'brand1', 'logo' => 'https://via.placeholder.com/170x120.png?text=brand'
-        	]);
-    		Brand::create([
-    			'name' => 'brand2', 'logo' => 'https://via.placeholder.com/170x120.png?text=brand'
-        	]);
-        	Brand::create([
-    			'name' => 'brand3', 'logo' => 'https://via.placeholder.com/170x120.png?text=brand'
-        	]);
-        	Brand::create([
-    			'name' => 'brand4', 'logo' => 'https://via.placeholder.com/170x120.png?text=brand'
-        	]);
-        	Brand::create([
-    			'name' => 'brand5', 'logo' => 'https://via.placeholder.com/170x120.png?text=brand'
-        	]);
-        	Brand::create([
-    			'name' => 'brand6', 'logo' => 'https://via.placeholder.com/170x120.png?text=brand'
-        	]);
-            Brand::create([
-                'name' => 'brand7', 'logo' => 'https://via.placeholder.com/170x120.png?text=brand'
-            ]);
-            Brand::create([
-                'name' => 'brand8', 'logo' => 'https://via.placeholder.com/170x120.png?text=brand'
-            ]);
+        	Brand::create(['name' => 'Brand 1']);
+    		Brand::create(['name' => 'Brand 2']);
+        	Brand::create(['name' => 'Brand 3']);
+        	Brand::create(['name' => 'Brand 4']);
+        	Brand::create(['name' => 'Brand 5']);
+        	Brand::create(['name' => 'Brand 6']);
+            Brand::create(['name' => 'Brand 7']);
+            Brand::create(['name' => 'Brand 8']);
     	}
     }
 }

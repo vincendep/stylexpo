@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -19,9 +20,56 @@ class PagesController extends Controller
         ]);
     }
 
-    public function shop()
+    public function shop($category = null)
     {
-    	return view('shop');
+        $products;
+        if ($category != null)
+        {
+            \App\Category::where('slug', $category)->firstOrFail();
+            $products = \App\Product::whereHas('category', function (Builder $query) use($category) {
+                $query->where('slug', 'like', $category);
+            })->get();
+        } 
+        else
+        {
+            $products = \App\Product::all();
+        }
+        $bestSellers = $products->sortByDesc('selling_number')->take(3);
+        $categories = \App\Category::all();
+
+    	return view('shop', [
+            'categories' => $categories,
+            'products' => $products,
+            'bestSellers' => $bestSellers
+        ]);
+    }
+
+    public function shopList($category = null)
+    {
+        return view('shop-list');
+    }
+
+    public function productPage($productId)
+    {
+        $product = \App\Product::find($productId);
+        return view('product-page', [
+            'product' => $product
+        ]);
+    }
+
+    public function cart()
+    {
+        return view('cart');
+    }
+
+    public function checkout()
+    {
+        return view('checkout');
+    }
+
+    public function orderComplete()
+    {
+        return view('order-complete');
     }
 
     public function about()

@@ -15,43 +15,51 @@ class ProductsTableSeeder extends Seeder
         if (Product::count() == 0)
         {
         	Product::create([
-        		'name' => 'product1',
-        		'brand_id' => 1
+        		'name' => 'Product 1',
+        		'brand_id' => 1,
+                'category_id' => 1
         	]);
 
         	Product::create([
-        		'name' => 'product2',
-        		'brand_id' => 2
+        		'name' => 'Product 2',
+        		'brand_id' => 2,
+                'category_id' => 2
         	]);
 
         	Product::create([
-        		'name' => 'product3',
-        		'brand_id' => 3
+        		'name' => 'Product 3',
+        		'brand_id' => 3,
+                'category_id' => 3
         	]);
 
         	Product::create([
-        		'name' => 'product4',
-        		'brand_id' => 4
+        		'name' => 'Product 4',
+        		'brand_id' => 4,
+                'category_id' => 4
         	]);
 
         	Product::create([
-        		'name' => 'product6',
-        		'brand_id' => 5
+        		'name' => 'Product 5',
+        		'brand_id' => 5,
+                'category_id' => 1
         	]);
 
         	Product::create([
-        		'name' => 'product6',
-        		'brand_id' => 6
+        		'name' => 'Product 6',
+        		'brand_id' => 6,
+                'category_id' => 1
         	]);
 
         	Product::create([
-        		'name' => 'product7',
-        		'brand_id' => 6
+        		'name' => 'Product 7',
+        		'brand_id' => 7,
+                'category_id' => 2
         	]);
 
         	Product::create([
-        		'name' => 'product8',
-        		'brand_id' => 6
+        		'name' => 'Product 8',
+        		'brand_id' => 8,
+                'category_id' => 3
         	]);
         }
     }

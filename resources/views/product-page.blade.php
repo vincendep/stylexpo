@@ -17,18 +17,25 @@
         <div class="col-lg-9">
           <div class="row">
             <div class="col-lg-5 col-md-5 mb-xs-30">
-              <div class="fotorama" data-nav="thumbs" data-allowfullscreen="native"> <a href="#"><img src={{ asset('img/1.jpg') }} alt="Stylexpo"></a> <a href="#"><img src={{ asset('img/2.jpg') }} alt="Stylexpo"></a> <a href="#"><img src={{ asset('img/3.jpg') }} alt="Stylexpo"></a> <a href="#"><img src={{ asset('img/4.jpg') }} alt="Stylexpo"></a> <a href="#"><img src={{ asset('img/5.jpg') }} alt="Stylexpo"></a> <a href="#"><img src={{ asset('img/6.jpg') }} alt="Stylexpo"></a> <a href="#"><img src={{ asset('img/4.jpg') }} alt="Stylexpo"></a> <a href="#"><img src={{ asset('img/5.jpg') }} alt="Stylexpo"></a> <a href="#"><img src={{ asset('img/6.jpg') }} alt="Stylexpo"></a> </div>
+              <div class="fotorama" data-nav="thumbs" data-allowfullscreen="native">
+                <a href="#"><img src="{{$product->thumbnail}}" alt="{{$product->name}}"></a>
+                
+                @foreach($product->images as $image)
+                <a href="#"><img src="{{$image->url}}" alt="{{$product->name}}"></a>
+                @endforeach
+
+              </div>
             </div>
             <div class="col-lg-7 col-md-7">
               <div class="row">
                 <div class="col-12">
                   <div class="product-detail-main">
                     <div class="product-item-details">
-                      <h1 class="product-item-name">Cross Colours Camo Print Tank half mengo</h1>
+                      <h1 class="product-item-name">{{$product->name}}</h1>
                       <div class="rating-summary-block">
-                        <div title="53%" class="rating-result"> <span style="width:53%"></span> </div>
+                        <div title="53%" class="rating-result"><span style="width:53%"></span> </div>
                       </div>
-                      <div class="price-box"> <span class="price">$80.00</span> <del class="price old-price">$100.00</del> </div>
+                      <div class="price-box"> <span class="price">{{$product->price}}</span> <del class="price old-price">{{$product->price}}</del> </div>
                       <div class="product-info-stock-sku">
                         <div>
                           <label>Availability: </label>
@@ -39,7 +46,7 @@
                           <span class="info-deta">20MVC-18</span> 
                         </div>
                       </div>
-                      <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada </p>
+                      <p>{{$product->description}}</p>
                       <div class="product-size select-arrow input-box select-dropdown mb-20 mt-30">
                         <label>Size</label>
                         <fieldset>

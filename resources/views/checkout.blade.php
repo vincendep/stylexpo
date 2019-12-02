@@ -47,7 +47,7 @@
                 </a> 
               </li>
               <li> 
-                <a href="order-complete.html">
+                <a href="/order-complete">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">4</div>

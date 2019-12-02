@@ -232,7 +232,7 @@
         <div class="row">
           <div class="col-12">
             <div class="right-side float-none-xs"> 
-              <a href="checkout.html" class="btn btn-color">Proceed to checkout
+              <a href="/checkout" class="btn btn-color">Proceed to checkout
                 <span><i class="fa fa-angle-right"></i></span>
               </a> 
             </div>

@@ -22,12 +22,11 @@
               </div>
               <div class="sidebar-contant">
                 <ul>
-                  <li><a href="#">Clothing <span>(21)</span></a></li>
-                  <li><a href="#">Shoes <span>(05)</span></a></li>
-                  <li><a href="#">Jewellery <span>(10)</span></a></li>
-                  <li><a href="#">Furniture <span>(12)</span></a></li>
-                  <li><a href="#">Bags <span>(18)</span></a></li>
-                  <li><a href="#">Accessories <span>(70)</span></a></li>
+
+                  @foreach($categories as $category)
+                  <li><a href="/shop-list/{{$category->slug}}">{{$category->name}}</a></li>
+                  @endforeach
+
                 </ul>
               </div>
             </div>
@@ -132,11 +131,11 @@
             <div class="row">
               <div class="col-lg-6">
                 <div class="view">
-                  <div class="list-types grid"> <a href="shop.html">
+                  <div class="list-types grid"> <a href="/shop">
                     <div class="grid-icon list-types-icon"></div>
                     </a> 
                   </div>
-                  <div class="list-types list active "> <a href="shop-list.html">
+                  <div class="list-types list active "> <a href="/shop-list">
                     <div class="list-icon list-types-icon"></div>
                     </a> 
                   </div>
@@ -175,21 +174,23 @@
           </div>
           <div class="product-listing list-type">
             <div class="row">
+
+              @foreach($products as $product)
               <div class="col-xl-6 col-12">
                 <div class="shop-list-view">
                   <div class="product-item">
                     <div class="main-label sale-label"><span>Sale</span></div>
-                    <div class="product-image"> <a href="product-page.html"> <img src={{ asset('img/1.jpg') }} alt="Stylexpo"> </a> </div>
+                    <div class="product-image"> <a href="product-page.html"><img src="{{$product->thumbnail}}" alt="{{$product->name}}"></a></div>
                   </div>
                   <div class="product-item-details">
                     <div class="product-item-name"> 
-                      <a href="product-page.html">Cross Colours Camo Print </a> 
+                      <a href="product-page.html">{{$product->name}}</a> 
                     </div>
                     <div class="rating-summary-block">
                       <div title="53%" class="rating-result"> <span style="width:53%"></span> </div>
                     </div>
-                    <div class="price-box"> <span class="price">$80.00</span> <del class="price old-price">$100.00</del> </div>
-                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
+                    <div class="price-box"> <span class="price">{{$product->price}}</span> <del class="price old-price">{{$product->price}}</del> </div>
+                    <p>{{$product->description}}</p>
                     <div class="bottom-detail">
                       <ul>
                         <li class="pro-cart-icon">
@@ -204,188 +205,8 @@
                   </div>
                 </div>
               </div>
-              <div class="col-xl-6 col-12">
-                <div class="shop-list-view">
-                  <div class="product-item">
-                    <div class="product-image"> <a href="product-page.html"> <img src={{ asset('img/2.jpg') }} alt="Stylexpo"> </a> </div>
-                  </div>
-                  <div class="product-item-details">
-                    <div class="product-item-name"> <a href="product-page.html">Cross Colours Camo Print </a> </div>
-                    <div class="rating-summary-block">
-                      <div title="53%" class="rating-result"> <span style="width:53%"></span> </div>
-                    </div>
-                    <div class="price-box"> <span class="price">$80.00</span> <del class="price old-price">$100.00</del> </div>
-                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
-                    <div class="bottom-detail">
-                      <ul>
-                        <li class="pro-cart-icon">
-                          <form>
-                            <button title="Add to Cart" class=""><span></span></button>
-                          </form>
-                        </li>
-                        <li class="pro-wishlist-icon"><a href="#"><span></span></a></li>
-                        <li class="pro-compare-icon"><a href="#"><span></span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xl-6 col-12">
-                <div class="shop-list-view">
-                  <div class="product-item">
-                    <div class="product-image"> <a href="product-page.html"> <img src={{ asset('img/3.jpg') }} alt="Stylexpo"> </a> </div>
-                  </div>
-                  <div class="product-item-details">
-                    <div class="product-item-name"> <a href="product-page.html">Cross Colours Camo Print</a> </div>
-                    <div class="rating-summary-block">
-                      <div title="53%" class="rating-result"> <span style="width:53%"></span> </div>
-                    </div>
-                    <div class="price-box"> <span class="price">$80.00</span> <del class="price old-price">$100.00</del> </div>
-                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
-                    <div class="bottom-detail">
-                      <ul>
-                        <li class="pro-cart-icon">
-                          <form>
-                            <button title="Add to Cart" class=""><span></span></button>
-                          </form>
-                        </li>
-                        <li class="pro-wishlist-icon"><a href="#"><span></span></a></li>
-                        <li class="pro-compare-icon"><a href="#"><span></span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xl-6 col-12">
-                <div class="shop-list-view">
-                  <div class="product-item">
-                    <div class="product-image"> <a href="product-page.html"> <img src={{ asset('img/4.jpg') }} alt="Stylexpo"> </a> </div>
-                  </div>
-                  <div class="product-item-details">
-                    <div class="product-item-name"> <a href="product-page.html">Cross Colours Camo Print</a> </div>
-                    <div class="rating-summary-block">
-                      <div title="53%" class="rating-result"> <span style="width:53%"></span> </div>
-                    </div>
-                    <div class="price-box"> <span class="price">$80.00</span> <del class="price old-price">$100.00</del> </div>
-                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
-                    <div class="bottom-detail">
-                      <ul>
-                        <li class="pro-cart-icon">
-                          <form>
-                            <button title="Add to Cart" class=""><span></span></button>
-                          </form>
-                        </li>
-                        <li class="pro-wishlist-icon"><a href="#"><span></span></a></li>
-                        <li class="pro-compare-icon"><a href="#"><span></span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xl-6 col-12">
-                <div class="shop-list-view">
-                  <div class="product-item">
-                    <div class="product-image"> <a href="product-page.html"> <img src={{ asset('img/5.jpg') }} alt="Stylexpo"> </a> </div>
-                  </div>
-                  <div class="product-item-details">
-                    <div class="product-item-name"> <a href="product-page.html">Cross Colours Camo Print</a> </div>
-                    <div class="rating-summary-block">
-                      <div title="53%" class="rating-result"> <span style="width:53%"></span> </div>
-                    </div>
-                    <div class="price-box"> <span class="price">$80.00</span> <del class="price old-price">$100.00</del> </div>
-                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
-                    <div class="bottom-detail">
-                      <ul>
-                        <li class="pro-cart-icon">
-                          <form>
-                            <button title="Add to Cart" class=""><span></span></button>
-                          </form>
-                        </li>
-                        <li class="pro-wishlist-icon"><a href="#"><span></span></a></li>
-                        <li class="pro-compare-icon"><a href="#"><span></span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xl-6 col-12">
-                <div class="shop-list-view">
-                  <div class="product-item">
-                    <div class="product-image"> <a href="product-page.html"> <img src={{ asset('img/6.jpg') }} alt="Stylexpo"> </a> </div>
-                  </div>
-                  <div class="product-item-details">
-                    <div class="product-item-name"> <a href="product-page.html">Cross Colours Camo Print</a> </div>
-                    <div class="rating-summary-block">
-                      <div title="53%" class="rating-result"> <span style="width:53%"></span> </div>
-                    </div>
-                    <div class="price-box"> <span class="price">$80.00</span> <del class="price old-price">$100.00</del> </div>
-                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
-                    <div class="bottom-detail">
-                      <ul>
-                        <li class="pro-cart-icon">
-                          <form>
-                            <button title="Add to Cart" class=""><span></span></button>
-                          </form>
-                        </li>
-                        <li class="pro-wishlist-icon"><a href="#"><span></span></a></li>
-                        <li class="pro-compare-icon"><a href="#"><span></span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xl-6 col-12">
-                <div class="shop-list-view">
-                  <div class="product-item">
-                    <div class="product-image"> <a href="product-page.html"> <img src={{ asset('img/7.jpg') }} alt="Stylexpo"> </a> </div>
-                  </div>
-                  <div class="product-item-details">
-                    <div class="product-item-name"> <a href="product-page.html">Cross Colours Camo Print</a> </div>
-                    <div class="rating-summary-block">
-                      <div title="53%" class="rating-result"> <span style="width:53%"></span> </div>
-                    </div>
-                    <div class="price-box"> <span class="price">$80.00</span> <del class="price old-price">$100.00</del> </div>
-                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
-                    <div class="bottom-detail">
-                      <ul>
-                        <li class="pro-cart-icon">
-                          <form>
-                            <button title="Add to Cart" class=""><span></span></button>
-                          </form>
-                        </li>
-                        <li class="pro-wishlist-icon"><a href="#"><span></span></a></li>
-                        <li class="pro-compare-icon"><a href="#"><span></span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xl-6 col-12">
-                <div class="shop-list-view">
-                  <div class="product-item">
-                    <div class="product-image"> <a href="product-page.html"> <img src={{ asset('img/8.jpg') }} alt="Stylexpo"> </a> </div>
-                  </div>
-                  <div class="product-item-details">
-                    <div class="product-item-name"> <a href="product-page.html">Cross Colours Camo Print</a> </div>
-                    <div class="rating-summary-block">
-                      <div title="53%" class="rating-result"> <span style="width:53%"></span> </div>
-                    </div>
-                    <div class="price-box"> <span class="price">$80.00</span> <del class="price old-price">$100.00</del> </div>
-                    <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. ipsum primis in faucibus orci luctus et ultrices.</p>
-                    <div class="bottom-detail">
-                      <ul>
-                        <li class="pro-cart-icon">
-                          <form>
-                            <button title="Add to Cart" class=""><span></span></button>
-                          </form>
-                        </li>
-                        <li class="pro-wishlist-icon"><a href="#"><span></span></a></li>
-                        <li class="pro-compare-icon"><a href="#"><span></span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              @endforeach
+
             </div>
             <div class="row">
               <div class="col-12">

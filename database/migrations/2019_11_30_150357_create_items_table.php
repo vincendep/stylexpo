@@ -15,8 +15,9 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string("sku")->default(null);
-            $table->string("barcode")->default(null);
+            $table->string("sku")->unique();
+            $table->string("barcode")->unique();
+            $table->boolean('is_selled')->default(false);
             $table->timestamps();
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products');

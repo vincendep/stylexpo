@@ -34,7 +34,7 @@
                 <div class="item">
                   <div class="product-item">
                     <div class="main-label new-label"><span>New</span></div>
-                    <div class="product-image"> <a href="product-page.html"><img src="{{ asset($product->thumbnail) }}" alt='Stylexpo'></a>
+                    <div class="product-image"> <a href="/product-page/{{$product->id}}"><img src="{{ asset($product->thumbnail) }}" alt='Stylexpo'></a>
                       <div class="product-detail-inner">
                         <div class="detail-inner-left align-center">
                           <ul>
@@ -50,8 +50,8 @@
                       </div>
                     </div>
                     <div class="product-item-details">
-                      <div class="product-item-name"> <a href="product-page.html">{{$product->name}}</a> </div>
-                      <div class="price-box"> <span class="price">{{$product->prize}}</span> <del class="price old-price">{{$product->prize}}</del> 
+                      <div class="product-item-name"> <a href="/product-page/{{$product->id}}">{{$product->name}}</a> </div>
+                      <div class="price-box"> <span class="price">{{$product->price}}</span> <del class="price old-price">{{$product->price}}</del> 
                     </div>
                   </div>
                 </div>
@@ -82,7 +82,7 @@
               
               @foreach($categories as $category)
               <div class="item ">
-                <a href="/shop">
+                <a href="/shop/{{$category->slug}}">
                   <div class="item-inner">
                       <img src="{{asset($category->thumbnail)}}" alt="Stylexpo">
                     <div class="cate-detail">
@@ -140,7 +140,7 @@
                   <div class="row ">
                     <div class="col-md-6 col-12 deals-img ">
                       <div class="product-image"> 
-                        <a href="product-page.html"> 
+                        <a href="/product-page/{{$product->id}}"> 
                           <img src="{{asset($product->thumbnail)}}" alt="Stylexpo"> 
                         </a>
                       </div>
@@ -148,13 +148,13 @@
                     <div class="col-md-6 col-12 mt-xs-30">
                       <div class="product-item-details">
                         <div class="product-item-name"> 
-                          <a href="product-page.html">{{$product->name}}</a> 
+                          <a href="/product-page/{{$product->id}}">{{$product->name}}</a> 
                         </div>
                         <div class="price-box"> 
-                          <span class="price">{{$product->prize}}</span> 
-                          <del class="price old-price">{{$product->prize}}</del> 
+                          <span class="price">{{$product->price}}</span> 
+                          <del class="price old-price">{{$product->price}}</del> 
                         </div>
-                        <p>Lorem ipsum dolor consectetuer adipiscing elit. Donec eros, scelerisque nec, rhoncus eget.</p>
+                        <p style="max-height: 80px;overflow: hidden;text-overflow: ellipsis;">{{$product->description}}</p>
                       </div>
                       <div class="product-detail-inner">
                         <div class="detail-inner-left">
@@ -297,7 +297,7 @@
                   <div class="item">
                     <div class="product-item">
                       <div class="main-label new-label"><span>New</span></div>
-                      <div class="product-image"> <a href="product-page.html"> <img src="{{ asset($product->thumbnail) }}"" alt="Stylexpo"> </a>
+                      <div class="product-image"> <a href="/product-page/{{$product->id}}"> <img src="{{ asset($product->thumbnail) }}"" alt="Stylexpo"> </a>
                         <div class="product-detail-inner">
                           <div class="detail-inner-left align-center">
                             <ul>
@@ -313,8 +313,8 @@
                         </div>
                       </div>
                       <div class="product-item-details">
-                        <div class="product-item-name"> <a href="product-page.html">{{$product->name}}</a> </div>
-                        <div class="price-box"> <span class="price">{{$product->prize}}</span> <del class="price old-price">{{$product->prize}}</del> </div>
+                        <div class="product-item-name"> <a href="/product-page/{{$product->id}}">{{$product->name}}</a> </div>
+                        <div class="price-box"> <span class="price">{{$product->price}}</span> <del class="price old-price">{{$product->price}}</del> </div>
                       </div>
                     </div>
                   </div>
@@ -340,7 +340,7 @@
                   <div class="item">
                     <div class="product-item">
                       <div class="main-label new-label"><span>New</span></div>
-                      <div class="product-image"> <a href="product-page.html"> <img src="{{ asset($product->thumbnail) }}" alt="Stylexpo"> </a>
+                      <div class="product-image"> <a href="/product-page/{{$product->id}}"> <img src="{{ asset($product->thumbnail) }}" alt="Stylexpo"> </a>
                         <div class="product-detail-inner">
                           <div class="detail-inner-left align-center">
                             <ul>
@@ -356,8 +356,8 @@
                         </div>
                       </div>
                       <div class="product-item-details">
-                        <div class="product-item-name"> <a href="product-page.html">{{$product->name}}</a> </div>
-                        <div class="price-box"> <span class="price">{{$product->prize}}</span> <del class="price old-price">{{$product->prize}}</del> </div>
+                        <div class="product-item-name"> <a href="/product-page/{{$product->id}}">{{$product->name}}</a> </div>
+                        <div class="price-box"> <span class="price">{{$product->price}}</span> <del class="price old-price">{{$product->price}}</del> </div>
                       </div>
                     </div>
                   </div>

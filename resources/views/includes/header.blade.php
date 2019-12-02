@@ -80,7 +80,7 @@
                 <li class="cart-icon"> <a href="#"> <span> <small class="cart-notification">2</small> </span> </a>
                   <div class="cart-dropdown header-link-dropdown">
                     <ul class="cart-list link-dropdown-list">
-                      <li> <a class="close-cart"><i class="fa fa-times-circle"></i></a>
+                      <li><a class="close-cart"><i class="fa fa-times-circle"></i></a>
                         <div class="media"> <a class="pull-left"> <img alt="Stylexpo" src="{{ asset('img/1.jpg') }}"></a>
                           <div class="media-body"> <span><a href="#">Black African Print Skirt</a></span>
                             <p class="cart-price">$14.99</p>
@@ -109,7 +109,7 @@
                     </ul>
                     <p class="cart-sub-totle"> <span class="pull-left">Cart Subtotal</span> <span class="pull-right"><strong class="price-box">$29.98</strong></span> </p>
                     <div class="clearfix"></div>
-                    <div class="mt-20"> <a href="cart.html" class="btn-color btn">Cart</a> <a href="checkout.html" class="btn-color btn right-side">Checkout</a> </div>
+                    <div class="mt-20"><a href="/cart" class="btn-color btn">Cart</a><a href="/checkout" class="btn-color btn right-side">Checkout</a> </div>
                   </div>
                 </li>
                 <li class="side-toggle">
@@ -472,19 +472,19 @@
                   </div>
                   <div class="mobilemenu-content">
                     <ul class="nav navbar-nav" id="menu-main">
-                      <li class="active">
+                      <li class="{{ request()->is('/') ? 'active' : '' }}">
                         <a href="/"><span>Home</span></a>
                       </li>
-                      <li>
+                      <li class="{{ request()->is('shop*') ? 'active' : '' }}">
                         <a href="/shop"><span>Shop</span></a>
                       </li>
-                      <li>
+                      <li class="{{ request()->is('about') ? 'active' : '' }}">
                         <a href="/about"><span>About Us</span></a>
                       </li>
-                      <li>
+                      <li class="{{ request()->is('blog') ? 'active' : '' }}">
                         <a href="/blog"><span>Blog</span></a>
                       </li>
-                      <li>
+                      <li class="{{ request()->is('contact') ? 'active' : '' }}">
                         <a href="/contact"><span>Contact</span></a>
                       </li>
                       <li class="level dropdown ">
