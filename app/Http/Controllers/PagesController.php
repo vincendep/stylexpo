@@ -52,8 +52,12 @@ class PagesController extends Controller
     public function productPage($productId)
     {
         $product = \App\Product::find($productId);
+        $sizes = \App\Size::all();
+        $colors = \App\Color::all();
         return view('product-page', [
-            'product' => $product
+            'product' => $product,
+            'colors' => $colors,
+            'sizes' => $sizes
         ]);
     }
 

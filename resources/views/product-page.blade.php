@@ -39,7 +39,7 @@
                       <div class="product-info-stock-sku">
                         <div>
                           <label>Availability: </label>
-                          <span class="info-deta">In stock</span> 
+                          <span class="info-deta">{{$product->quantity > 0 ? 'In stock' : 'Out of stock'}}</span> 
                         </div>
                         <div>
                           <label>SKU: </label>
@@ -51,9 +51,11 @@
                         <label>Size</label>
                         <fieldset>
                           <select class="selectpicker form-control option-drop" id="select-by-size">
-                            <option selected="selected" value="#">S</option>
-                            <option value="#">M</option>
-                            <option value="#">L</option>
+                            
+                            @foreach($sizes as $size)
+                            <option value="{{$size->name}}">{{$size->name}}</option>
+                            @endforeach
+
                           </select>
                         </fieldset>
                       </div>
@@ -61,10 +63,11 @@
                         <label>Color</label>
                         <fieldset>
                           <select class="selectpicker form-control option-drop" id="select-by-color">
-                            <option selected="selected" value="#">Blue</option>
-                            <option value="#">Green</option>
-                            <option value="#">Orange</option>
-                            <option value="#">White</option>
+                            
+                            @foreach($colors as $color)
+                            <option value="{{$color->name}}">{{$color->name}}</option>
+                            @endforeach
+                            
                           </select>
                         </fieldset>
                       </div>

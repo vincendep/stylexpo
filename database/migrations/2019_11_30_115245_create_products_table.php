@@ -19,12 +19,13 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->float('price', 8, 2);
             $table->string('thumbnail');
+            $table->unsignedBigInteger('quantity')->default(1);
             $table->unsignedBigInteger('selling_number')->default(0);
-            $table->timestamps();
             $table->unsignedBigInteger('brand_id');
             $table->foreign('brand_id')->references('id')->on('brands');
             $table->unsignedInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->timestamps();
         });
     }
 
