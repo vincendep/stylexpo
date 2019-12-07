@@ -50,7 +50,7 @@
                       <div class="product-size select-arrow input-box select-dropdown mb-20 mt-30">
                         <label>Size</label>
                         <fieldset>
-                          <select class="selectpicker form-control option-drop" id="select-by-size">
+                          <select form="add-to-cart-form" class="selectpicker form-control option-drop" id="select-by-size">
                             
                             @foreach($sizes as $size)
                             <option value="{{$size->name}}">{{$size->name}}</option>
@@ -62,10 +62,10 @@
                       <div class="product-color select-arrow input-box select-dropdown mb-20">
                         <label>Color</label>
                         <fieldset>
-                          <select class="selectpicker form-control option-drop" id="select-by-color">
+                          <select form="add-to-cart-form" name="color" class="selectpicker form-control option-drop" id="select-by-color">
                             
                             @foreach($colors as $color)
-                            <option value="{{$color->name}}">{{$color->name}}</option>
+                            <option value="{{$color->id}}">{{$color->name}}</option>
                             @endforeach
                             
                           </select>
@@ -76,15 +76,17 @@
                           <label for="qty">Qty:</label>
                           <div class="custom-qty">
                             <button onclick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) result.value--;return false;" class="reduced items" type="button"> <i class="fa fa-minus"></i> </button>
-                            <input type="text" class="input-text qty" title="Qty" value="1" maxlength="8" id="qty" name="qty">
+                            <input form="add-to-cart-form" type="text" class="input-text qty" title="Qty" value="1" maxlength="8" id="qty" name="quantity">
                             <button onclick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="increase items" type="button"> <i class="fa fa-plus"></i> </button>
                           </div>
                         </div>
                         <div class="bottom-detail cart-button">
                           <ul>
                             <li class="pro-cart-icon">
-                              <form>
-                                <button title="Add to Cart" class="btn-color"><span></span>Add to Cart</button>
+                              <form id="add-to-cart-form" action="/products">
+                                @csrf
+                                <input type="hidden" name="product" value="{{$product->id}}"/>
+                                <button type="submit" title="Add to Cart" class="btn-color"><span></span>Add to Cart</button>
                               </form>
                             </li>
                           </ul>

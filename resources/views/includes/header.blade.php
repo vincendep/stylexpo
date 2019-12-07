@@ -64,60 +64,6 @@
               </div>
             </div>
           </div>
-          <div class="col-xl-3 col-md-3 col-lgmd-20per">
-            <div class="right-side float-left-xs header-right-link">
-              <ul>
-                <li class="compare-icon">
-                  <a href="compare.html">
-                    <span></span>
-                  </a>
-                </li>
-                <li class="wishlist-icon">
-                  <a href="wishlist.html">
-                    <span></span>
-                  </a>
-                </li>
-                <li class="cart-icon"> <a href="#"> <span> <small class="cart-notification">2</small> </span> </a>
-                  <div class="cart-dropdown header-link-dropdown">
-                    <ul class="cart-list link-dropdown-list">
-                      <li><a class="close-cart"><i class="fa fa-times-circle"></i></a>
-                        <div class="media"> <a class="pull-left"> <img alt="Stylexpo" src="{{ asset('img/1.jpg') }}"></a>
-                          <div class="media-body"> <span><a href="#">Black African Print Skirt</a></span>
-                            <p class="cart-price">$14.99</p>
-                            <div class="product-qty">
-                              <label>Qty:</label>
-                              <div class="custom-qty">
-                                <input type="text" name="qty" maxlength="8" value="1" title="Qty" class="input-text qty">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li> <a class="close-cart"><i class="fa fa-times-circle"></i></a>
-                        <div class="media"> <a class="pull-left"> <img alt="Stylexpo" src="{{ asset('img/2.jpg') }}"></a>
-                          <div class="media-body"> <span><a href="#">Black African Print Skirt</a></span>
-                            <p class="cart-price">$14.99</p>
-                            <div class="product-qty">
-                              <label>Qty:</label>
-                              <div class="custom-qty">
-                                <input type="text" name="qty" maxlength="8" value="1" title="Qty" class="input-text qty">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                    <p class="cart-sub-totle"> <span class="pull-left">Cart Subtotal</span> <span class="pull-right"><strong class="price-box">$29.98</strong></span> </p>
-                    <div class="clearfix"></div>
-                    <div class="mt-20"><a href="/cart" class="btn-color btn">Cart</a><a href="/checkout" class="btn-color btn right-side">Checkout</a> </div>
-                  </div>
-                </li>
-                <li class="side-toggle">
-                  <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button"><i class="fa fa-bars"></i></button>
-                </li>
-              </ul>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -462,7 +408,7 @@
               </div>
             </div>
           </div>
-          <div class="col-xl-6 col-lg-6 col-lgmd-60per">
+          <div class="col-xl-9 col-lg-9 col-lgmd-80per">
             <div class="bottom-inner">
               <div class="position-r">          
                 <div class="nav_sec position-r">
@@ -487,281 +433,34 @@
                       <li class="{{ request()->is('contact') ? 'active' : '' }}">
                         <a href="/contact"><span>Contact</span></a>
                       </li>
-                      <li class="level dropdown ">
-                        <span class="opener plus"></span>
-                        <a href="#" class="page-scroll"><span>Pages</span></a>
-                        <div class="megamenu mobile-sub-menu">
-                          <div class="megamenu-inner-top">
-                            <ul class="sub-menu-level1">
-                              <li class="level2">
-                                <ul class="sub-menu-level2 ">
-                                  <li class="level3"><a href="account.html"><span>■</span>Account</a></li>
-                                  <li class="level3"><a href="checkout.html"><span>■</span>Checkout</a></li>
-                                  <li class="level3"><a href="compare.html"><span>■</span>Compare</a></li>
-                                  <li class="level3"><a href="wishlist.html"><span>■</span>Wishlist</a></li>
-                                  <li class="level3"><a href="404.html"><span>■</span>404 Error</a></li>
-                                  <li class="level3"><a href="single-blog.html"><span>■</span>Single Blog</a></li>
-                                  <li class="level3"><a href="product-page.html"><span>■</span>Product Details</a></li>
-                                </ul>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
+                      @guest
+                      @if (Route::has('register'))
+                      <li class="float-right">
+                        <a href="{{ route('register') }}">{{ __('Register') }}</a>
                       </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 col-lg-3 col-lgmd-20per">
-            <div class="right-side float-left-xs header-right-link">
-            <div class="right-side">
-              <div class="help-num" >Need Help? : 03 233 455 55</div>
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+                      @endif
+                      <li class="float-right">
+                        <a href="{{ route('login') }}">{{ __('Login') }}</a>
+                      </li>
+                      @else
+                      <li class="float-right">
+                        <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                          {{ __('Logout') }}
+                        </a>
 
-    <div class="popup-links ">
-      <div class="popup-links-inner">
-        <ul>
-          <li class="categories">
-            <a class="popup-with-form" href="#categories_popup"><span class="icon"></span><span class="icon-text">Categories</span></a>
-          </li>
-          <li class="cart-icon">
-            <a class="popup-with-form" href="#cart_popup"><span class="icon"></span><span class="icon-text">Cart</span></a>
-          </li>
-          <li class="account">
-            <a class="popup-with-form" href="#account_popup"><span class="icon"></span><span class="icon-text">Account</span></a>
-          </li>
-          <li class="search">
-            <a class="popup-with-form" href="#search_popup"><span class="icon"></span><span class="icon-text">Search</span></a>
-          </li>
-          <li class="scroll scrollup">
-            <a href="#"><span class="icon"></span><span class="icon-text">Scroll-top</span></a>
-          </li>
-        </ul>
-      </div>
-      <div id="popup_containt">
-        <div id="categories_popup" class="white-popup-block mfp-hide popup-position">
-          <div class="popup-title">
-            <h2 class="main_title heading"><span>categories</span></h2>
-          </div>
-          <div class="popup-detail">
-            <ul class="cate-inner">
-              <li class="level sub-megamenu">
-                <span class="opener plus"></span>
-                <a href="shop.html" class="page-scroll"><i class="fa fa-female"></i>Fashion (10)</a>
-                <div class="megamenu  mega-sub-menu">
-                  <div class="megamenu-inner-top">
-                    <ul class="sub-menu-level1">
-                      <li class="level2">
-                        <ul class="sub-menu-level2 ">
-                          <li class="level3"><a href="shop.html"><span>■</span>Blazer & Coat</a></li>
-                          <li class="level3"><a href="shop.html"><span>■</span>Sport Shoes</a></li>
-                          <li class="level3"><a href="shop.html"><span>■</span>Trousers</a></li>
-                          <li class="level3"><a href="shop.html"><span>■</span>Purse</a></li>
-                          <li class="level3"><a href="shop.html"><span>■</span>Wallets</a></li>
-                          <li class="level3"><a href="shop.html"><span>■</span>Skirts</a></li>
-                          <li class="level3"><a href="shop.html"><span>■</span>Tops</a></li>
-                          <li class="level3"><a href="shop.html"><span>■</span>Sleepwear</a></li>
-                          <li class="level3"><a href="shop.html"><span>■</span>Jeans</a></li>
-                        </ul>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          @csrf
+                        </form>
                       </li>
+                      <li class="float-right">
+                        <a href="/account">Account</a>
+                      </li>
+                      @endguest
                     </ul>
                   </div>
                 </div>
-              </li>
-              <li class="level">
-                <a href="shop.html" class="page-scroll"><i class="fa fa-camera-retro"></i>Cameras (70)</a>
-              </li>
-              <li class="level">
-                <a href="shop.html" class="page-scroll"><i class="fa fa-desktop"></i>computers (10)</a>
-              </li>
-              <li class="level sub-megamenu">
-                <span class="opener plus"></span>
-                <a href="shop.html" class="page-scroll"><i class="fa fa-clock-o"></i>Wathches (15)</a>
-                  <div class="megamenu mega-sub-menu">
-                    <div class="megamenu-inner-top">
-                      <ul class="sub-menu-level1">
-                        <li class="level2">
-                          <ul class="sub-menu-level2">
-                            <li class="level3"><a href="shop.html"><span>■</span>Dresses</a></li>
-                            <li class="level3"><a href="shop.html"><span>■</span>Sport Jeans</a></li>
-                            <li class="level3"><a href="shop.html"><span>■</span>Skirts</a></li>
-                            <li class="level3"><a href="shop.html"><span>■</span>Tops</a></li>
-                            <li class="level3"><a href="shop.html"><span>■</span>Sleepwear</a></li>
-                            <li class="level3"><a href="shop.html"><span>■</span>Jeans</a></li>
-                            <li class="level3"><a href="shop.html"><span>■</span>Blazer & Coat</a></li>
-                            <li class="level3"><a href="shop.html"><span>■</span>Sport Shoes</a></li>
-                            <li class="level3"><a href="shop.html"><span>■</span>Phone Cases</a></li>
-                            <li class="level3"><a href="shop.html"><span>■</span>Trousers</a></li>
-                            <li class="level3"><a href="shop.html"><span>■</span>Purse</a></li>
-                            <li class="level3"><a href="shop.html"><span>■</span>Wallets</a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-              </li>
-              <li class="level">
-                <a href="shop.html" class="page-scroll"><i class="fa fa-shopping-bag"></i>Bags (18)</a>
-              </li>
-              <li class="level sub-megamenu ">
-                <span class="opener plus"></span>
-                <a href="shop.html" class="page-scroll"><i class="fa fa-tablet"></i>Smartphones (20)</a>
-                <div class="megamenu mega-sub-menu">
-                    <div class="megamenu-inner-top">
-                      <ul class="sub-menu-level1">
-                        <li class="level2">
-                          <ul class="sub-menu-level2">
-                            <li class="level3"><a href="shop.html"><span>■</span>Dresses</a></li>
-                            <li class="level3"><a href="shop.html"><span>■</span>Sport Jeans</a></li>
-                            <li class="level3"><a href="shop.html"><span>■</span>Skirts</a></li>
-                            <li class="level3"><a href="shop.html"><span>■</span>Tops</a></li>
-                            <li class="level3"><a href="shop.html"><span>■</span>Sleepwear</a></li>
-                            <li class="level3"><a href="shop.html"><span>■</span>Jeans</a></li>
-                          </ul>
-                        </li>
-                        <li class="level2">
-                          <ul class="sub-menu-level2 ">
-                            <li class="level3"><a href="shop.html"><span>■</span>Blazer & Coat</a></li>
-                            <li class="level3"><a href="shop.html"><span>■</span>Sport Shoes</a></li>
-                            <li class="level3"><a href="shop.html"><span>■</span>Phone Cases</a></li>
-                            <li class="level3"><a href="shop.html"><span>■</span>Trousers</a></li>
-                            <li class="level3"><a href="shop.html"><span>■</span>Purse</a></li>
-                            <li class="level3"><a href="shop.html"><span>■</span>Wallets</a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </div>
-                </div>
-              </li>
-              <li class="level">
-                <a href="shop.html" class="page-scroll"><i class="fa fa-heart"></i>Software</a>
-              </li>
-              <li class="level "><a href="shop.html" class="page-scroll"><i class="fa fa-headphones"></i>Headphone (12)</a></li>
-              <li class="level">
-                <a href="shop.html" class="page-scroll"><i class="fa fa-microphone"></i>Accessories (70)</a>
-              </li>
-              <li class="level"><a href="shop.html" class="page-scroll"><i class="fa fa-bolt"></i>Printers & Ink</a></li>
-              <li class="level"><a href="shop.html" class="page-scroll"><i class="fa fa-plus-square"></i>More Categories</a></li>
-            </ul>
-          </div>  
-        </div>
-        <div id="cart_popup" class="white-popup-block mfp-hide popup-position">
-          <div class="popup-title">
-            <h2 class="main_title heading"><span>cart</span></h2>
-          </div>
-          <div class="popup-detail">
-            <div class="cart-dropdown ">
-              <ul class="cart-list link-dropdown-list">
-                <li> <a class="close-cart"><i class="fa fa-times-circle"></i></a>
-                  <div class="media"> <a class="pull-left"> <img alt="Stylexpo" src="{{ asset('img/1.jpg') }}"></a>
-                    <div class="media-body"> <span><a href="#">Black African Print Skirt</a></span>
-                      <p class="cart-price">$14.99</p>
-                      <div class="product-qty">
-                        <label>Qty:</label>
-                        <div class="custom-qty">
-                          <input type="text" name="qty" maxlength="8" value="1" title="Qty" class="input-text qty">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li> <a class="close-cart"><i class="fa fa-times-circle"></i></a>
-                  <div class="media"> <a class="pull-left"> <img alt="Stylexpo" src="{{ asset('img/2.jpg') }}"></a>
-                    <div class="media-body"> <span><a href="#">Black African Print Skirt</a></span>
-                      <p class="cart-price">$14.99</p>
-                      <div class="product-qty">
-                        <label>Qty:</label>
-                        <div class="custom-qty">
-                          <input type="text" name="qty" maxlength="8" value="1" title="Qty" class="input-text qty">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-              <p class="cart-sub-totle"> <span class="pull-left">Cart Subtotal</span> <span class="pull-right"><strong class="price-box">$29.98</strong></span> </p>
-              <div class="clearfix"></div>
-              <div class="mt-20"> <a href="cart.html" class="btn-color btn">Cart</a> <a href="checkout.html" class="btn-color btn right-side">Checkout</a> </div>
-            </div>
-          </div>
-        </div>
-        <div id="account_popup" class="white-popup-block mfp-hide popup-position">
-          <div class="popup-title">
-            <h2 class="main_title heading"><span>Account</span></h2>
-          </div>
-          <div class="popup-detail">
-            <div class="row">
-              <div class="col-lg-4">
-                <a href="account.html">
-                  <div class="account-inner mb-30">
-                    <i class="fa fa-user"></i><br/>
-                    <span>Account</span>
-                  </div>
-                </a>
-              </div>
-              <div class="col-lg-4">
-                <a href="register.html">
-                  <div class="account-inner mb-30">
-                    <i class="fa fa-user-plus"></i><br/>
-                    <span>Register</span>
-                  </div>
-                </a>
-              </div>
-              <div class="col-lg-4">
-                <a href="cart.html">
-                  <div class="account-inner mb-30">
-                    <i class="fa fa-shopping-bag"></i><br/>
-                    <span>Shopping</span>
-                  </div>
-                </a>
-              </div>
-              <div class="col-lg-4">
-                <a href="account.html#step4">
-                  <div class="account-inner">
-                    <i class="fa fa-key"></i><br/>
-                    <span>Change Pass</span>
-                  </div>
-                </a>
-              </div>
-              <div class="col-lg-4">
-                <a href="account.html#step3">
-                  <div class="account-inner">
-                    <i class="fa fa-history"></i><br/>
-                    <span>history</span>
-                  </div>
-                </a>
-              </div>
-              <div class="col-lg-4">
-                <a href="login.html">
-                  <div class="account-inner">
-                    <i class="fa fa-share-square-o"></i><br/>
-                    <span>log out</span>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="search_popup" class="white-popup-block mfp-hide popup-position">
-          <div class="popup-title">
-            <h2 class="main_title heading"><span>Search</span></h2>
-          </div>            
-          <div class="popup-detail">
-            <div class="main-search">
-              <div class="header_search_toggle desktop-view">
-                <form>
-                  <div class="search-box">
-                    <input class="input-text" type="text" placeholder="Search entire store here...">
-                    <button class="search-btn"></button>
-                  </div>
-                </form>
               </div>
             </div>
           </div>

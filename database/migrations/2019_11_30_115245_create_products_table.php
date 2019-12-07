@@ -20,6 +20,9 @@ class CreateProductsTable extends Migration
             $table->float('price', 8, 2);
             $table->string('thumbnail');
             $table->unsignedBigInteger('quantity')->default(1);
+            $table->float('sale', 3,2)->nullable(true);
+            $table->timestamp('sale_start_at')->nullable(true);
+            $table->timestamp('sale_end_at')->nullable(true);
             $table->unsignedBigInteger('selling_number')->default(0);
             $table->unsignedBigInteger('brand_id');
             $table->foreign('brand_id')->references('id')->on('brands');

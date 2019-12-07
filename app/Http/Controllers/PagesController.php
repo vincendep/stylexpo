@@ -62,8 +62,8 @@ class PagesController extends Controller
     }
 
     public function cart()
-    {
-        return view('cart');
+    { 
+        return view('cart', ['cart' => session()->get('cart')]);
     }
 
     public function checkout()

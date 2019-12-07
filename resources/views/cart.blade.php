@@ -31,24 +31,26 @@
                   </tr>
                 </thead>
                 <tbody>
+
+                  @foreach ($cart->cartItems() as $cartItem)
                   <tr>
                     <td>
-                      <a href="product-page.html">
+                      <a href="/product-page/{{$cartItem->product()->id}}">
                         <div class="product-image">
-                          <img alt="Stylexpo" src={{ asset('img/1.jpg') }}>
+                          <img alt="{{$cartItem->product()->name}}" src="{{$cartItem->product()->thumbnail}}">
                         </div>
                       </a>
                     </td>
                     <td>
                       <div class="product-title"> 
-                        <a href="product-page.html">Cross Colours Camo Print Tank half mengo</a> 
+                        <a href="/product-page/{{$cartItem->product()->id}}">{{$cartItem->product()->name}}</a> 
                       </div>
                     </td>
                     <td>
                       <ul>
                         <li>
                           <div class="base-price price-box"> 
-                            <span class="price">$80.00</span> 
+                            <span class="price">{{$cartItem->product()->price}}</span> 
                           </div>
                         </li>
                       </ul>
@@ -57,66 +59,26 @@
                       <div class="input-box select-dropdown">
                         <fieldset>
                           <select data-id="100" class="quantity_cart option-drop" name="quantity_cart">
-                            <option selected="" value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
+                            <option {{$cartItem->quantity == 1 ? 'selected=""' : ''}} value="1">1</option>
+                            <option {{$cartItem->quantity == 2 ? 'selected=""' : ''}} value="2">2</option>
+                            <option {{$cartItem->quantity == 3 ? 'selected=""' : ''}} value="3">3</option>
+                            <option {{$cartItem->quantity == 4 ? 'selected=""' : ''}} value="4">4</option>
+                            <option {{$cartItem->quantity == 5 ? 'selected=""' : ''}} value="5">5</option>
                           </select>
                         </fieldset>
                       </div>
                     </td>
                     <td>
                       <div class="total-price price-box"> 
-                        <span class="price">$80.00</span> 
+                        <span class="price">{{$cartItem->product()->price * $cartItem->quantity}}</span> 
                       </div>
                     </td>
                     <td>
                       <i title="Remove Item From Cart" data-id="100" class="fa fa-trash cart-remove-item"></i>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
-                      <a href="product-page.html">
-                        <div class="product-image">
-                          <img alt="Stylexpo" src={{ asset('img/2.jpg') }}>
-                        </div>
-                      </a>
-                    </td>
-                    <td>
-                      <div class="product-title"> 
-                        <a href="product-page.html">Defyant Reversible Dot Shorts</a> 
-                      </div>
-                    </td>
-                    <td>
-                      <ul>
-                        <li>
-                          <div class="base-price price-box"> 
-                            <span class="price">$80.00</span> 
-                          </div>
-                        </li>
-                      </ul>
-                    </td>
-                    <td>
-                      <div class="input-box select-dropdown">
-                        <fieldset>
-                          <select data-id="100" class="quantity_cart option-drop" name="quantity_cart">
-                            <option selected="" value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                          </select>
-                        </fieldset>
-                      </div>
-                    </td>
-                    <td>
-                      <div class="total-price price-box"> 
-                        <span class="price">$80.00</span> 
-                      </div>
-                    </td>
-                    <td>
-                      <i title="Remove Item From Cart" data-id="100" class="fa fa-trash cart-remove-item"></i>
-                    </td>
-                  </tr>
+                  @endforeach
+
                 </tbody>
               </table>
             </div>
