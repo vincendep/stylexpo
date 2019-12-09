@@ -30,7 +30,7 @@
           <div class="row">
             <div class="owl-carousel pro-cat-slider ">  
               
-              @foreach($products as $product)
+              @foreach($newArrivals as $product)
                 <div class="item">
                   <div class="product-item">
                     <div class="main-label new-label"><span>New</span></div>
@@ -38,11 +38,6 @@
                       <div class="product-detail-inner">
                         <div class="detail-inner-left align-center">
                           <ul>
-                            <li class="pro-cart-icon">
-                              <form>
-                                <button title="Add to Cart"><span></span>Add to Cart</button>
-                              </form>
-                            </li>
                             <li class="pro-wishlist-icon active"><a href="wishlist.html" title="Wishlist"></a></li>
                             <li class="pro-compare-icon"><a href="compare.html" title="Compare"></a></li>
                           </ul>
@@ -51,12 +46,18 @@
                     </div>
                     <div class="product-item-details">
                       <div class="product-item-name"> <a href="/product-page/{{$product->id}}">{{$product->name}}</a> </div>
-                      <div class="price-box"> <span class="price">{{$product->price}}</span> <del class="price old-price">{{$product->price}}</del> 
+                      <div class="price-box">
+                        @if($product->sale)
+                        <span class="price">{{number_format($product->price - ($product->price * $product->sale), 2, '.', '')}} &euro;</span><del class="price old-price">{{$product->price}} &euro;</del>
+                        @else
+                        <span class="price">{{$product->price}} &euro;</span>
+                        @endif 
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
               @endforeach
+            
             </div>
           </div>
         </div>
@@ -80,7 +81,7 @@
           <div class="row">
             <div id="top-cat-pro" class="owl-carousel sell-pro align-center">
               
-              @foreach($categories as $category)
+              @foreach($topCategories as $category)
               <div class="item ">
                 <a href="/shop/{{$category->slug}}">
                   <div class="item-inner">
@@ -134,9 +135,10 @@
           <div class="row">
             <div id="daily_deals" class="owl-carousel ">
               
-              @foreach($products as $product)
+              @foreach($dailyDeals as $product)
               <div class="item">
                 <div class="product-item">
+                  <div class="main-label sale-label"><span>Sale</span></div>
                   <div class="row ">
                     <div class="col-md-6 col-12 deals-img ">
                       <div class="product-image"> 
@@ -151,46 +153,21 @@
                           <a href="/product-page/{{$product->id}}">{{$product->name}}</a> 
                         </div>
                         <div class="price-box"> 
-                          <span class="price">{{$product->price}}</span> 
-                          <del class="price old-price">{{$product->price}}</del> 
+                          @if($product->sale)
+                          <span class="price">{{number_format($product->price - ($product->price * $product->sale), 2, '.', '')}} &euro;</span><del class="price old-price">{{$product->price}} &euro;</del>
+                          @else
+                          <span class="price">{{$product->price}} &euro;</span>
+                          @endif 
                         </div>
                         <p style="max-height: 80px;overflow: hidden;text-overflow: ellipsis;">{{$product->description}}</p>
                       </div>
                       <div class="product-detail-inner">
                         <div class="detail-inner-left">
                           <ul>
-                            <li class="pro-cart-icon">
-                              <form>
-                                <button title="Add to Cart"><span></span>Add to Cart</button>
-                              </form>
-                            </li>
                             <li class="pro-wishlist-icon active"><a href="wishlist.html" title="Wishlist"></a></li>
                             <li class="pro-compare-icon"><a href="compare.html" title="Compare"></a></li>
                           </ul>
                         </div>
-                      </div>
-                      <div class="item-offer-clock">
-                        <ul class="countdown-clock">
-                          <li>
-                            <span class="days">00</span>
-                            <p class="days_ref">days</p>
-                          </li>
-                          <li class="seperator">:</li>
-                          <li>
-                            <span class="hours">00</span>
-                            <p class="hours_ref">hrs</p>
-                          </li>
-                          <li class="seperator">:</li>
-                          <li>
-                            <span class="minutes">00</span>
-                            <p class="minutes_ref">min</p>
-                          </li>
-                          <li class="seperator">:</li>
-                          <li>
-                            <span class="seconds">00</span>
-                            <p class="seconds_ref">sec</p>
-                          </li>
-                        </ul>
                       </div>
                     </div>
                   </div>
@@ -260,14 +237,14 @@
         <div class="col-lg-6">
           <div class="sub-banner small-banner small-banner1">
             <a href="#">
-              <img src={{ asset('img/small-banner1.jpg') }} alt="Stylexpo">
+              <img src="{{ asset('img/small-banner1.jpg') }}" alt="Stylexpo">
             </a>
           </div>
         </div>
         <div class="col-lg-6 mt-sm-30">
           <div class="sub-banner small-banner small-banner2">
             <a href="#">
-              <img src={{ asset('img/small-banner2.jpg') }} alt="Stylexpo">
+              <img src="{{ asset('img/small-banner2.jpg') }}" alt="Stylexpo">
             </a>
           </div>
         </div>
@@ -293,7 +270,7 @@
               <div class="row">
                 <div class="owl-carousel pro-cat-slider">
                   
-                  @foreach($products as $product)
+                  @foreach($bestSellers as $product)
                   <div class="item">
                     <div class="product-item">
                       <div class="main-label new-label"><span>New</span></div>
@@ -301,11 +278,6 @@
                         <div class="product-detail-inner">
                           <div class="detail-inner-left align-center">
                             <ul>
-                              <li class="pro-cart-icon">
-                                <form>
-                                  <button title="Add to Cart"><span></span>Add to Cart</button>
-                                </form>
-                              </li>
                               <li class="pro-wishlist-icon active"><a href="wishlist.html" title="Wishlist"></a></li>
                               <li class="pro-compare-icon"><a href="compare.html" title="Compare"></a></li>
                             </ul>
@@ -314,7 +286,13 @@
                       </div>
                       <div class="product-item-details">
                         <div class="product-item-name"> <a href="/product-page/{{$product->id}}">{{$product->name}}</a> </div>
-                        <div class="price-box"> <span class="price">{{$product->price}}</span> <del class="price old-price">{{$product->price}}</del> </div>
+                        <div class="price-box">
+                          @if($product->sale)
+                          <span class="price">{{number_format($product->price - ($product->price * $product->sale), 2, '.', '')}} &euro;</span><del class="price old-price">{{$product->price}} &euro;</del>
+                          @else
+                          <span class="price">{{$product->price}} &euro;</span>
+                          @endif 
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -324,49 +302,6 @@
               </div>
             </div>
           </div>
-          <!--
-          <div class="col-md-6 col-12 mt-xs-30">
-            <div class="row">
-              <div class="col-12">
-                <div class="heading-part mb-30">
-                  <h2 class="main_title heading"><span>New products </span></h2>
-                </div>
-              </div>
-            </div>
-            <div class="pro_cat">
-              <div class="row">
-                <div class="owl-carousel best-seller-pro">       
-                  @foreach($products as $product)
-                  <div class="item">
-                    <div class="product-item">
-                      <div class="main-label new-label"><span>New</span></div>
-                      <div class="product-image"> <a href="/product-page/{{$product->id}}"> <img src="{{ asset($product->thumbnail) }}" alt="Stylexpo"> </a>
-                        <div class="product-detail-inner">
-                          <div class="detail-inner-left align-center">
-                            <ul>
-                              <li class="pro-cart-icon">
-                                <form>
-                                  <button title="Add to Cart"><span></span>Add to Cart</button>
-                                </form>
-                              </li>
-                              <li class="pro-wishlist-icon active"><a href="wishlist.html" title="Wishlist"></a></li>
-                              <li class="pro-compare-icon"><a href="compare.html" title="Compare"></a></li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="product-item-details">
-                        <div class="product-item-name"> <a href="/product-page/{{$product->id}}">{{$product->name}}</a> </div>
-                        <div class="price-box"> <span class="price">{{$product->price}}</span> <del class="price old-price">{{$product->price}}</del> </div>
-                      </div>
-                    </div>
-                  </div>
-                  @endforeach
-                </div>
-              </div>
-            </div>
-          </div>
-          -->
         </div>
       </div>
     </div>
@@ -389,7 +324,7 @@
             <div class="blog-item">
               <div class="">
               <div class="blog-media"> 
-                <img src={{ asset('img/blog_img1.jpg') }} alt="Stylexpo">
+                <img src="{{ asset('img/blog_img1.jpg') }}" alt="Stylexpo">
                 <div class="blog-effect"></div> 
                 <a href="single-blog.html" title="Click For Read More" class="read">&nbsp;</a> 
               </div>
@@ -417,7 +352,7 @@
           <div class="item mb-md-30">
             <div class="blog-item">
               <div class="blog-media"> 
-                <img src={{ asset('img/blog_img2.jpg') }} alt="Stylexpo"> 
+                <img src="{{ asset('img/blog_img2.jpg') }}" alt="Stylexpo"> 
                 <div class="blog-effect"></div>
                 <a href="single-blog.html" title="Click For Read More" class="read">&nbsp;</a>
               </div>
@@ -444,7 +379,7 @@
           <div class="item">
             <div class="blog-item">
               <div class="blog-media"> 
-                <img src={{ asset('img/blog_img3.jpg') }} alt="Stylexpo">
+                <img src="{{ asset('img/blog_img3.jpg') }}" alt="Stylexpo">
                 <div class="blog-effect"></div>  
                 <a href="single-blog.html" title="Click For Read More" class="read">&nbsp;</a>
               </div>
@@ -471,7 +406,7 @@
           <div class="item">
             <div class="blog-item">
               <div class="blog-media"> 
-                <img src={{ asset('img/blog_img4.jpg') }} alt="Stylexpo"> 
+                <img src="{{ asset('img/blog_img4.jpg') }}" alt="Stylexpo"> 
                 <div class="blog-effect"></div>
                 <a href="single-blog.html" title="Click For Read More" class="read">&nbsp;</a>
               </div>
@@ -498,7 +433,7 @@
           <div class="item">
             <div class="blog-item">
               <div class="blog-media"> 
-                <img src={{ asset('img/blog_img5.jpg') }} alt="Stylexpo">
+                <img src="{{ asset('img/blog_img5.jpg') }}" alt="Stylexpo">
                 <div class="blog-effect"></div>  
                 <a href="single-blog.html" title="Click For Read More" class="read">&nbsp;</a>
               </div>
@@ -525,7 +460,7 @@
           <div class="item">
             <div class="blog-item">
               <div class="blog-media"> 
-                <img src={{ asset('img/blog_img6.jpg') }} alt="Stylexpo"> 
+                <img src="{{ asset('img/blog_img6.jpg') }}" alt="Stylexpo"> 
                 <div class="blog-effect"></div>
                 <a href="single-blog.html" title="Click For Read More" class="read">&nbsp;</a>
               </div>

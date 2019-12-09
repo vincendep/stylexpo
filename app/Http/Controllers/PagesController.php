@@ -10,18 +10,39 @@ class PagesController extends Controller
 	public function home()
     {
     	$brands = \App\Brand::all();
-    	$categories = \App\Category::all();
-    	$products = \App\Product::all();
-        
+
+        $newArrivals = \App\Product::orderBy('created_at', 'desc')
+            ->take(20)
+            ->get();
+
+        $topCategories = \App\Category::orderBy('selling_number', 'desc')
+            ->take(8)
+            ->get();
+
+        $bestSellers = \App\Product::orderBy('selling_number', 'desc')
+            ->take(20)
+            ->get();
+
+        $dailyDeals = \App\Product::whereNotNull('sale')
+            ->orderBy('sale', 'desc')
+            ->take(10)
+            ->get();
+
         return view('home', [
-        	'products' => $products,
-        	'categories' => $categories,
-        	'brands' => $brands
+        	'brands' => $brands,
+            'newArrivals' => $newArrivals,
+            'topCategories' => $topCategories,
+            'bestSellers' => $bestSellers,
+            'dailyDeals' => $dailyDeals
         ]);
     }
 
-    public function shop($category = null)
+    public function shop(Request $request)
     {
+        $category = $request->input('category');
+        // TODO query string match
+        $query = $request->input('q');
+        
         $products;
         if ($category != null)
         {
@@ -35,10 +56,8 @@ class PagesController extends Controller
             $products = \App\Product::all();
         }
         $bestSellers = $products->sortByDesc('selling_number')->take(3);
-        $categories = \App\Category::all();
 
     	return view('shop', [
-            'categories' => $categories,
             'products' => $products,
             'bestSellers' => $bestSellers
         ]);
@@ -63,7 +82,7 @@ class PagesController extends Controller
 
     public function cart()
     { 
-        return view('cart', ['cart' => session()->get('cart')]);
+        return view('cart');
     }
 
     public function checkout()
@@ -89,5 +108,10 @@ class PagesController extends Controller
     public function contact()
     {
     	return view('contact');
+    }
+
+    public function account()
+    {
+        return view('account');
     }
 }

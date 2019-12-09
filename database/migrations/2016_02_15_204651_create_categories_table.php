@@ -21,6 +21,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->string('thumbnail');
             $table->string('slug')->unique();
+            $table->unsignedBigInteger('selling_number')->default(0);
             $table->timestamps();
         });
     }

@@ -14,7 +14,7 @@
                       <h1 class="banner-title">More Fashion Styles</h1>
                       <span class="offer">The latest fashion trends online.</span>
                     </div>
-                    <a class="btn btn-color" href="shop.html">Shop Now!</a>
+                    <a class="btn btn-color" href="/shop">Shop Now!</a>
                   </div>
                 </div>
               </div>
@@ -34,7 +34,7 @@
                       <h1 class="banner-title">Stylexpo Men & Women Fashion</span></h1>
                       <span class="offer">UP TO 25% OFF</span> 
                     </div> 
-                      <a class="btn btn-color" href="shop.html">Shop Now!</a>
+                      <a class="btn btn-color" href="/shop">Shop Now!</a>
                   </div>             
                 </div>
               </div>
@@ -52,7 +52,7 @@
                       <h1 class="banner-title">Smart Watches For<br><span> Men & Women</span></h1>
                       <span class="offer">Most Popular Brand Products 20% off</span> 
                     </div> 
-                      <a class="btn btn-color" href="shop.html">Shop Now!</a>
+                      <a class="btn btn-color" href="/shop">Shop Now!</a>
                   </div>
                   <div class="col-4"></div>              
                 </div>
@@ -72,7 +72,7 @@
                       <h1 class="banner-title">Get latest headphone</h1>
                       <span class="offer">Get the top brands for headphone</span> 
                     </div>
-                      <a class="btn btn-color" href="shop.html">Shop Now!</a>
+                      <a class="btn btn-color" href="/shop">Shop Now!</a>
                   </div>
                 </div>
               </div> 

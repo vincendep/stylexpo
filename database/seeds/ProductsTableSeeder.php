@@ -47,7 +47,8 @@ class ProductsTableSeeder extends Seeder
         	Product::create([
         		'name' => 'Product 6',
         		'brand_id' => 6,
-                'category_id' => 1
+                'category_id' => 1,
+                'sale' => 0.3
         	]);
 
         	Product::create([

@@ -13,7 +13,6 @@
 
 Route::get('/', 'PagesController@home');
 Route::get('/shop/{category?}', 'PagesController@shop');
-Route::get('/shop-list/{category?}', 'PagesController@shopList');
 Route::get('/about', 'PagesController@about');
 Route::get('/blog', 'PagesController@blog');
 Route::get('/contact', 'PagesController@contact');
@@ -21,14 +20,11 @@ Route::get('/cart', 'PagesController@cart');
 Route::get('/checkout', 'PagesController@checkout');
 Route::get('/order-complete', 'PagesController@orderComplete');
 Route::get('/product-page/{product_id}', 'PagesController@productPage');
-Route::get('/account', function() {
-	return view('account');
-});
+Route::get('/account', 'PagesController@account')->middleware('auth');
 
 Route::get('/products', 'ProductController@addToCart');
 
 Auth::routes();
-
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
