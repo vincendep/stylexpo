@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
@@ -44,7 +45,7 @@ class PagesController extends Controller
         $query = $request->input('q');
         
         $products;
-        if ($category != null)
+        if ($category != null && $category != 'all')
         {
             \App\Category::where('slug', $category)->firstOrFail();
             $products = \App\Product::whereHas('category', function (Builder $query) use($category) {
@@ -63,20 +64,22 @@ class PagesController extends Controller
         ]);
     }
 
-    public function shopList($category = null)
-    {
-        return view('shop-list');
-    }
-
     public function productPage($productId)
     {
-        $product = \App\Product::find($productId);
+        $product = \App\Product::findOrFail($productId);
         $sizes = \App\Size::all();
         $colors = \App\Color::all();
+        $relatedProducts = \App\Product::where('brand_id', '=', $product->brand_id)
+            ->orWhere('category_id', '=', $product->category_id)
+            ->take(15)
+            ->get()
+            ->except($product->id);
+        
         return view('product-page', [
             'product' => $product,
             'colors' => $colors,
-            'sizes' => $sizes
+            'sizes' => $sizes,
+            'relatedProducts' => $relatedProducts
         ]);
     }
 
@@ -88,6 +91,12 @@ class PagesController extends Controller
     public function checkout()
     {
         return view('checkout');
+    }
+
+    public function wishList()
+    {
+        $wishList = \App\WishList::where('user_id', '=', Auth::id())->first();
+        return view("wishlist", ['wishlist' => $wishList]);
     }
 
     public function orderComplete()

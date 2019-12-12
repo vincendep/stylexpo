@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
 {
+
+	protected $guarded = [];
+
     public function cartItems()
     {
     	return $this->hasMany('App\CartItem');
@@ -14,5 +17,24 @@ class Cart extends Model
     public function user()
     {
     	return $this->belongsTo('App\User');
+    }
+
+    public function size()
+    {
+    	return $this->cartItems->count();
+    }
+
+    public function total()
+    {
+    	$total = 0;
+    	foreach ($this->cartItems as $item)
+    	{
+    		$total += $item->product->price;
+    		if ($item->product->sale)
+    		{
+    			$total -= $item->product->price / $item->product->sale;
+    		}
+    	}
+    	return $total;
     }
 }

@@ -14,15 +14,16 @@
 Route::get('/', 'PagesController@home');
 Route::get('/shop/{category?}', 'PagesController@shop');
 Route::get('/about', 'PagesController@about');
-Route::get('/blog', 'PagesController@blog');
 Route::get('/contact', 'PagesController@contact');
-Route::get('/cart', 'PagesController@cart');
-Route::get('/checkout', 'PagesController@checkout');
-Route::get('/order-complete', 'PagesController@orderComplete');
 Route::get('/product-page/{product_id}', 'PagesController@productPage');
+Route::get('/cart', 'PagesController@cart')->middleware('auth');
+Route::get('/checkout', 'PagesController@checkout')->middleware('auth');
+Route::get('/order-complete', 'PagesController@orderComplete')->middleware('auth');
 Route::get('/account', 'PagesController@account')->middleware('auth');
+Route::get('/wishlist', 'PagesController@wishList')->middleware('auth');
 
-Route::get('/products', 'ProductController@addToCart');
+Route::resource('cart-items', 'CartItemController');
+Route::resource('wish-items', 'WishItemController');
 
 Auth::routes();
 Route::group(['prefix' => 'admin'], function () {

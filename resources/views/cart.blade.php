@@ -16,6 +16,7 @@
   <section class="ptb-70">
     <div class="container">
       <div class="row">
+        @if($cart->cartItems->first())
         <div class="col-12">
           <div class="cart-item-table commun-table">
             <div class="table-responsive">
@@ -25,6 +26,8 @@
                     <th>Product</th>
                     <th>Product Name</th>
                     <th>Price</th>
+                    <th>Color</th>
+                    <th>Size</th>
                     <th>Quantity</th>
                     <th>Sub Total</th>
                     <th>Action</th>
@@ -32,29 +35,31 @@
                 </thead>
                 <tbody>
 
-                  @foreach ($cart->cartItems() as $cartItem)
+                  @foreach ($cart->cartItems as $cartItem)
                   <tr>
                     <td>
-                      <a href="/product-page/{{$cartItem->product()->id}}">
+                      <a href="/product-page/{{$cartItem->product->id}}">
                         <div class="product-image">
-                          <img alt="{{$cartItem->product()->name}}" src="{{$cartItem->product()->thumbnail}}">
+                          <img alt="{{$cartItem->product->name}}" src="{{$cartItem->product->thumbnail}}">
                         </div>
                       </a>
                     </td>
                     <td>
                       <div class="product-title"> 
-                        <a href="/product-page/{{$cartItem->product()->id}}">{{$cartItem->product()->name}}</a> 
+                        <a href="/product-page/{{$cartItem->product->id}}">{{$cartItem->product->name}}</a> 
                       </div>
                     </td>
                     <td>
                       <ul>
                         <li>
                           <div class="base-price price-box"> 
-                            <span class="price">{{$cartItem->product()->price}}</span> 
+                            <span class="price">{{$cartItem->product->price}} &euro;</span> 
                           </div>
                         </li>
                       </ul>
                     </td>
+                    <td>{{$cartItem->color->name}}</td>
+                    <td>{{$cartItem->size->name}}</td>
                     <td>
                       <div class="input-box select-dropdown">
                         <fieldset>
@@ -70,11 +75,16 @@
                     </td>
                     <td>
                       <div class="total-price price-box"> 
-                        <span class="price">{{$cartItem->product()->price * $cartItem->quantity}}</span> 
+                        <span class="price">{{$cartItem->product->price * $cartItem->quantity}} &euro;</span> 
                       </div>
                     </td>
                     <td>
-                      <i title="Remove Item From Cart" data-id="100" class="fa fa-trash cart-remove-item"></i>
+                      <form action="/cart-items/{{$cartItem->id}}" method="post">
+                        @csrf
+                        @method('delete')
+                      <button type="submit">
+                        <i title="Remove Item From Cart" data-id="100" class="fa fa-trash cart-remove-item"></i>
+                      </button>
                     </td>
                   </tr>
                   @endforeach
@@ -84,71 +94,34 @@
             </div>
           </div>
         </div>
+        @else
+        <h2 class="mx-auto">There are no items in your Shopping Cart</h2>
+        @endif
       </div>
       <div class="mb-30">
         <div class="row">
           <div class="col-md-6">
             <div class="mt-30"> 
-              <a href="shop.html" class="btn btn-color">
+              <a href="\shop" class="btn btn-color">
                 <span><i class="fa fa-angle-left"></i></span>
                 Continue Shopping
               </a> 
             </div>
           </div>
+          @if($cart->cartItems->first())
           <div class="col-md-6">
             <div class="mt-30 right-side float-none-xs"> 
               <a class="btn btn-color">Update Cart</a> 
             </div>
           </div>
+          @endif
         </div>
       </div>
       <hr>
+      @if($cart->cartItems->first())
       <div class="mtb-30">
         <div class="row">
-          <div class="col-md-6 mb-xs-40">
-            <div class="estimate">
-              <div class="heading-part mb-20">
-                <h3 class="sub-heading">Estimate shipping and tax</h3>
-              </div>
-              <form class="full">
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="input-box select-dropdown mb-20">
-                      <fieldset>
-                        <select id="country_id" class="option-drop">
-                          <option selected="" value="">Select Country</option>
-                          <option value="1">India</option>
-                          <option value="2">China</option>
-                          <option value="3">Pakistan</option>
-                        </select>
-                      </fieldset>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="input-box select-dropdown mb-20">
-                      <fieldset>
-                        <select id="state_id" class="option-drop">
-                          <option selected="" value="1">Select State/Province</option>
-                          <option value="2">---</option>
-                        </select>
-                      </fieldset>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="input-box select-dropdown mb-20">
-                      <fieldset>
-                        <select id="city_id" class="option-drop">
-                          <option selected="" value="1">Select City</option>
-                          <option value="2">---</option>
-                        </select>
-                      </fieldset>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="col-md-6">
+          <div class="col-md-12">
             <div class="cart-total-table commun-table">
               <div class="table-responsive">
                 <table class="table">
@@ -162,7 +135,7 @@
                       <td>Item(s) Subtotal</td>
                       <td>
                         <div class="price-box"> 
-                          <span class="price">$160.00</span> 
+                          <span class="price">{{$cart->total()}} &euro;</span> 
                         </div>
                       </td>
                     </tr>
@@ -170,7 +143,7 @@
                       <td>Shipping</td>
                       <td>
                         <div class="price-box"> 
-                          <span class="price">$0.00</span> 
+                          <span class="price">15 &euro;</span> 
                         </div>
                       </td>
                     </tr>
@@ -178,7 +151,7 @@
                       <td><b>Amount Payable</b></td>
                       <td>
                         <div class="price-box"> 
-                          <span class="price"><b>$160.00</b></span> 
+                          <span class="price"><b>{{$cart->total() + 15}} &euro;</b></span> 
                         </div>
                       </td>
                     </tr>
@@ -193,7 +166,7 @@
       <div class="mt-30">
         <div class="row">
           <div class="col-12">
-            <div class="right-side float-none-xs"> 
+            <div class="text-center"> 
               <a href="/checkout" class="btn btn-color">Proceed to checkout
                 <span><i class="fa fa-angle-right"></i></span>
               </a> 
@@ -201,6 +174,7 @@
           </div>
         </div>
       </div>
+      @endif
     </div>
   </section>
   @endsection

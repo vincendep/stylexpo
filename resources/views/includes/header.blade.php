@@ -37,6 +37,56 @@
               </div>
             </div>
           </div>
+          <div class="col-xl-3 col-md-3 col-lgmd-20per">
+            <div class="right-side float-left-xs header-right-link">
+              <ul>
+                <li class="compare-icon">
+                  <a href="/compare">
+                    <span></span>
+                  </a>
+                </li>
+                <li class="wishlist-icon">
+                  <a href="/wishlist">
+                    <span></span>
+                  </a>
+                </li>
+                <li class="cart-icon">
+                  <a href="/cart">
+                    <span>@if($cart)<small class="cart-notification">{{$cart->size()}}</small>@endif</span>
+                  </a>
+                  @if($cart && $cart->size() > 0)
+                  <div class="cart-dropdown header-link-dropdown">
+                    <ul class="cart-list link-dropdown-list">
+                      @foreach($cart->cartItems as $item)
+                      <li><a class="close-cart"><i class="fa fa-times-circle"></i></a>
+                        <div class="media"> <a class="pull-left"> <img alt="{{$item->product->name}}" src="{{$item->product->thumbnail}}"></a>
+                          <div class="media-body"><span><a href="/product-page/{{$item->product->id}}">{{$item->product->name}}</a></span>
+                            <p class="cart-price">{{$item->product->price}}</p>
+                            <div class="product-qty">
+                              <label>Qty:</label>
+                              <div class="custom-qty">
+                                <input type="text" name="qty" maxlength="8" value="{{$item->quantity}}" title="Qty" class="input-text qty">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      @endforeach
+                    </ul>
+                    <p class="cart-sub-totle">
+                      <span class="pull-left">Cart Subtotal</span><span class="pull-right"><strong class="price-box">{{$cart->total()}} &euro;</strong></span>
+                    </p>
+                    <div class="clearfix"></div>
+                    <div class="mt-20"> <a href="/cart" class="btn-color btn">Cart</a> <a href="checkout.html" class="btn-color btn right-side">Checkout</a> </div>
+                  </div>
+                  @endif
+                </li>
+                <li class="side-toggle">
+                  <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button"><i class="fa fa-bars"></i></button>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>

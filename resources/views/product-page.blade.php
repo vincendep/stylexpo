@@ -35,25 +35,27 @@
                       <div class="rating-summary-block">
                         <div title="53%" class="rating-result"><span style="width:53%"></span> </div>
                       </div>
-                      <div class="price-box"> <span class="price">{{$product->price}}</span> <del class="price old-price">{{$product->price}}</del> </div>
+                      <div class="price-box">
+                        @if($product->sale)
+                        <span class="price">{{number_format($product->price - ($product->price * $product->sale), 2, '.', '')}} &euro;</span><del class="price old-price">{{$product->price}} &euro;</del>
+                        @else
+                        <span class="price">{{$product->price}} &euro;</span>
+                        @endif 
+                      </div>
                       <div class="product-info-stock-sku">
                         <div>
                           <label>Availability: </label>
                           <span class="info-deta">{{$product->quantity > 0 ? 'In stock' : 'Out of stock'}}</span> 
-                        </div>
-                        <div>
-                          <label>SKU: </label>
-                          <span class="info-deta">20MVC-18</span> 
                         </div>
                       </div>
                       <p>{{$product->description}}</p>
                       <div class="product-size select-arrow input-box select-dropdown mb-20 mt-30">
                         <label>Size</label>
                         <fieldset>
-                          <select form="add-to-cart-form" class="selectpicker form-control option-drop" id="select-by-size">
+                          <select name="size" form="add-to-cart-form" class="selectpicker form-control option-drop" id="select-by-size">
                             
                             @foreach($sizes as $size)
-                            <option value="{{$size->name}}">{{$size->name}}</option>
+                            <option value="{{$size->id}}">{{$size->name}}</option>
                             @endforeach
 
                           </select>
@@ -83,7 +85,7 @@
                         <div class="bottom-detail cart-button">
                           <ul>
                             <li class="pro-cart-icon">
-                              <form id="add-to-cart-form" action="/products">
+                              <form id="add-to-cart-form" action="/cart-items" method="post">
                                 @csrf
                                 <input type="hidden" name="product" value="{{$product->id}}"/>
                                 <button type="submit" title="Add to Cart" class="btn-color"><span></span>Add to Cart</button>
@@ -120,10 +122,10 @@
         </div>
         <div class="col-lg-3">
           <div class="brand-logo-pro align-center mb-30">
-            <img src={{ asset('img/brand5.png') }} alt="Stylexpo">
+            <img src="{{ $product->brand->logo }}" alt="{{$product->brand->name}}">
           </div>
           <div class="sub-banner-block align-center">
-            <img src={{ asset('img/pro-banner.jpg') }} alt="Stylexpo">
+            <img src="{{ asset('img/pro-banner.jpg') }}" alt="Stylexpo">
           </div>
         </div>
       </div>
@@ -147,9 +149,8 @@
                 <ul>
                   <li>
                     <div class="items-Description selected ">
-                      <div class="Description"> <strong>The standard Lorem Ipsum passage, used since the 1500s</strong><br />
-                        <p>Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy  took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into Stylexponic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets</p>
-                        <p>Tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                      <div class="Description"> <strong>{{$product->name}}</strong><br />
+                        <p>{{$product->description}}</p>
                       </div>
                     </div>
                   </li>
@@ -163,7 +164,7 @@
                         <h4>Comments<span>(2)</span></h4>
                         <ul class="comment-list mt-30">
                           <li>
-                            <div class="comment-user"> <img src={{ asset('img/comment-user.jpg') }} alt="Stylexpo"> </div>
+                            <div class="comment-user"> <img src="{{ asset('img/comment-user.jpg') }}" alt="Stylexpo"> </div>
                             <div class="comment-detail">
                               <div class="user-name">John Doe</div>
                               <div class="post-info">
@@ -176,7 +177,7 @@
                             </div>
                             <ul class="comment-list child-comment">
                               <li>
-                                <div class="comment-user"> <img src={{ asset('img/comment-user.jpg') }} alt="Stylexpo"> </div>
+                                <div class="comment-user"> <img src="{{ asset('img/comment-user.jpg') }}" alt="Stylexpo"> </div>
                                 <div class="comment-detail">
                                   <div class="user-name">John Doe</div>
                                   <div class="post-info">
@@ -189,7 +190,7 @@
                                 </div>
                               </li>
                               <li>
-                                <div class="comment-user"> <img src={{ asset('img/comment-user.jpg') }} alt="Stylexpo"> </div>
+                                <div class="comment-user"> <img src="{{ asset('img/comment-user.jpg') }}" alt="Stylexpo"> </div>
                                 <div class="comment-detail">
                                   <div class="user-name">John Doe</div>
                                   <div class="post-info">
@@ -204,7 +205,7 @@
                             </ul>
                           </li>
                           <li>
-                            <div class="comment-user"> <img src={{ asset('img/comment-user.jpg') }} alt="Stylexpo"> </div>
+                            <div class="comment-user"> <img src="{{ asset('img/comment-user.jpg') }}" alt="Stylexpo"> </div>
                             <div class="comment-detail">
                               <div class="user-name">John Doe</div>
                               <div class="post-info">
@@ -250,7 +251,7 @@
       </div>
     </div>
   </section>
-
+  @if ($relatedProducts->first())
   <section class="pb-70">
     <div class="container">
       <div class="product-listing">
@@ -264,34 +265,14 @@
         <div class="pro_cat">
           <div class="row">
             <div class="owl-carousel pro-cat-slider">
+              @foreach($relatedProducts as $product)
               <div class="item">
                 <div class="product-item">
-                  <div class="main-label new-label"><span>New</span></div>
-                  <div class="product-image"> <a href="product-page.html"> <img src={{ asset('img/10.jpg') }} alt="Stylexpo"> </a>
-                    <div class="product-detail-inner">
-                      <div class="detail-inner-left align-center">
-                        <ul>
-                          <li class="pro-cart-icon">
-                            <form>
-                              <button title="Add to Cart"><span></span>Add to Cart</button>
-                            </form>
-                          </li>
-                          <li class="pro-wishlist-icon "><a href="wishlist.html" title="Wishlist"></a></li>
-                          <li class="pro-compare-icon"><a href="compare.html" title="Compare"></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-item-details">
-                    <div class="product-item-name"> <a href="product-page.html">Defyant Reversible Dot Shorts</a> </div>
-                    <div class="price-box"> <span class="price">$80.00</span> <del class="price old-price">$100.00</del> </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="product-item">
+                  @if($product->sale)
                   <div class="main-label sale-label"><span>Sale</span></div>
-                  <div class="product-image"> <a href="product-page.html"> <img src={{ asset('img/13.jpg') }} alt="Stylexpo"> </a>
+                  @endif
+                  <div class="product-image">
+                    <a href="\product-page\{{$product->id}}"> <img src="{{$product->thumbnail}}" alt="{{$product->name}}"></a>
                     <div class="product-detail-inner">
                       <div class="detail-inner-left align-center">
                         <ul>
@@ -307,183 +288,25 @@
                     </div>
                   </div>
                   <div class="product-item-details">
-                    <div class="product-item-name"> <a href="product-page.html">Defyant Reversible Dot Shorts</a> </div>
-                    <div class="price-box"> <span class="price">$80.00</span> <del class="price old-price">$100.00</del> </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="product-item">
-                  <div class="main-label new-label"><span>New</span></div>
-                  <div class="main-label sale-label"><span>Sale</span></div>
-                  <div class="product-image"> <a href="product-page.html"> <img src={{ asset('img/4.jpg') }} alt="Stylexpo"> </a>
-                    <div class="product-detail-inner">
-                      <div class="detail-inner-left align-center">
-                        <ul>
-                          <li class="pro-cart-icon">
-                            <form>
-                              <button title="Add to Cart"><span></span>Add to Cart</button>
-                            </form>
-                          </li>
-                          <li class="pro-wishlist-icon "><a href="wishlist.html" title="Wishlist"></a></li>
-                          <li class="pro-compare-icon"><a href="compare.html" title="Compare"></a></li>
-                        </ul>
-                      </div>
+                    <div class="product-item-name">
+                      <a href="\product-page\{{$product->id}}">{{$product->name}}</a>
+                    </div>
+                    <div class="price-box">
+                      @if($product->sale)
+                      <span class="price">{{number_format($product->price - ($product->price * $product->sale), 2, '.', '')}} &euro;</span><del class="price old-price">{{$product->price}} &euro;</del>
+                      @else
+                      <span class="price">{{$product->price}} &euro;</span>
+                      @endif 
                     </div>
                   </div>
-                  <div class="product-item-details">
-                    <div class="product-item-name"> <a href="product-page.html">Defyant Reversible Dot Shorts</a> </div>
-                    <div class="price-box"> <span class="price">$80.00</span> <del class="price old-price">$100.00</del> </div>
-                  </div>
                 </div>
               </div>
-              <div class="item">
-                <div class="product-item">
-                  <div class="product-image"> <a href="product-page.html"> <img src={{ asset('img/5.jpg') }} alt="Stylexpo"> </a>
-                    <div class="product-detail-inner">
-                      <div class="detail-inner-left align-center">
-                        <ul>
-                          <li class="pro-cart-icon">
-                            <form>
-                              <button title="Add to Cart"><span></span>Add to Cart</button>
-                            </form>
-                          </li>
-                          <li class="pro-wishlist-icon "><a href="wishlist.html" title="Wishlist"></a></li>
-                          <li class="pro-compare-icon"><a href="compare.html" title="Compare"></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-item-details">
-                    <div class="product-item-name"> <a href="product-page.html">Defyant Reversible Dot Shorts</a> </div>
-                    <div class="price-box"> <span class="price">$80.00</span> <del class="price old-price">$100.00</del> </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="product-item">
-                  <div class="main-label sale-label"><span>Sale</span></div>
-                  <div class="product-image"> <a href="product-page.html"> <img src={{ asset('img/6.jpg') }} alt="Stylexpo"> </a>
-                    <div class="product-detail-inner">
-                      <div class="detail-inner-left align-center">
-                        <ul>
-                          <li class="pro-cart-icon">
-                            <form>
-                              <button title="Add to Cart"><span></span>Add to Cart</button>
-                            </form>
-                          </li>
-                          <li class="pro-wishlist-icon "><a href="wishlist.html" title="Wishlist"></a></li>
-                          <li class="pro-compare-icon"><a href="compare.html" title="Compare"></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-item-details">
-                    <div class="product-item-name"> <a href="product-page.html">Defyant Reversible Dot Shorts</a> </div>
-                    <div class="price-box"> <span class="price">$80.00</span> <del class="price old-price">$100.00</del> </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="product-item">
-                  <div class="product-image"> <a href="product-page.html"> <img src={{ asset('img/8.jpg') }} alt="Stylexpo"> </a>
-                    <div class="product-detail-inner">
-                      <div class="detail-inner-left align-center">
-                        <ul>
-                          <li class="pro-cart-icon">
-                            <form>
-                              <button title="Add to Cart"><span></span>Add to Cart</button>
-                            </form>
-                          </li>
-                          <li class="pro-wishlist-icon "><a href="wishlist.html" title="Wishlist"></a></li>
-                          <li class="pro-compare-icon"><a href="compare.html" title="Compare"></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-item-details">
-                    <div class="product-item-name"> <a href="product-page.html">Defyant Reversible Dot Shorts</a> </div>
-                    <div class="price-box"> <span class="price">$80.00</span> <del class="price old-price">$100.00</del> </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="product-item">
-                  <div class="main-label new-label"><span>New</span></div>
-                  <div class="product-image"> <a href="product-page.html"> <img src={{ asset('img/9.jpg') }} alt="Stylexpo"> </a>
-                    <div class="product-detail-inner">
-                      <div class="detail-inner-left align-center">
-                        <ul>
-                          <li class="pro-cart-icon">
-                            <form>
-                              <button title="Add to Cart"><span></span>Add to Cart</button>
-                            </form>
-                          </li>
-                          <li class="pro-wishlist-icon "><a href="wishlist.html" title="Wishlist"></a></li>
-                          <li class="pro-compare-icon"><a href="compare.html" title="Compare"></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-item-details">
-                    <div class="product-item-name"> <a href="product-page.html">Defyant Reversible Dot Shorts</a> </div>
-                    <div class="price-box"> <span class="price">$80.00</span> <del class="price old-price">$100.00</del> </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="product-item">
-                  <div class="main-label sale-label"><span>Sale</span></div>
-                  <div class="product-image"> <a href="product-page.html"> <img src={{ asset('img/11.jpg') }} alt="Stylexpo"> </a>
-                    <div class="product-detail-inner">
-                      <div class="detail-inner-left align-center">
-                        <ul>
-                          <li class="pro-cart-icon">
-                            <form>
-                              <button title="Add to Cart"><span></span>Add to Cart</button>
-                            </form>
-                          </li>
-                          <li class="pro-wishlist-icon "><a href="wishlist.html" title="Wishlist"></a></li>
-                          <li class="pro-compare-icon"><a href="compare.html" title="Compare"></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-item-details">
-                    <div class="product-item-name"> <a href="product-page.html">Defyant Reversible Dot Shorts</a> </div>
-                    <div class="price-box"> <span class="price">$80.00</span> <del class="price old-price">$100.00</del> </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="product-item">
-                  <div class="main-label new-label"><span>New</span></div>
-                  <div class="main-label sale-label"><span>Sale</span></div>
-                  <div class="product-image"> <a href="product-page.html"> <img src={{ asset('img/2.jpg') }} alt="Stylexpo"> </a>
-                  <div class="product-detail-inner">
-                      <div class="detail-inner-left align-center">
-                        <ul>
-                          <li class="pro-cart-icon">
-                            <form>
-                              <button title="Add to Cart"><span></span>Add to Cart</button>
-                            </form>
-                          </li>
-                          <li class="pro-wishlist-icon "><a href="wishlist.html" title="Wishlist"></a></li>
-                          <li class="pro-compare-icon"><a href="compare.html" title="Compare"></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="product-item-details">
-                    <div class="product-item-name"> <a href="product-page.html">Defyant Reversible Dot Shorts</a> </div>
-                    <div class="price-box"> <span class="price">$80.00</span> <del class="price old-price">$100.00</del> </div>
-                  </div>
-                </div>
-              </div>
+              @endforeach
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+  @endif
   @endsection
