@@ -36,42 +36,46 @@
                 <h3><span>Shop by</span></h3> 
               </div>
               <div class="sidebar-contant">
+                <!--
                 <div class="price-range mb-30">
                   <div class="inner-title">Price range</div>
                   <input class="price-txt" type="text" id="amount">
                   <div id="slider-range"></div>
                 </div>
-                <div class="size mb-20">
-                  <div class="inner-title">Size</div>
-                  <ul >
-                    <li><a href="#">S (10)</a></li>
-                    <li><a href="#">M (05)</a></li>
-                    <li><a href="#">L (10)</a></li>
-                    <li><a href="#">XL (08)</a></li>
-                    <li><a href="#">XXL (05)</a></li>
-                  </ul>
-                </div>
-                <div class="mb-20">
-                  <div class="inner-title">Color</div>
-                  <ul>
-                    <li><a href="#">Black <span>(0)</span></a></li>
-                    <li><a href="#">Blue <span>(05)</span></a></li>
-                    <li><a href="#">Brown <span>(10)</span></a></li>
-                  </ul>
-                </div>
-                <div class="mb-20">
-                  <div class="inner-title">Manufacture</div>
-                  <ul>
-                    <li><a href="#">Augue congue <span>(0)</span></a></li>
-                    <li><a href="#">Eu magna <span>(05)</span></a></li>
-                    <li><a href="#">Ipsum sit <span>(10)</span></a></li>
-                  </ul>
-                </div>
-                <a href="#" class="btn btn-color">Refine</a> </div>
+                -->
+                <form action="{{Request::url()}}" method="GET">
+                  <div class="size mb-20">
+                    <div class="inner-title">Size</div>
+                    <ul>
+                      @foreach($sizes as $size)
+                      <li>
+                        <label style="text-transform: uppercase;">
+                          <input @if(Request::input('size') && in_array($size->name, Request::input('size'))) checked @endif type="checkbox" name="size[]" value="{{$size->name}}"/>
+                          &nbsp;{{$size->name}}
+                        </label>
+                      </li>
+                      @endforeach
+                    </ul>
+                  </div>
+                  <div class="mb-20">
+                    <div class="inner-title">Color</div>
+                    <ul>
+                      @foreach($colors as $color)
+                      <li>
+                        <label style="text-transform: capitalize;">
+                          <input @if(Request::input('color') && in_array($color->name, Request::input('color'))) checked @endif type="checkbox" name="color[]" value="{{$color->name}}"/>&nbsp;{{$color->name}}
+                        </label>
+                      </li>
+                      @endforeach
+                    </ul>
+                  </div>
+                  <input type="submit" class="btn btn-color" value="Refine"/>
+                </form>
+              </div>
             </div>
             <div class="sidebar-box mb-40 d-none d-lg-block"> 
               <a href="#"> 
-                <img src={{ asset('img/left-banner.jpg') }} alt="Stylexpo"> 
+                <img src="{{ asset('img/left-banner.jpg') }}" alt="Stylexpo"> 
               </a> 
             </div>
             <div class="sidebar-box sidebar-item"> <span class="opener plus"></span>
@@ -107,16 +111,6 @@
           <div class="shorting mb-30">
             <div class="row">
               <div class="col-lg-6">
-                <div class="view">
-                  <div class="list-types grid active "> <a href="/shop">
-                    <div class="grid-icon list-types-icon"></div>
-                    </a> 
-                  </div>
-                  <div class="list-types list"><a href="/shop-list">
-                    <div class="list-icon list-types-icon"></div>
-                    </a> 
-                  </div>
-                </div>
                 <div class="short-by float-right-sm"> <span>Sort By :</span>
                   <div class="select-item select-dropdown">
                     <fieldset>
@@ -144,7 +138,6 @@
                     </fieldset>
                   </div>
                   <span>Per Page</span>
-                  <div class="compare float-right-sm"> <a href="#" class="btn btn-color">Compare (0)</a> </div>
                 </div>
               </div>
             </div>
@@ -156,6 +149,9 @@
                 @foreach($products as $product)
                 <div class="col-md-4 col-6 item-width mb-30">
                   <div class="product-item">
+                    @if ($product->sale)
+                    <div class="main-label sale-label"><span>Sale</span></div>
+                    @endif
                     <div class="product-image"><a href="/product-page/{{$product->id}}"><img src="{{$product->thumbnail}}" alt="{{$product->name}}"></a>
                       <div class="product-detail-inner">
                         <div class="detail-inner-left align-center">
@@ -173,7 +169,13 @@
                     </div>
                     <div class="product-item-details">
                       <div class="product-item-name"><a href="/product-page/{{$product->id}}">{{$product->name}}</a></div>
-                      <div class="price-box"><span class="price">{{$product->price}}</span><del class="price old-price">{{$product->price}}</del> </div>
+                      <div class="price-box">
+                        @if($product->sale)
+                        <span class="price">{{number_format($product->price - ($product->price * $product->sale), 2, '.', '')}} &euro;</span><del class="price old-price">{{$product->price}} &euro;</del>
+                        @else
+                        <span class="price">{{$product->price}} &euro;</span>
+                        @endif
+                      </div>
                     </div>
                   </div>
                 </div>

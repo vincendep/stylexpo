@@ -12,12 +12,12 @@ class ColorsTableSeeder extends Seeder
      */
     public function run()
     {
-        Color::create(['name' => 'rosso']);
+        Color::create(['name' => 'red']);
      	Color::create(['name' => 'blu']);
-        Color::create(['name' => 'nero']);
-        Color::create(['name' => 'bianco']);
-        Color::create(['name' => 'grigio']);
-        Color::create(['name' => 'giallo']);
-        Color::create(['name' => 'verde']);  
+        Color::create(['name' => 'black']);
+        Color::create(['name' => 'white']);
+        Color::create(['name' => 'grey']);
+        Color::create(['name' => 'yellow']);
+        Color::create(['name' => 'green']);  
     }
 }

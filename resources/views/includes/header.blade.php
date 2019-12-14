@@ -17,8 +17,8 @@
             <div class="header-right-part">
               <div class="category-dropdown select-dropdown">
                 <fieldset>
-                  <select form="main-search-form" class="option-drop" name="category">
-                    <option value="all">All categories</option>
+                  <select class="option-drop" name="category" id="category-dropdown">
+                    <option value="">All categories</option>
                     @foreach ($categories as $category)
                     <option value="{{$category->slug}}">{{$category->name}}</option>
                     @endforeach
@@ -26,13 +26,20 @@
                 </fieldset>
               </div>
               <div class="main-search">
-                <div class="header_search_toggle desktop-view">
-                  <form id="main-search-form" action="/shop" method="get">
-                    <div class="search-box">
-                      <input class="input-text" type="text" name="q" placeholder="Search entire store here...">
-                      <button type="submit" class="search-btn"></button>
-                    </div>
-                  </form>
+                <div class="header_search_toggle desktop-view">  
+                  <div class="search-box">
+                    <input id="shop-query" class="input-text" type="text" name="q" placeholder="Search entire store here...">
+                    <button onclick="shop()" class="search-btn"></button>
+                  </div>
+                  <script type="text/javascript">
+                    function shop() {
+                      let shopQuery = document.getElementById('shop-query').value;
+                      let categorySlug = document.getElementById('category-dropdown').value;
+                      let url = categorySlug ? '/shop/' + categorySlug : '/shop';
+                      url = shopQuery ? url + "?q=" + shopQuery : url;
+                      location.assign(url);
+                    }
+                  </script>
                 </div>
               </div>
             </div>
@@ -63,10 +70,7 @@
                           <div class="media-body"><span><a href="/product-page/{{$item->product->id}}">{{$item->product->name}}</a></span>
                             <p class="cart-price">{{$item->product->price}}</p>
                             <div class="product-qty">
-                              <label>Qty:</label>
-                              <div class="custom-qty">
-                                <input type="text" name="qty" maxlength="8" value="{{$item->quantity}}" title="Qty" class="input-text qty">
-                              </div>
+                              <label>Qty: {{$item->quantity}}</label>
                             </div>
                           </div>
                         </div>
@@ -125,7 +129,7 @@
                     <ul class="nav navbar-nav ">
                       @foreach($categories as $category)       
                       <li class="level">
-                        <a href="/shop?category={{$category->slug}}" class="page-scroll">{{$category->name}}</a>
+                        <a href="/shop/{{$category->slug}}" class="page-scroll">{{$category->name}}</a>
                       </li>
                       @endforeach
                     </ul>

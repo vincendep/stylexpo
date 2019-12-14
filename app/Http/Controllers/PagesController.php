@@ -38,29 +38,48 @@ class PagesController extends Controller
         ]);
     }
 
-    public function shop(Request $request)
+    public function shop(Request $request, $category = null)
     {
-        $category = $request->input('category');
-        // TODO query string match
-        $query = $request->input('q');
-        
-        $products;
-        if ($category != null && $category != 'all')
+        $product;
+        if ($category)
         {
             \App\Category::where('slug', $category)->firstOrFail();
             $products = \App\Product::whereHas('category', function (Builder $query) use($category) {
                 $query->where('slug', 'like', $category);
-            })->get();
-        } 
-        else
-        {
-            $products = \App\Product::all();
+            });
+        } else {
+            $products = \App\Product::where('id', '>', 0);
         }
-        $bestSellers = $products->sortByDesc('selling_number')->take(3);
+        $bestSellers = $products->get()->sortByDesc('selling_number')->take(3);
+        
+        $query = $request->input('q');
+        $sizeParams = $request->input('size');
+        $colorParams = $request->input('color');
+        if ($query)
+        {
+            // TODO query string match
+        }
+        if ($sizeParams) 
+        {
+            $products = $products->whereHas('sizes', function($q) use($sizeParams) {
+                $q->whereIn('name', $sizeParams);
+            });
+        }
+        if ($colorParams)
+        {
+            $products = $products = $products->whereHas('colors', function($q) use($colorParams) {
+                $q->whereIn('name', $colorParams);
+            });
+        }
+        $products = $products->get();
+        $sizes = \App\Size::all();
+        $colors = \App\Color::all();
 
     	return view('shop', [
             'products' => $products,
-            'bestSellers' => $bestSellers
+            'bestSellers' => $bestSellers,
+            'colors' => $colors,
+            'sizes' => $sizes
         ]);
     }
 
@@ -91,6 +110,11 @@ class PagesController extends Controller
     public function checkout()
     {
         return view('checkout');
+    }
+
+    public function compare()
+    {
+        return view('compare');
     }
 
     public function wishList()

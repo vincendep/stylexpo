@@ -68,7 +68,16 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cart = \App\Cart::find($id);
+        foreach ($cart->cartItems as $item)
+        {
+            if ($request->input($item->id))
+            {
+                $item->quantity = $request->input($item->id);
+                $item->save();
+            }
+        }
+        return back();
     }
 
     /**

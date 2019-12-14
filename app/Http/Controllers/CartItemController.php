@@ -36,13 +36,27 @@ class CartItemController extends Controller
     public function store(Request $request)
     {
         $cart = \App\Cart::where('user_id', '=', Auth::id())->first();
-        $item = \App\CartItem::create([
-            'cart_id' => $cart->id,
+        $item = \App\CartItem::make([
             'product_id' => $request->input('product'),
             'color_id' => $request->input('color'),
             'size_id' => $request->input('size'),
             'quantity' => $request->input('quantity')
         ]);
+        $flag = false;
+        foreach($cart->cartItems as $cartItem)
+        {
+            if ($cartItem->color == $item->color && $cartItem->size == $item->size && $cartItem->product == $item->product)
+            {
+                $cartItem->quantity += $item->quantity;
+                $cartItem->save();
+                $flag = true;
+                break;
+            }
+        }
+        if (!$flag)
+        {
+            $cart->cartItems()->save($item);
+        }
         return back();
     }
 
@@ -77,7 +91,7 @@ class CartItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**

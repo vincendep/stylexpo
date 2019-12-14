@@ -58,12 +58,12 @@
                         </li>
                       </ul>
                     </td>
-                    <td>{{$cartItem->color->name}}</td>
-                    <td>{{$cartItem->size->name}}</td>
+                    <td>{{$cartItem->color ? $cartItem->color->name : '-'}}</td>
+                    <td>{{$cartItem->size ? $cartItem->size->name : '-'}}</td>
                     <td>
                       <div class="input-box select-dropdown">
                         <fieldset>
-                          <select data-id="100" class="quantity_cart option-drop" name="quantity_cart">
+                          <select name="{{$cartItem->id}}" form="update-cart-form" data-id="100" class="quantity_cart option-drop">
                             <option {{$cartItem->quantity == 1 ? 'selected=""' : ''}} value="1">1</option>
                             <option {{$cartItem->quantity == 2 ? 'selected=""' : ''}} value="2">2</option>
                             <option {{$cartItem->quantity == 3 ? 'selected=""' : ''}} value="3">3</option>
@@ -79,12 +79,13 @@
                       </div>
                     </td>
                     <td>
-                      <form action="/cart-items/{{$cartItem->id}}" method="post">
+                      <form id="delete-item-form" action="/cart-items/{{$cartItem->id}}" method="post">
                         @csrf
                         @method('delete')
-                      <button type="submit">
-                        <i title="Remove Item From Cart" data-id="100" class="fa fa-trash cart-remove-item"></i>
-                      </button>
+                        <button type="submit">
+                          <i title="Remove Item From Cart" data-id="100" class="fa fa-trash cart-remove-item"></i>
+                        </button>
+                      </form>
                     </td>
                   </tr>
                   @endforeach
@@ -99,8 +100,8 @@
         @endif
       </div>
       <div class="mb-30">
-        <div class="row">
-          <div class="col-md-6">
+        <div class="row" style="justify-content: space-around;">
+          <div>
             <div class="mt-30"> 
               <a href="\shop" class="btn btn-color">
                 <span><i class="fa fa-angle-left"></i></span>
@@ -109,10 +110,13 @@
             </div>
           </div>
           @if($cart->cartItems->first())
-          <div class="col-md-6">
-            <div class="mt-30 right-side float-none-xs"> 
-              <a class="btn btn-color">Update Cart</a> 
-            </div>
+          <div>
+            <form id="update-cart-form" action="/carts/{{$cart->id}}" method="POST">
+              @csrf
+              @method('PUT')
+              <div class="mt-30 right-side float-none-xs"> 
+                <button type="submit" class="btn btn-color">Update Cart</button> 
+              </div>
           </div>
           @endif
         </div>

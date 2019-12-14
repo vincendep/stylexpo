@@ -14,6 +14,7 @@
   <section class="ptb-70">
     <div class="container">
       <div class="row">
+        @if($products)
         <div class="col-12 mb-xs-30">
           <div class="cart-item-table commun-table">
             <div class="table-responsive">
@@ -23,11 +24,11 @@
                     <td></td>
                     <td class="image"> 
                       <a href="product-detail.html"></a> 
-                      <img src={{ asset('img/1.jpg') }} alt="Stylexpo" title="" class="img-thumbnail" /> 
+                      <img src="{{ asset('img/1.jpg') }}" alt="Stylexpo" title="" class="img-thumbnail" /> 
                     </td>
                     <td class="image"> 
                       <a href="product-detail.html"></a> 
-                      <img src={{ asset('img/1.jpg') }} alt="Stylexpo" title="" class="img-thumbnail" />
+                      <img src="{{ asset('img/1.jpg') }}" alt="Stylexpo" title="" class="img-thumbnail" />
                     </td>
                   </tr>
                   <tr>
@@ -106,16 +107,6 @@
                       <td class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum lacinia justo convallis ornare.</td>
                       <td class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum lacinia justo convallis ornare.</td>
                   </tr>
-                  <tr>
-                      <td>Weight</td>
-                      <td>0.00kg</td>
-                      <td>0.00kg</td>
-                  </tr>
-                  <tr>
-                      <td>Dimensions (L x W x H)</td>
-                      <td>0.00cm x 0.00cm x 0.00cm</td>
-                      <td>0.00mm x 0.00mm x 0.00mm</td>
-                  </tr>
                 </tbody>
                 <tr>
                   <td></td>
@@ -132,6 +123,7 @@
             </div>
           </div>
         </div>
+        @endif
       </div>
     </div>
   </section>

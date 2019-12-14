@@ -54,7 +54,7 @@
                         <fieldset>
                           <select name="size" form="add-to-cart-form" class="selectpicker form-control option-drop" id="select-by-size">
                             
-                            @foreach($sizes as $size)
+                            @foreach($product->sizes as $size)
                             <option value="{{$size->id}}">{{$size->name}}</option>
                             @endforeach
 
@@ -66,7 +66,7 @@
                         <fieldset>
                           <select form="add-to-cart-form" name="color" class="selectpicker form-control option-drop" id="select-by-color">
                             
-                            @foreach($colors as $color)
+                            @foreach($product->colors as $color)
                             <option value="{{$color->id}}">{{$color->name}}</option>
                             @endforeach
                             
@@ -96,7 +96,16 @@
                       </div>
                       <div class="bottom-detail">
                         <ul>
-                          <li class="pro-wishlist-icon"><a href="wishlist.html"><span></span>Wishlist</a></li>
+                          <li class="pro-wishlist-icon">
+                            <form action="/wish-items" method="post">
+                              @csrf
+                              <input type="hidden" name="product" value="{{$product->id}}"/>
+                              <button type="submit">
+                                <span></span>
+                                Wishlist
+                              </button>
+                            </form>
+                          </li>
                           <li class="pro-compare-icon"><a href="compare.html"><span></span>Compare</a></li>
                           <li class="pro-email-icon"><a href="#"><span></span>Email to Friends</a></li>
                         </ul>

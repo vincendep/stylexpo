@@ -29,10 +29,10 @@ class Cart extends Model
     	$total = 0;
     	foreach ($this->cartItems as $item)
     	{
-    		$total += $item->product->price;
+    		$total += $item->product->price * $item->quantity;
     		if ($item->product->sale)
     		{
-    			$total -= $item->product->price / $item->product->sale;
+    			$total -= $item->product->price / $item->product->sale * $item->quantity;
     		}
     	}
     	return $total;

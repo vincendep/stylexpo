@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WishItemController extends Controller
 {
@@ -34,7 +35,18 @@ class WishItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $wishlist = \App\WishList::where('user_id', '=', Auth::id())->first();
+        $item = \App\WishItem::make([
+            'product_id' => $request->input('product'),
+        ]);
+        foreach ($wishlist->wishItems as $wishItem) {
+            if ($wishItem->product == $item->product)
+            {
+                return back();
+            }
+        }
+        $wishlist->wishItems()->save($item);
+        return back();
     }
 
     /**
@@ -79,6 +91,9 @@ class WishItemController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $wishlist = \App\WishList::where('user_id', '=', Auth::id())->first();
+        $item = $wishlist->wishItems->find($id);
+        $item->delete();
+        return back();
     }
 }

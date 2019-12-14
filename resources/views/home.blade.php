@@ -39,7 +39,7 @@
                         <div class="detail-inner-left align-center">
                           <ul>
                             <li class="pro-wishlist-icon active"><a href="wishlist.html" title="Wishlist"></a></li>
-                            <li class="pro-compare-icon"><a href="compare.html" title="Compare"></a></li>
+                            <li class="pro-compare-icon"><a href="/compare" title="Compare"></a></li>
                           </ul>
                         </div>
                       </div>
@@ -165,7 +165,7 @@
                         <div class="detail-inner-left">
                           <ul>
                             <li class="pro-wishlist-icon active"><a href="wishlist.html" title="Wishlist"></a></li>
-                            <li class="pro-compare-icon"><a href="compare.html" title="Compare"></a></li>
+                            <li class="pro-compare-icon"><a href="/compare" title="Compare"></a></li>
                           </ul>
                         </div>
                       </div>
@@ -279,7 +279,7 @@
                           <div class="detail-inner-left align-center">
                             <ul>
                               <li class="pro-wishlist-icon active"><a href="wishlist.html" title="Wishlist"></a></li>
-                              <li class="pro-compare-icon"><a href="compare.html" title="Compare"></a></li>
+                              <li class="pro-compare-icon"><a href="/compare" title="Compare"></a></li>
                             </ul>
                           </div>
                         </div>

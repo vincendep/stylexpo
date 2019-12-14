@@ -13,7 +13,7 @@
   <section class="ptb-70">
     <div class="container">
       <div class="row">
-        @if($wishlist->size > 0)
+        @if($wishlist->size() > 0)
         <div class="col-12 ">
           <div class="cart-item-table commun-table">
             <div class="table-responsive">
@@ -44,6 +44,7 @@
                       <ul>
                         <li>
                           <div class="base-price price-box">
+                            @php $product = $item->product @endphp
                             @if($product->sale)
                             <span class="price">{{number_format($product->price - ($product->price * $product->sale), 2, '.', '')}} &euro;</span><del class="price old-price">{{$product->price}} &euro;</del>
                             @else
@@ -59,7 +60,9 @@
                       </div>
                     </td>
                     <td>
-                      <form>
+                      <form action="/wish-items/{{$item->id}}" method="post">
+                        @csrf
+                        @method('delete')
                         <button type="submit">
                           <i title="Remove Item From Wishlist" data-id="100" class="fa fa-trash cart-remove-item"></i>
                         </button>
@@ -78,9 +81,9 @@
       </div>
       <div class="mb-30">
         <div class="row">
-          <div class="col-md-6">
-            <div class="mt-30"> 
-              <a href="shop.html" class="btn btn-color">
+          <div class="col-md-12">
+            <div class="mt-30 text-center"> 
+              <a href="/shop" class="btn btn-color">
                 <span><i class="fa fa-angle-left"></i></span>Continue Shopping
               </a> 
             </div>

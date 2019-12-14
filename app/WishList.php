@@ -10,4 +10,9 @@ class WishList extends Model
     {
     	return $this->hasMany('App\WishItem');
     }
+
+    public function size()
+    {
+    	return $this->wishItems->count();
+    }
 }
