@@ -36,4 +36,19 @@ class User extends \TCG\Voyager\Models\User
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function addresses()
+    {
+        return $this->hasMany('App\Address');
+    }
+
+    public function billingAddress()
+    {
+        return $this->addresses()->where('address_type', '=', 'billing')->first();
+    }
+
+    public function shippingAddress()
+    {
+        return $this->addresses()->where('address_type', '=', 'shipping')->first();
+    }
 }

@@ -109,7 +109,18 @@ class PagesController extends Controller
 
     public function checkout()
     {
-        return view('checkout');
+        $user = Auth::user();
+        return view('checkout', [
+            'user' => $user
+        ]);
+    }
+
+    public function orderOverview()
+    {
+        $user = Auth::user();
+        return view('order-overview', [
+            'user' => $user
+        ]);
     }
 
     public function compare()
@@ -120,7 +131,9 @@ class PagesController extends Controller
     public function wishList()
     {
         $wishList = \App\WishList::where('user_id', '=', Auth::id())->first();
-        return view("wishlist", ['wishlist' => $wishList]);
+        return view("wishlist", [
+            'wishlist' => $wishList
+        ]);
     }
 
     public function orderComplete()
@@ -145,6 +158,9 @@ class PagesController extends Controller
 
     public function account()
     {
-        return view('account');
+        $user = Auth::user();
+        return view('account', [
+            'user' => $user
+        ]);
     }
 }

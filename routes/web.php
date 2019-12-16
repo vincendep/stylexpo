@@ -22,10 +22,12 @@ Route::get('/checkout', 'PagesController@checkout')->middleware('auth');
 Route::get('/order-complete', 'PagesController@orderComplete')->middleware('auth');
 Route::get('/account', 'PagesController@account')->middleware('auth');
 Route::get('/wishlist', 'PagesController@wishList')->middleware('auth');
+Route::get('/order-overview', 'PagesController@orderOverview')->middleware('auth');
 
 Route::resource('carts', 'CartController')->middleware('auth');
 Route::resource('cart-items', 'CartItemController')->middleware('auth');
 Route::resource('wish-items', 'WishItemController')->middleware('auth');
+Route::resource('addresses', 'AddressController')->middleware('auth');
 
 Auth::routes();
 Route::group(['prefix' => 'admin'], function () {
