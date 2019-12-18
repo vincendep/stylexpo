@@ -51,4 +51,9 @@ class User extends \TCG\Voyager\Models\User
     {
         return $this->addresses()->where('address_type', '=', 'shipping')->first();
     }
+
+    public function cart()
+    {
+        return $this->hasOne('App\Cart');
+    }
 }

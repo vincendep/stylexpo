@@ -17,25 +17,25 @@
         <div class="col-12">
           <div class="checkout-step mb-40">
             <ul>
-              <li> <a href="checkout.html">
+              <li> <a href="/checkout">
                 <div class="step">
                   <div class="line"></div>
                   <div class="circle">1</div>
                 </div>
                 <span>Shipping</span> </a> </li>
-              <li> <a href="order-overview.html">
+              <li> <a href="/order-overview">
                 <div class="step">
                   <div class="line"></div>
                   <div class="circle">2</div>
                 </div>
                 <span>Order Overview</span> </a> </li>
-              <li> <a href="payment.html">
+              <li> <a href="/payment">
                 <div class="step">
                   <div class="line"></div>
                   <div class="circle">3</div>
                 </div>
                 <span>Payment</span> </a> </li>
-              <li class="active"> <a href="order-complete.html">
+              <li class="active"> <a href="/order-complete">
                 <div class="step">
                   <div class="line"></div>
                   <div class="circle">4</div>
@@ -70,57 +70,30 @@
                           </tr>
                         </thead>
                         <tbody>
+                          @foreach($order->orderLines as $item)
                           <tr>
                             <td>
-                              <a href="product-page.html">
+                              <a href="/product-page/{{$item->product->id}}">
                                 <div class="product-image">
-                                  <img alt="Stylexpo" src={{ asset('img/1.jpg') }}>
+                                  <img alt="{{$item->product->name}}" src="{{$item->product->thumbnail}}">
                                 </div>
                               </a>
                             </td>
                             <td>
                               <div class="product-title"> 
-                                <a href="product-page.html">Cross Colours Camo Print Tank half mengo</a>
+                                <a href="/product-page/{{$item->product->id}}">{{$item->product->name}}</a>
                                 <div class="product-info-stock-sku m-0">
                                   <div>
                                     <label>Price: </label>
                                     <div class="price-box"> 
-                                      <span class="info-deta price">$80.00</span> 
+                                      <span class="info-deta price">{{$item->product->price}} &euro;</span> 
                                     </div>
                                   </div>
                                 </div>
                                 <div class="product-info-stock-sku m-0">
                                   <div>
                                     <label>Quantity: </label>
-                                    <span class="info-deta">1</span> 
-                                  </div>
-                                </div>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <a href="product-page.html">
-                                <div class="product-image">
-                                  <img alt="Stylexpo" src={{ asset('img/2.jpg') }}>
-                                </div>
-                              </a>
-                            </td>
-                            <td>
-                              <div class="product-title"> 
-                                <a href="product-page.html">Cross Colours Camo Print Tank half mengo</a>
-                                <div class="product-info-stock-sku m-0">
-                                  <div>
-                                    <label>Price: </label>
-                                    <div class="price-box"> 
-                                      <span class="info-deta price">$80.00</span> 
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="product-info-stock-sku m-0">
-                                  <div>
-                                    <label>Quantity: </label>
-                                    <span class="info-deta">1</span> 
+                                    <span class="info-deta">{{$item->quantity}}</span> 
                                   </div>
                                 </div>
                               </div>
@@ -136,11 +109,11 @@
                         <tbody>
                           <tr>
                             <td><b>Order Places :</b></td>
-                            <td>17 December 2016</td>
+                            <td>{{$order->created_at}}</td>
                           </tr>
                           <tr>
                             <td><b>Total :</b></td>
-                            <td><div class="price-box"> <span class="price">$160.00</span> </div></td>
+                            <td><div class="price-box"> <span class="price">{{$order->total()}} &euro;</span> </div></td>
                           </tr>
                           <tr>
                             <td><b>Payment :</b></td>
@@ -148,7 +121,7 @@
                           </tr>
                           <tr>
                             <td><b>Order No. :</b></td>
-                            <td>#011052</td>
+                            <td>#{{$order->id}}</td>
                           </tr>
                         </tbody>
                       </table>
@@ -160,18 +133,6 @@
                     </div>
                     <hr>
                     <p class="mt-20">Quisque id fermentum tellus. Donec fringilla mauris nec ligula maximus sodales. Donec ac felis nunc. Fusce placerat volutpat risus, ac fermentum ex tempus eget.</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-12">
-                    <div class="print-btn">
-                      <button onclick="printDiv('form-print')" class="btn btn-color" type="button">Print</button>
-                      <div class="right-side float-none-xs mt-sm-30"> 
-                        <a class="btn btn-black" href="shop.html">
-                          <span><i class="fa fa-angle-left"></i></span>Continue Shopping
-                        </a>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -188,15 +149,15 @@
                         <tr>
                           <td>
                             <ul>
-                              <li class="inner-heading"> <b>Denial tom</b> </li>
+                              <li class="inner-heading"> <b>{{$user->shippingAddress()->user_name}}</b> </li>
                               <li>
-                                <p>5-A kadStylexpoi aprtment,opp. vasan eye care,</p>
+                                <p>{{$user->shippingAddress()->address}}</p>
                               </li>
                               <li>
-                                <p>Risalabaar,City Road, deesa-405001.</p>
+                                <p>{{$user->shippingAddress()->city}}</p>
                               </li>
                               <li>
-                                <p>India</p>
+                                <p>{{$user->shippingAddress()->country}}</p>
                               </li>
                             </ul>
                           </td>
@@ -217,15 +178,15 @@
                         <tr>
                           <td>
                             <ul>
-                              <li class="inner-heading"> <b>Denial tom</b> </li>
+                              <li class="inner-heading"> <b>{{$user->billingAddress()->user_name}}</b> </li>
                               <li>
-                                <p>5-A kadStylexpoi aprtment,opp. vasan eye care,</p>
+                                <p>{{$user->billingAddress()->address}}</p>
                               </li>
                               <li>
-                                <p>Risalabaar,City Road, deesa-405001.</p>
+                                <p>{{$user->billingAddress()->city}}</p>
                               </li>
                               <li>
-                                <p>India</p>
+                                <p>{{$user->billingAddress()->country}}</p>
                               </li>
                             </ul>
                           </td>

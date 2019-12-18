@@ -18,7 +18,7 @@
           <div class="checkout-step mb-40">
             <ul>
               <li> 
-                <a href="checkout.html">
+                <a href="/checkout">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">1</div>
@@ -27,7 +27,7 @@
                 </a> 
               </li>
               <li> 
-                <a href="order-overview.html">
+                <a href="/order-overview">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">2</div>
@@ -36,7 +36,7 @@
                 </a> 
               </li>
               <li class="active"> 
-                <a href="payment.html">
+                <a href="/payment">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">3</div>
@@ -45,7 +45,7 @@
                 </a> 
               </li>
               <li> 
-                <a href="order-complete.html">
+                <a href="/order-complete">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">4</div>
@@ -100,7 +100,10 @@
                     <p>Vestibulum semper accumsan nisi, at blandit tortor maxi'mus in phasellus malesuada sodales odio, at dapibus libero malesuada quis.</p>
                   </div>
                 </div>
-                <div class="right-side float-none-xs"> <a class="btn btn-color" href="order-complete.html">Place Order<span><i class="fa fa-angle-right"></i></span></a> </div>
+                <form action="/order-complete" method="post" class="right-side float-none-xs">
+                  @csrf
+                  <button type="submit" class="btn btn-color">Place Order<span><i class="fa fa-angle-right"></i></span></button>
+                </form>
               </div>
             </div>
           </div>

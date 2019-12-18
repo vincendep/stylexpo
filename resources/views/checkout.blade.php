@@ -20,7 +20,7 @@
           <div class="checkout-step mb-40">
             <ul>
               <li class="active"> 
-                <a href="checkout.html">
+                <a href="/checkout">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">1</div>
@@ -29,7 +29,7 @@
                 </a> 
               </li>
               <li> 
-                <a href="order-overview.html">
+                <a href="/order-overview">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">2</div>
@@ -38,7 +38,7 @@
                 </a> 
               </li>
               <li> 
-                <a href="payment.html">
+                <a href="/payment">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">3</div>
@@ -74,7 +74,7 @@
             <div class="row justify-content-center">
               <div class="col-xl-6 col-lg-8 col-md-8">
                 
-                <form class="main-form full" action="\addresses" method="post">
+                <form class="main-form full" method="post">
                 @csrf
                 <div class="mb-20">
                   <div class="row">
@@ -206,7 +206,7 @@
                       </div>
                     </div>
                     <div class="col-md-12 mt-30 text-center">
-                      <a href="/order-overview" class="btn btn-color" type="submit">Next</a>
+                      <button type="submit" class="btn btn-color">Next</button>
                     </div>
                   </div>
               </form>

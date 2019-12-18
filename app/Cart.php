@@ -37,4 +37,30 @@ class Cart extends Model
     	}
     	return $total;
     }
+
+    public function checkout()
+    {
+        $order = new Order();
+        $order->user_id = $this->user->id;
+        $order->save();
+        foreach ($this->cartItems as $item)
+        {
+            $order->orderLines->push(OrderLine::make([
+                'order_id' => $order->id,
+                'product_id' => $item->product->id,
+                'quantity' => $item->quantity,
+                'color_id' => $item->color->id,
+                'size_id' => $item->size->id
+            ]));
+        }
+        $order->push();
+        foreach ($this->cartItems as $item)
+        {
+            $item->product->selling_number += $item->quantity;
+            $item->product->save();
+            $item->product->brand->selling_number += $item->quantity;;
+            $item->product->brand->save();
+            $item->delete();
+        }
+    }
 }

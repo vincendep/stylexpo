@@ -115,30 +115,12 @@ class PagesController extends Controller
         ]);
     }
 
-    public function orderOverview()
-    {
-        $user = Auth::user();
-        return view('order-overview', [
-            'user' => $user
-        ]);
-    }
-
-    public function compare()
-    {
-        return view('compare');
-    }
-
     public function wishList()
     {
         $wishList = \App\WishList::where('user_id', '=', Auth::id())->first();
         return view("wishlist", [
             'wishlist' => $wishList
         ]);
-    }
-
-    public function orderComplete()
-    {
-        return view('order-complete');
     }
 
     public function about()
@@ -159,8 +141,10 @@ class PagesController extends Controller
     public function account()
     {
         $user = Auth::user();
+        $orders = \App\Order::where('user_id', '=', $user->id)->get();
         return view('account', [
-            'user' => $user
+            'user' => $user,
+            'orders' => $orders
         ]);
     }
 }

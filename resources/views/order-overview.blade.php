@@ -18,7 +18,7 @@
           <div class="checkout-step mb-40">
             <ul>
               <li> 
-                  <a href="checkout.html">
+                  <a href="/checkout">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">1</div>
@@ -27,7 +27,7 @@
                 </a> 
               </li>
               <li class="active"> 
-                <a href="order-overview.html">
+                <a href="/order-overview">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">2</div>
@@ -36,7 +36,7 @@
                 </a> 
               </li>
               <li> 
-                <a href="payment.html">
+                <a href="/payment">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">3</div>
@@ -45,7 +45,7 @@
                 </a> 
               </li>
               <li> 
-                <a href="order-complete.html">
+                <a href="/order-complete">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">4</div>
@@ -83,46 +83,32 @@
                         </tr>
                       </thead>
                       <tbody>
+                        @foreach($cart->cartItems as $cartItem)
                         <tr>
-                          <td><a href="product-page.html">
-                            <div class="product-image"><img alt="Honour" src={{ asset('img/1.jpg') }}></div>
+                          <td><a href="/product-page/{{$cartItem->product->id}}">
+                            <div class="product-image"><img alt="{{$cartItem->product->name}}" src="{{$cartItem->product->thumbnail}}"></div>
                             </a></td>
-                          <td><div class="product-title"> <a href="product-page.html">Cross Colours Camo Print Tank half mengo</a>
+                          <td><div class="product-title">
+                            <a href="/product-page/{{$cartItem->product->id}}">{{$cartItem->product->name}}</a>
                               <div class="product-info-stock-sku m-0">
                                 <div>
                                   <label>Price: </label>
-                                  <div class="price-box"> <span class="info-deta price">$80.00</span> </div>
+                                  <div class="price-box"> <span class="info-deta price">{{$cartItem->product->price}}</span> </div>
                                 </div>
                               </div>
                               <div class="product-info-stock-sku m-0">
                                 <div>
                                   <label>Quantity: </label>
-                                  <span class="info-deta">1</span> </div>
+                                  <span class="info-deta">{{$cartItem->quantity}}</span> </div>
                               </div>
                             </div></td>
-                          <td><div data-id="100" class="total-price price-box"> <span class="price">$80.00</span> </div></td>
-                          <td><i class="fa fa-trash cart-remove-item" data-id="100" title="Remove Item From Cart"></i></td>
+                          <td>
+                            <div data-id="100" class="total-price price-box">
+                              <span class="price">{{$cartItem->quantity * $cartItem->product->price}}</span>
+                            </div>
+                          </td>
                         </tr>
-                        <tr>
-                          <td><a href="product-page.html">
-                            <div class="product-image"><img alt="Honour" src={{ asset('img/2.jpg') }}></div>
-                            </a></td>
-                          <td><div class="product-title"> <a href="product-page.html">Cross Colours Camo Print Tank half mengo</a>
-                              <div class="product-info-stock-sku m-0">
-                                <div>
-                                  <label>Price: </label>
-                                  <div class="price-box"> <span class="info-deta price">$80.00</span> </div>
-                                </div>
-                              </div>
-                              <div class="product-info-stock-sku m-0">
-                                <div>
-                                  <label>Quantity: </label>
-                                  <span class="info-deta">1</span> </div>
-                              </div>
-                            </div></td>
-                          <td><div data-id="100" class="total-price price-box"> <span class="price">$80.00</span> </div></td>
-                          <td><i class="fa fa-trash cart-remove-item" data-id="100" title="Remove Item From Cart"></i></td>
-                        </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>
@@ -138,21 +124,21 @@
                       <tbody>
                         <tr>
                           <td>Item(s) Subtotal</td>
-                          <td><div class="price-box"> <span class="price">$160.00</span> </div></td>
+                          <td><div class="price-box"> <span class="price">{{$cart->total()}} &euro;</span> </div></td>
                         </tr>
                         <tr>
                           <td>Shipping</td>
-                          <td><div class="price-box"> <span class="price">$0.00</span> </div></td>
+                          <td><div class="price-box"> <span class="price">15.00 &euro;</span> </div></td>
                         </tr>
                         <tr>
                           <td><b>Amount Payable</b></td>
-                          <td><div class="price-box"> <span class="price"><b>$160.00</b></span> </div></td>
+                          <td><div class="price-box"> <span class="price"><b>{{$cart->total() + 15}} &euro;</b></span> </div></td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                 </div>
-                <div class="right-side float-none-xs"> <a href="payment.html" class="btn btn-color">Next</a> </div>
+                <div class="right-side float-none-xs"> <a href="/payment" class="btn btn-color">Next</a> </div>
               </div>
               <div class="col-md-4">
                 <div class="cart-total-table address-box commun-table mb-30">
@@ -167,15 +153,15 @@
                         <tr>
                           <td>
                             <ul>
-                              <li class="inner-heading"> <b>Denial tom</b> </li>
+                              <li class="inner-heading"> <b>{{$user->shippingAddress()->user_name}}</b> </li>
                               <li>
-                                <p>5-A kadStylexpoi aprtment,opp. vasan eye care,</p>
+                                <p>{{$user->shippingAddress()->address}}</p>
                               </li>
                               <li>
-                                <p>Risalabaar,City Road, deesa-405001.</p>
+                                <p>{{$user->shippingAddress()->city}}</p>
                               </li>
                               <li>
-                                <p>India</p>
+                                <p>{{$user->shippingAddress()->country}}</p>
                               </li>
                             </ul>
                           </td>
@@ -196,15 +182,15 @@
                         <tr>
                           <td>
                             <ul>
-                              <li class="inner-heading"> <b>Denial tom</b> </li>
+                              <li class="inner-heading"> <b>{{$user->billingAddress()->user_name}}</b> </li>
                               <li>
-                                <p>5-A kadStylexpoi aprtment,opp. vasan eye care,</p>
+                                <p>{{$user->billingAddress()->address}}</p>
                               </li>
                               <li>
-                                <p>Risalabaar,City Road, deesa-405001.</p>
+                                <p>{{$user->billingAddress()->city}}</p>
                               </li>
                               <li>
-                                <p>India</p>
+                                <p>{{$user->billingAddress()->country}}</p>
                               </li>
                             </ul>
                           </td>
