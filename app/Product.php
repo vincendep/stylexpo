@@ -36,4 +36,15 @@ class Product extends Model
     {
         return $this->belongsToMany('App\Color');
     }
+
+    public function discountPrice()
+    {
+        if ($this->sale)
+        {
+            $p =  $this->price - $this->price * $this->sale;
+            return number_format((float)$p, 2, '.', '');
+        } else {
+            return $this->price;
+        }
+    }
 }

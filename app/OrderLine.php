@@ -22,4 +22,16 @@ class OrderLine extends Model
 	{
 		return $this->belongsTo('App\Size');
 	}
+
+	public function subTotal()
+	{
+		$subTotal = 0;
+		$subTotal += $this->product->price * $this->quantity;
+		if ($this->product->sale)
+		{
+			$subTotal -= ($this->product->price * $this->product->sale) * $this->quantity;
+		}
+	
+    	return number_format((float)$subTotal, 2, '.', '');
+	}
 }

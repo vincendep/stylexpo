@@ -67,6 +67,8 @@
                           <tr>
                             <th>Product</th>
                             <th>Product Detail</th>
+                            <th>Size</th>
+                            <th>Color</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -98,7 +100,10 @@
                                 </div>
                               </div>
                             </td>
+                            <td style="text-transform: uppercase;">{{$item->size ? $item->size->name : '-'}}</td>
+                            <td style="text-transform: uppercase;">{{$item->color ? $item->color->name : '-'}}</td>
                           </tr>
+                          @endforeach
                         </tbody>
                       </table>
                     </div>

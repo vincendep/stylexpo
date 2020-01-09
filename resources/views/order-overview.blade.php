@@ -78,8 +78,9 @@
                         <tr>
                           <th>Product</th>
                           <th>Product Detail</th>
+                          <th>Color</th>
+                          <th>Size</th>
                           <th>Sub Total</th>
-                          <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -93,7 +94,7 @@
                               <div class="product-info-stock-sku m-0">
                                 <div>
                                   <label>Price: </label>
-                                  <div class="price-box"> <span class="info-deta price">{{$cartItem->product->price}}</span> </div>
+                                  <div class="price-box"> <span class="info-deta price">{{$cartItem->product->discountPrice()}} &euro;</span> </div>
                                 </div>
                               </div>
                               <div class="product-info-stock-sku m-0">
@@ -101,10 +102,13 @@
                                   <label>Quantity: </label>
                                   <span class="info-deta">{{$cartItem->quantity}}</span> </div>
                               </div>
-                            </div></td>
+                            </div>
+                          </td>
+                          <td>{{$cartItem->color ? $cartItem->color : '-'}}</td>
+                          <td>{{$cartItem->size ? $cartItem->size : '-'}}</td>
                           <td>
                             <div data-id="100" class="total-price price-box">
-                              <span class="price">{{$cartItem->quantity * $cartItem->product->price}}</span>
+                              <span class="price">{{$cartItem->subTotal()}} &euro;</span>
                             </div>
                           </td>
                         </tr>

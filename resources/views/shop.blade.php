@@ -130,10 +130,10 @@
                 <div class="show-item right-side float-left-sm"> <span>Show :</span>
                   <div class="select-item select-dropdown">
                     <fieldset>
-                      <select  name="speed" id="show-item" class="option-drop">
-                        <option value="" selected="selected">24</option>
-                        <option value="">12</option>
-                        <option value="">6</option>
+                      <select onchange="updateProductsPerPage(this)" id="products-per-page">
+                        <option value="3" selected="selected">3</option>
+                        <option value="6">6</option>
+                        <option value="9">9</option>
                       </select>
                     </fieldset>
                   </div>
@@ -201,6 +201,32 @@
       </div>
     </div>
   </section>
-  <!-- CONTAINER END --> 
+  <!-- CONTAINER END -->
+  <script type="text/javascript">        
+    var currPage = 1;
+    var productsPerPage;
+    var products = document.getElementsByClassName("product-item");
+
+    function showProducts() {
+      for(let product of products) {
+        product.style.display = "none";
+      }
+      for(let i = currPage * productsPerPage - productsPerPage; i < currPage * productsPerPage && i < products.length; i++) {
+        products[i].style.display = "block";
+      }
+    }
+
+    function updateProductsPerPage(select) {
+      if (!select) {
+        select = document.getElementById('products-per-page');
+      }
+      productsPerPage = select.value;
+      showProducts();  
+    }
+    
+    updateProductsPerPage();
+
+  </script>
+
   @endsection
 

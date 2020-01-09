@@ -19,14 +19,10 @@ class Order extends Model
     public function total()
     {
     	$total = 0;
-    	foreach ($this->orderLines as $item)
-    	{
-    		$total += $item->product->price * $item->quantity;
-    		if ($item->product->sale)
-    		{
-    			$total -= $item->product->price / $item->product->sale * $item->quantity;
-    		}
-    	}
-    	return $total;
+        foreach ($this->orderLines as $item)
+        {
+            $total += $item->subTotal();
+        }
+        return $total;
     }
 }

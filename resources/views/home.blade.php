@@ -34,15 +34,11 @@
                 <div class="item">
                   <div class="product-item">
                     <div class="main-label new-label"><span>New</span></div>
-                    <div class="product-image"> <a href="/product-page/{{$product->id}}"><img src="{{ asset($product->thumbnail) }}" alt='Stylexpo'></a>
-                      <div class="product-detail-inner">
-                        <div class="detail-inner-left align-center">
-                          <ul>
-                            <li class="pro-wishlist-icon active"><a href="wishlist.html" title="Wishlist"></a></li>
-                            <li class="pro-compare-icon"><a href="/compare" title="Compare"></a></li>
-                          </ul>
-                        </div>
-                      </div>
+                    @if($product->sale)
+                    <div class="main-label sale-label"><span>Sale</span></div>
+                    @endif
+                    <div class="product-image">
+                      <a href="/product-page/{{$product->id}}"><img src="{{ $product->thumbnail }}" alt='Stylexpo'></a>
                     </div>
                     <div class="product-item-details">
                       <div class="product-item-name"> <a href="/product-page/{{$product->id}}">{{$product->name}}</a> </div>
@@ -143,7 +139,7 @@
                     <div class="col-md-6 col-12 deals-img ">
                       <div class="product-image"> 
                         <a href="/product-page/{{$product->id}}"> 
-                          <img src="{{asset($product->thumbnail)}}" alt="Stylexpo"> 
+                          <img src="{{$product->thumbnail}}" alt="Stylexpo"> 
                         </a>
                       </div>
                     </div>
@@ -160,14 +156,6 @@
                           @endif 
                         </div>
                         <p style="max-height: 80px;overflow: hidden;text-overflow: ellipsis;">{{$product->description}}</p>
-                      </div>
-                      <div class="product-detail-inner">
-                        <div class="detail-inner-left">
-                          <ul>
-                            <li class="pro-wishlist-icon active"><a href="wishlist.html" title="Wishlist"></a></li>
-                            <li class="pro-compare-icon"><a href="/compare" title="Compare"></a></li>
-                          </ul>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -273,16 +261,11 @@
                   @foreach($bestSellers as $product)
                   <div class="item">
                     <div class="product-item">
-                      <div class="main-label new-label"><span>New</span></div>
-                      <div class="product-image"> <a href="/product-page/{{$product->id}}"> <img src="{{ asset($product->thumbnail) }}"" alt="Stylexpo"> </a>
-                        <div class="product-detail-inner">
-                          <div class="detail-inner-left align-center">
-                            <ul>
-                              <li class="pro-wishlist-icon active"><a href="wishlist.html" title="Wishlist"></a></li>
-                              <li class="pro-compare-icon"><a href="/compare" title="Compare"></a></li>
-                            </ul>
-                          </div>
-                        </div>
+                      @if($product->sale)
+                      <div class="main-label sale-label"><span>Sale</span></div>
+                      @endif
+                      <div class="product-image">
+                        <a href="/product-page/{{$product->id}}"> <img src="{{$product->thumbnail}}" alt="Stylexpo"></a>
                       </div>
                       <div class="product-item-details">
                         <div class="product-item-name"> <a href="/product-page/{{$product->id}}">{{$product->name}}</a> </div>

@@ -88,7 +88,8 @@ class CheckoutController extends Controller
         $order = $cart->checkout();
         session()->forget('cart');
         return view('order-complete', [
-                'order' => $order
+                'order' => $order,
+                'user' => Auth::user()
         ]);
     }
 }

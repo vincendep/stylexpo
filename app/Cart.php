@@ -29,13 +29,9 @@ class Cart extends Model
     	$total = 0;
     	foreach ($this->cartItems as $item)
     	{
-    		$total += $item->product->price * $item->quantity;
-    		if ($item->product->sale)
-    		{
-    			$total -= $item->product->price / $item->product->sale * $item->quantity;
-    		}
+    		$total += $item->subTotal();
     	}
-    	return $total;
+        return $total;
     }
 
     public function checkout()
@@ -45,12 +41,14 @@ class Cart extends Model
         $order->save();
         foreach ($this->cartItems as $item)
         {
+            $sizeId = $item->size ? $item->size->id : null;
+            $colorId = $item->color ? $item->color->id : null;
             $order->orderLines->push(OrderLine::make([
                 'order_id' => $order->id,
                 'product_id' => $item->product->id,
                 'quantity' => $item->quantity,
-                'color_id' => $item->color->id,
-                'size_id' => $item->size->id
+                'color_id' => $colorId,
+                'size_id' => $sizeId
             ]));
         }
         $order->push();
@@ -62,5 +60,6 @@ class Cart extends Model
             $item->product->brand->save();
             $item->delete();
         }
+        return $order;
     }
 }

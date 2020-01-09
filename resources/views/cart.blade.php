@@ -63,19 +63,13 @@
                     <td>
                       <div class="input-box select-dropdown">
                         <fieldset>
-                          <select name="{{$cartItem->id}}" form="update-cart-form" data-id="100" class="quantity_cart option-drop">
-                            <option {{$cartItem->quantity == 1 ? 'selected=""' : ''}} value="1">1</option>
-                            <option {{$cartItem->quantity == 2 ? 'selected=""' : ''}} value="2">2</option>
-                            <option {{$cartItem->quantity == 3 ? 'selected=""' : ''}} value="3">3</option>
-                            <option {{$cartItem->quantity == 4 ? 'selected=""' : ''}} value="4">4</option>
-                            <option {{$cartItem->quantity == 5 ? 'selected=""' : ''}} value="5">5</option>
-                          </select>
+                          <input type="number" style="max-width: 80px;" value="{{$cartItem->quantity}}" name="{{$cartItem->id}}" form="update-cart-form" data-id="100" class="quantity_cart form-control">
                         </fieldset>
                       </div>
                     </td>
                     <td>
                       <div class="total-price price-box"> 
-                        <span class="price">{{$cartItem->product->price * $cartItem->quantity}} &euro;</span> 
+                        <span class="price">{{$cartItem->subTotal()}} &euro;</span> 
                       </div>
                     </td>
                     <td>
