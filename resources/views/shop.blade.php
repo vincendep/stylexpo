@@ -154,19 +154,6 @@
                     <div class="main-label sale-label"><span>Sale</span></div>
                     @endif
                     <div class="product-image"><a href="/product-page/{{$product->id}}"><img src="{{$product->thumbnail}}" alt="{{$product->name}}"></a>
-                      <div class="product-detail-inner">
-                        <div class="detail-inner-left align-center">
-                          <ul>
-                            <li class="pro-cart-icon">
-                              <form>
-                                <button title="Add to Cart"><span></span>Add to Cart</button>
-                              </form>
-                            </li>
-                            <li class="pro-wishlist-icon "><a href="wishlist.html" title="Wishlist"></a></li>
-                            <li class="pro-compare-icon"><a href="compare.html" title="Compare"></a></li>
-                          </ul>
-                        </div>
-                      </div>
                     </div>
                     <div class="product-item-details">
                       <div class="product-item-name"><a href="/product-page/{{$product->id}}">{{$product->name}}</a></div>

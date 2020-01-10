@@ -62,7 +62,6 @@
 <script src={{ asset('js/jquery.downCount.js') }}></script>
 <script src={{ asset('js/jquery-ui.min.js') }}></script> 
 <script src={{ asset('js/fotorama.js') }}></script>
-<script src={{ asset('highlight.js') }}></script>
 <script src={{ asset('app.js') }}></script>
 <script src={{ asset('js/jquery.magnific-popup.js') }}></script> 
 <script src={{ asset('js/owl.carousel.min.js') }}></script>  
