@@ -55,6 +55,7 @@ class PagesController extends Controller
         $query = $request->input('q');
         $sizeParams = $request->input('size');
         $colorParams = $request->input('color');
+        $orderParam = $request->input('order');
         if ($query)
         {
             // TODO query string match
@@ -72,6 +73,36 @@ class PagesController extends Controller
             });
         }
         $products = $products->get();
+        switch ($orderParam) {
+            case 'asc-name':
+                $products = $products->sortBy('name');
+                break;
+            case 'desc-name':
+                $products = $products->sortByDesc('name');
+                break;
+            case 'asc-price':
+                $products = $products->sortBy(function($product) {
+                    if ($product->sale)
+                    {
+                        return $product->price * $product->sale;
+                    }
+                    return $product->price;
+                });
+                break;
+            case 'desc-price':
+                $products = $products->sortByDesc(function($product) {
+                    if ($product->sale)
+                    {
+                        return $product->price * $product->sale;
+                    }
+                    return $product->price;
+                });
+                break;
+            default:
+                # code...
+                break;
+        }
+    
         $sizes = \App\Size::all();
         $colors = \App\Color::all();
 

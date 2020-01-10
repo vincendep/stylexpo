@@ -43,7 +43,7 @@
                   <div id="slider-range"></div>
                 </div>
                 -->
-                <form action="{{Request::url()}}" method="GET">
+                <form id="filter-form" action="{{Request::url()}}" method="GET">
                   <div class="size mb-20">
                     <div class="inner-title">Size</div>
                     <ul>
@@ -107,33 +107,34 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-10 col-lg-9 col-lgmd-80per"> 
+        <div id="product-listing" class="col-xl-10 col-lg-9 col-lgmd-80per"> 
           <div class="shorting mb-30">
             <div class="row">
               <div class="col-lg-6">
                 <div class="short-by float-right-sm"> <span>Sort By :</span>
                   <div class="select-item select-dropdown">
                     <fieldset>
-                      <select  name="speed" id="sort-price" class="option-drop">
-                        <option value="" selected="selected">Name (A to Z)</option>
-                        <option value="">Name(Z - A)</option>
-                        <option value="">price(low&gt;high)</option>
-                        <option value="">price(high &gt; low)</option>
-                        <option value="">rating(highest)</option>
-                        <option value="">rating(lowest)</option>
+                      <select name="order" form="filter-form" onchange="this.form.submit()">
+                        <option @if(Request::input('order') && Request::input('order') == 'asc-name')) selected="" @endif value="asc-name">Name (A to Z)</option>
+                        <option @if(Request::input('order') && Request::input('order') == 'desc-name')) selected="" @endif value="desc-name">Name(Z - A)</option>
+                        <option @if(Request::input('order') && Request::input('order') == 'asc-price')) selected="" @endif value="asc-price">price(low&gt;high)</option>
+                        <option @if(Request::input('order') && Request::input('order') == 'desc-price')) selected="" @endif value="desc-prize">price(high &gt; low)</option>
+                        <option @if(Request::input('order') && Request::input('order') == 'desc-rating')) selected="" @endif value="desc-rating">rating(highest)</option>
+                        <option @if(Request::input('order') && Request::input('order') == 'asc-rating')) selected="" @endif value="asc-rating">rating(lowest)</option>
                       </select>
                     </fieldset>
                   </div>
                 </div>
               </div>
               <div class="col-lg-6">
-                <div class="show-item right-side float-left-sm"> <span>Show :</span>
+                <div class="show-item right-side float-right-sm"> <span>Show :</span>
                   <div class="select-item select-dropdown">
                     <fieldset>
                       <select onchange="updateProductsPerPage(this)" id="products-per-page">
-                        <option value="3" selected="selected">3</option>
-                        <option value="6">6</option>
-                        <option value="9">9</option>
+                        <option value="4" selected="selected">4</option>
+                        <option value="8">8</option>
+                        <option value="12">12</option>
+                        <option value="24">24</option>
                       </select>
                     </fieldset>
                   </div>
@@ -147,7 +148,7 @@
               <div class="row">
                 
                 @foreach($products as $product)
-                <div class="col-md-4 col-6 item-width mb-30">
+                <div class="col-md-4 col-6 item-width mb-30 item-box">
                   <div class="product-item">
                     @if ($product->sale)
                     <div class="main-label sale-label"><span>Sale</span></div>
@@ -185,12 +186,12 @@
               <div class="row">
                 <div class="col-12">
                   <div class="pagination-bar">
-                    <ul>
-                      <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                    <ul id="pagination-bar">
+                      <!--<li><a href="#"><i class="fa fa-angle-left"></i></a></li>
                       <li class="active"><a href="#">1</a></li>
                       <li><a href="#">2</a></li>
                       <li><a href="#">3</a></li>
-                      <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                      <li><a href="#"><i class="fa fa-angle-right"></i></a></li>-->
                     </ul>
                   </div>
                 </div>
@@ -203,9 +204,10 @@
   </section>
   <!-- CONTAINER END -->
   <script type="text/javascript">        
+    var numberOfPages = undefined;
     var currPage = 1;
-    var productsPerPage;
-    var products = document.getElementsByClassName("product-item");
+    var productsPerPage = document.getElementById('products-per-page').value;
+    var products = document.getElementsByClassName("item-box");
 
     function showProducts() {
       for(let product of products) {
@@ -220,8 +222,55 @@
       if (!select) {
         select = document.getElementById('products-per-page');
       }
+      currPage = 1;
       productsPerPage = select.value;
-      showProducts();  
+      
+      showProducts();
+      generatePagination();
+    }
+
+    function generatePagination() {
+      let paginationBar = document.getElementById('pagination-bar');
+      numberOfPages = Math.ceil(products.length / productsPerPage);
+      paginationBar.innerHTML = "";
+      if (numberOfPages > 1) {
+        let larrow = '<li><a onclick="back()"><i class="fa fa-angle-left"></i></a></li>';
+        let rarrow = '<li><a onclick="next()"><i class="fa fa-angle-right"></i></a></li>';
+        paginationBar.innerHTML += larrow;
+        for (let i = 1; i <= numberOfPages; i++) {
+          let pageClass = '';
+          if (currPage == i) {
+            pageClass = ' class="active"';
+          }
+          let page = '<li' + pageClass + '><a onclick="changePage(' + i + ')" href="#product-listing">' + i + '</a></li>';
+          paginationBar.innerHTML += page;
+        }
+        paginationBar.innerHTML += rarrow;
+      }
+    }
+
+    function back() {
+      if (currPage > 1) {
+        currPage--;
+        showProducts();
+        generatePagination()
+        location.href = "#product-listing";
+      }
+    }
+
+    function changePage(newPage) {
+      currPage = newPage;
+      showProducts();
+      generatePagination();
+    }
+
+    function next() {
+      if (currPage < numberOfPages) {
+        currPage++;
+        showProducts();
+        generatePagination();
+        location.href = "#product-listing";
+      }
     }
     
     updateProductsPerPage();
