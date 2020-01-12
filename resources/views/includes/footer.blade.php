@@ -69,7 +69,7 @@
             <div class="footer_social pt-xs-15 center-sm">
               <ul class="social-icon">
                 <li><div class="title">Follow us on :</div></li>
-                <li><a title="Facebook" class="facebook"><i class="fa fa-facebook"> </i></a></li>
+                <li><a href="https://www.facebook.com/denis.dipatrizio" title="Facebook" class="facebook"><i class="fa fa-facebook"> </i></a></li>
                 <li><a title="Twitter" class="twitter"><i class="fa fa-twitter"> </i></a></li>
                 <li><a title="Linkedin" class="linkedin"><i class="fa fa-linkedin"> </i></a></li>
                 <li><a title="RSS" class="rss"><i class="fa fa-rss"> </i></a></li>

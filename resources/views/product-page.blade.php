@@ -88,7 +88,7 @@
                               <form id="add-to-cart-form" action="/cart-items" method="post">
                                 @csrf
                                 <input type="hidden" name="product" value="{{$product->id}}"/>
-                                <button type="submit" title="Add to Cart" class="btn-color"><span></span>Add to Cart</button>
+                                <button style="background-color: white" type="submit" title="Add to Cart" class="btn-color"><span></span>Add to Cart</button>
                               </form>
                             </li>
                           </ul>

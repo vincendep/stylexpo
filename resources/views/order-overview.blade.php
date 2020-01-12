@@ -104,8 +104,8 @@
                               </div>
                             </div>
                           </td>
-                          <td>{{$cartItem->color ? $cartItem->color : '-'}}</td>
-                          <td>{{$cartItem->size ? $cartItem->size : '-'}}</td>
+                          <td>{{$cartItem->color ? $cartItem->color->name : '-'}}</td>
+                          <td>{{$cartItem->size ? $cartItem->size->name : '-'}}</td>
                           <td>
                             <div data-id="100" class="total-price price-box">
                               <span class="price">{{$cartItem->subTotal()}} &euro;</span>

@@ -118,7 +118,7 @@
                         <option @if(Request::input('order') && Request::input('order') == 'asc-name')) selected="" @endif value="asc-name">Name (A to Z)</option>
                         <option @if(Request::input('order') && Request::input('order') == 'desc-name')) selected="" @endif value="desc-name">Name(Z - A)</option>
                         <option @if(Request::input('order') && Request::input('order') == 'asc-price')) selected="" @endif value="asc-price">price(low&gt;high)</option>
-                        <option @if(Request::input('order') && Request::input('order') == 'desc-price')) selected="" @endif value="desc-prize">price(high &gt; low)</option>
+                        <option @if(Request::input('order') && Request::input('order') == 'desc-price')) selected="" @endif value="desc-price">price(high &gt; low)</option>
                         <option @if(Request::input('order') && Request::input('order') == 'desc-rating')) selected="" @endif value="desc-rating">rating(highest)</option>
                         <option @if(Request::input('order') && Request::input('order') == 'asc-rating')) selected="" @endif value="asc-rating">rating(lowest)</option>
                       </select>
