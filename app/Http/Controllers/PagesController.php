@@ -62,7 +62,7 @@ class PagesController extends Controller
         $orderParam = $request->input('order');
         if ($query)
         {
-            // TODO query string match
+            $products = $products->where('name', 'like', '%' . $query . '%');
         }
         if ($sizeParams)
         {
@@ -164,19 +164,26 @@ class PagesController extends Controller
     }
 
 
-        public function blog(Request $request){
+        public function blog(Request $request, $category = null){
+            $posts = \App\Post::all();
 
-        $posts = \App\Post::orderBy('created_at', 'desc')
-            ->take(10)
-            ->get();
+            if ($category)
+            {
+                \App\Category::where('slug', $category)->firstOrFail();
+                $posts = \App\Post::whereHas('category', function (Builder $query) use($category) {
+                    $query->where('slug', 'like', $category);
+                })->get();
+            }
 
-        $recent_posts = \App\Post::orderBy('created_at', 'desc')
-            ->take(3)
-            ->get();
-        
-    	return view('blog', [
-    	    'posts' => $posts,
-    	    'recent_posts' => $recent_posts
+            $recent_posts = \App\Post::orderBy('created_at', 'desc')
+                ->take(3)
+                ->get();
+            
+
+
+        	return view('blog', [
+        	    'posts' => $posts,
+        	    'recent_posts' => $recent_posts
 
             ]);
         }

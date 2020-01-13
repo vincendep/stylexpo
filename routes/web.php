@@ -15,7 +15,7 @@ Route::get('/', 'PagesController@home');
 Route::get('/shop/{category?}', 'PagesController@shop');
 Route::get('/about', 'PagesController@about');
 Route::get('/single-blog/{postId}', 'PagesController@singleBlog');
-Route::get('/blog', 'PagesController@blog');
+Route::get('/blog/{category?}', 'PagesController@blog');
 Route::get('/contact', 'PagesController@contact');
 Route::get('/product-page/{productId}', 'PagesController@productPage');
 Route::get('/cart', 'PagesController@cart')->middleware('auth');

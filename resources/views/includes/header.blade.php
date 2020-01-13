@@ -180,7 +180,7 @@
                       <li class="{{ request()->is('about') ? 'active' : '' }}">
                         <a href="/about"><span>About Us</span></a>
                       </li>
-                      <li class="{{ request()->is('blog') ? 'active' : '' }}">
+                      <li class="{{ request()->is('blog/*') ? 'active' : '' }}">
                         <a href="/blog"><span>Blog</span></a>
                       </li>
                       <li class="{{ request()->is('contact') ? 'active' : '' }}">
