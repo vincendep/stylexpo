@@ -224,14 +224,14 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="sub-banner small-banner small-banner1">
-            <a href="#">
+            <a href="/shop">
               <img src="{{ asset('img/small-banner1.jpg') }}" alt="Stylexpo">
             </a>
           </div>
         </div>
         <div class="col-lg-6 mt-sm-30">
           <div class="sub-banner small-banner small-banner2">
-            <a href="#">
+            <a href="/shop">
               <img src="{{ asset('img/small-banner2.jpg') }}" alt="Stylexpo">
             </a>
           </div>
@@ -310,18 +310,18 @@
               <div class="blog-media">
                 <img src="{{Voyager::image($post->image)}}" alt="Stylexpo">
                 <div class="blog-effect"></div>
-                <a href="single-blog.html" title="Click For Read More" class="read">&nbsp;</a>
+                <a href="/single-blog/{{$post->id}}" title="Click For Read More" class="read">&nbsp;</a>
               </div>
               </div>
               <div class="mt-30">
                 <div class="blog-detail">
-                  <div class="blog-title"><a href="single-blog.html">{{$post->title}}</a></div>
-                  <div class="post-info" >
+                  <div class="blog-title"><a href="/single-blog/{{$post->id}}">{{$post->title}}</a></div>
+                  <div class="post-info"  style="max-height:190px; text-overflow: ellipsis; overflow: hidden">
                     {!!$post->body!!}
-                        <a href="single-blog.html">Read more
-                          <i class="fa fa-angle-double-right"></i>
-                        </a>
                   </div>
+                    <a href="/single-blog/{{$post->id}}">Read more
+                        <i class="fa fa-angle-double-right"></i>
+                    </a>
                 </div>
               </div>
             </div>

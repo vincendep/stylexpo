@@ -23,11 +23,9 @@
               </div>
               <div class="sidebar-contant">
                 <ul>
-
-                  @foreach($categories as $category)
-                  <li><a href="/shop/{{$category->slug}}">{{$category->name}}</a></li>
-                  @endforeach
-
+                    @foreach($categories as $category)
+                        <li><a href="/shop/{{$category->slug}}">{{$category->name}}</a></li>
+                    @endforeach
                 </ul>
               </div>
             </div>

@@ -5,13 +5,13 @@
 @section('open body')
 <body >
 <div class="se-pre-con"></div>
-<div class="main"> 
+<div class="main">
 @endsection
-  
+
   @section('bread crumb')
   @include('includes/breadcrumb')
   @endsection
-  
+
   @section('content')
   <section class="checkout-section ptb-70">
     <div class="container">
@@ -19,41 +19,41 @@
         <div class="col-12">
           <div class="checkout-step mb-40">
             <ul>
-              <li class="active"> 
+              <li class="active">
                 <a href="/checkout">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">1</div>
                   </div>
-                  <span>Shipping</span> 
-                </a> 
+                  <span>Shipping</span>
+                </a>
               </li>
-              <li> 
+              <li>
                 <a href="/order-overview">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">2</div>
                   </div>
-                  <span>Order Overview</span> 
-                </a> 
+                  <span>Order Overview</span>
+                </a>
               </li>
-              <li> 
+              <li>
                 <a href="/payment">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">3</div>
                   </div>
-                  <span>Payment</span> 
-                </a> 
+                  <span>Payment</span>
+                </a>
               </li>
-              <li> 
+              <li>
                 <a href="/order-complete">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">4</div>
                   </div>
-                  <span>Order Complete</span> 
-                </a> 
+                  <span>Order Complete</span>
+                </a>
               </li>
               <li>
                 <div class="step">
@@ -73,7 +73,7 @@
             </div>
             <div class="row justify-content-center">
               <div class="col-xl-6 col-lg-8 col-md-8">
-                
+
                 <form class="main-form full" method="post">
                 @csrf
                 <div class="mb-20">
@@ -99,7 +99,7 @@
                     <div class="col-md-6">
                       <div class="input-box">
                         <label for="shippingcompanyid">Company</label>
-                        <input id="shippingcompanyid" @if($user->shippingAddress()) value="{{$user->shippingAddress()->company_name}}" @endif name="shippingcompany" type="text">
+                        <input id="shippingcompanyid" @if($user->shippingAddress()) value="{{$user->shippingAddress()->company_name}}" @endif name="shippingcompany" type="text" required>
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -112,20 +112,20 @@
                       <div class="input-box">
                         <label for="shippingaddressid">Shipping Address</label>
                         <input id="shippingaddressid" @if($user->shippingAddress()) value="{{$user->shippingAddress()->address}}" @endif name="shippingaddress" type="text" required />
-                        <span>Please provide the number and street.</span> 
+                        <span>Please provide the number and street.</span>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="input-box">
                         <label for="shippinglandmarkid">Shipping Landmark</label>
-                        <input id="shippinglandmarkid" @if($user->shippingAddress()) value="{{$user->shippingAddress()->landmark}}" @endif name="shippinglandmark" type="text" />
-                        <span>Please include landmark (e.g : Opposite Bank) as the carrier service may find it easier to locate your address.</span> 
+                        <input id="shippinglandmarkid" @if($user->shippingAddress()) value="{{$user->shippingAddress()->landmark}}" @endif name="shippinglandmark" type="text" required />
+                        <span>Please include landmark (e.g : Opposite Bank) as the carrier service may find it easier to locate your address.</span>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="input-box">
                         <label for="shippingcountryid">Country</label>
-                        <input type="text" @if($user->shippingAddress()) value="{{$user->shippingAddress()->country}}" @endif name="shippingcountry" id="shippingcountryid">
+                        <input required type="text"  @if($user->shippingAddress()) value="{{$user->shippingAddress()->country}}" @endif name="shippingcountry" id="shippingcountryid">
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -164,7 +164,7 @@
                     <div class="col-md-6">
                       <div class="input-box">
                         <label for="billingcompanyid">Company</label>
-                        <input type="text" @if($user->billingAddress()) value="{{$user->billingAddress()->company_name}}" @endif id="billingcompanyid" name="billingcompany">
+                        <input type="text" @if($user->billingAddress()) value="{{$user->billingAddress()->company_name}}" @endif required id="billingcompanyid" name="billingcompany">
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -177,20 +177,20 @@
                       <div class="input-box">
                         <label for="billingaddressid">Billing Address</label>
                         <input type="text" @if($user->billingAddress()) value="{{$user->billingAddress()->address}}" @endif required id="billingaddressid" name="billingaddress">
-                        <span>Please provide the number and street.</span> 
+                        <span>Please provide the number and street.</span>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="input-box">
                         <label for="billinglandmarkid">Billing Landmark</label>
-                        <input type="text" @if($user->billingAddress()) value="{{$user->billingAddress()->landmark}}" @endif id="billinglandmarkid" name="billinglandmark">
-                        <span>Please include landmark (e.g : Opposite Bank) as the carrier service may find it easier to locate your address.</span> 
+                        <input type="text" @if($user->billingAddress()) value="{{$user->billingAddress()->landmark}}" @endif required id="billinglandmarkid" name="billinglandmark">
+                        <span>Please include landmark (e.g : Opposite Bank) as the carrier service may find it easier to locate your address.</span>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="input-box">
                         <label for="billingcountryid">Billing Country</label>
-                        <input type="text" @if($user->billingAddress()) value="{{$user->billingAddress()->country}}" @endif name="billingcountry" id="billingcountryid"/>
+                        <input type="text" @if($user->billingAddress()) value="{{$user->billingAddress()->country}}" @endif required name="billingcountry" id="billingcountryid"/>
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -218,4 +218,3 @@
     </div>
   </section>
   @endsection
-  

@@ -105,6 +105,6 @@ class CartItemController extends Controller
         $cart = \App\Cart::where('user_id', '=', Auth::id())->first();
         $item = $cart->cartItems->find($id);
         $item->delete();
-        return back()->withInputs();
+        return back();
     }
 }

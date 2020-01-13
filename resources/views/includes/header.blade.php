@@ -47,11 +47,6 @@
           <div class="col-xl-3 col-md-3 col-lgmd-20per">
             <div class="right-side float-left-xs header-right-link">
               <ul>
-                <li class="compare-icon">
-                  <a href="/compare">
-                    <span></span>
-                  </a>
-                </li>
                 <li class="wishlist-icon">
                   <a href="/wishlist">
                     <span></span>
@@ -65,7 +60,7 @@
                   <div class="cart-dropdown header-link-dropdown">
                     <ul class="cart-list link-dropdown-list">
                       @foreach($cart->cartItems as $item)
-                      <li><a class="close-cart"><i class="fa fa-times-circle"></i></a>
+                      <li ><a class="close-cart"><i class="fa fa-times-circle"></i></a>
                         <div class="media"> <a class="pull-left"> <img alt="{{$item->product->name}}" src="{{Voyager::image($item->product->thumbnail)}}"></a>
                           <div class="media-body"><span><a href="/product-page/{{$item->product->id}}">{{$item->product->name}}</a></span>
                             <p class="cart-price">{{$item->product->price}}</p>

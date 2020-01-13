@@ -163,9 +163,37 @@ class PagesController extends Controller
     	return view('about');
     }
 
-    public function blog()
+
+        public function blog(Request $request){
+
+        $posts = \App\Post::orderBy('created_at', 'desc')
+            ->take(10)
+            ->get();
+
+        $recent_posts = \App\Post::orderBy('created_at', 'desc')
+            ->take(3)
+            ->get();
+        
+    	return view('blog', [
+    	    'posts' => $posts,
+    	    'recent_posts' => $recent_posts
+
+            ]);
+        }
+
+    public function singleBlog($postId)
     {
-    	return view('blog');
+        $single_post = \App\Post::findOrFail($postId);
+
+        $recent_posts = \App\Post::orderBy('created_at', 'desc')
+            ->take(3)
+            ->get();
+
+        return view('single-blog', [
+            'single_post' => $single_post,
+            'recent_posts' => $recent_posts
+
+        ]);
     }
 
     public function contact()

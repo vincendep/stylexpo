@@ -3,9 +3,9 @@
 @section('open body')
 <body >
 <div class="se-pre-con"></div>
-<div class="main"> 
+<div class="main">
 @endsection
-  
+
   @section('bread crumb')
   @include('includes/breadcrumb')
   @endsection
@@ -17,41 +17,41 @@
         <div class="col-12">
           <div class="checkout-step mb-40">
             <ul>
-              <li> 
+              <li>
                   <a href="/checkout">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">1</div>
                   </div>
-                  <span>Shipping</span> 
-                </a> 
+                  <span>Shipping</span>
+                </a>
               </li>
-              <li class="active"> 
+              <li class="active">
                 <a href="/order-overview">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">2</div>
                   </div>
-                  <span>Order Overview</span> 
-                </a> 
+                  <span>Order Overview</span>
+                </a>
               </li>
-              <li> 
+              <li>
                 <a href="/payment">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">3</div>
                   </div>
-                  <span>Payment</span> 
-                </a> 
+                  <span>Payment</span>
+                </a>
               </li>
-              <li> 
+              <li>
                 <a href="/order-complete">
                   <div class="step">
                     <div class="line"></div>
                     <div class="circle">4</div>
                   </div>
-                  <span>Order Complete</span> 
-                </a> 
+                  <span>Order Complete</span>
+                </a>
               </li>
               <li>
                 <div class="step">
@@ -87,7 +87,7 @@
                         @foreach($cart->cartItems as $cartItem)
                         <tr>
                           <td><a href="/product-page/{{$cartItem->product->id}}">
-                            <div class="product-image"><img alt="{{$cartItem->product->name}}" src="{{$cartItem->product->thumbnail}}"></div>
+                            <div class="product-image"><img alt="{{$cartItem->product->name}}" src="{{Voyager::image($cartItem->product->thumbnail)}}"></div>
                             </a></td>
                           <td><div class="product-title">
                             <a href="/product-page/{{$cartItem->product->id}}">{{$cartItem->product->name}}</a>
@@ -211,4 +211,3 @@
     </div>
   </section>
   @endsection
-  

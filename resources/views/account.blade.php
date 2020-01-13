@@ -7,7 +7,7 @@
 <div class="se-pre-con"></div>
 <div class="main">
 @endsection
- 
+
   @section('bread crumb')
   @include('includes.breadcrumb')
   @endsection
@@ -47,7 +47,7 @@
                   <div class="heading-part">
                     <h3 class="sub-heading">Hello, {{$user->name}}</h3>
                   </div>
-                  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet. 
+                  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet.
                   <a class="account-link" id="subscribelink" href="#">Click Here</a></p>
                 </div>
               </div>
@@ -180,14 +180,14 @@
                       <div class="input-box">
                         <label for="shippingaddressid">Shipping Address</label>
                         <input id="shippingaddressid" @if($user->shippingAddress()) value="{{$user->shippingAddress()->address}}" @endif name="shippingaddress" type="text" required />
-                        <span>Please provide the number and street.</span> 
+                        <span>Please provide the number and street.</span>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="input-box">
                         <label for="shippinglandmarkid">Shipping Landmark</label>
                         <input id="shippinglandmarkid" @if($user->shippingAddress()) value="{{$user->shippingAddress()->landmark}}" @endif name="shippinglandmark" type="text" />
-                        <span>Please include landmark (e.g : Opposite Bank) as the carrier service may find it easier to locate your address.</span> 
+                        <span>Please include landmark (e.g : Opposite Bank) as the carrier service may find it easier to locate your address.</span>
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -245,14 +245,14 @@
                       <div class="input-box">
                         <label for="billingaddressid">Billing Address</label>
                         <input type="text" @if($user->billingAddress()) value="{{$user->billingAddress()->address}}" @endif required id="billingaddressid" name="billingaddress">
-                        <span>Please provide the number and street.</span> 
+                        <span>Please provide the number and street.</span>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="input-box">
                         <label for="billinglandmarkid">Billing Landmark</label>
                         <input type="text" @if($user->billingAddress()) value="{{$user->billingAddress()->landmark}}" @endif id="billinglandmarkid" name="billinglandmark">
-                        <span>Please include landmark (e.g : Opposite Bank) as the carrier service may find it easier to locate your address.</span> 
+                        <span>Please include landmark (e.g : Opposite Bank) as the carrier service may find it easier to locate your address.</span>
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -299,7 +299,7 @@
                       <table class="table">
                         <thead>
                           <tr>
-                            <th colspan="4"> 
+                            <th colspan="4">
                               <ul>
                                 <li><span>Order placed</span> <span>{{$order->created_at}}</span></li>
                                 <li class="price-box"><span>Total</span> <span class="price">{{$order->total()}} &euro;</span></li>
@@ -314,24 +314,24 @@
                             <td>
                               <a href="/product-page/{{$orderLine->product->id}}">
                                 <div class="product-image">
-                                  <img alt="{{$orderLine->product->name}}" src="{{$orderLine->product->thumbnail}}">
+                                  <img alt="{{$orderLine->product->name}}" src="{{Voyager::image($orderLine->product->thumbnail)}}">
                                 </div>
                               </a>
                             </td>
                             <td>
-                              <div class="product-title"> 
-                                <a href="/product-page/{{$orderLine->product->id}}">{{$orderLine->product->name}}</a> 
+                              <div class="product-title">
+                                <a href="/product-page/{{$orderLine->product->id}}">{{$orderLine->product->name}}</a>
                               </div>
                               <div class="product-info-stock-sku m-0">
                                 <div>
                                   <label>Quantity: </label>
-                                  <span class="info-deta">{{$orderLine->quantity}}</span> 
+                                  <span class="info-deta">{{$orderLine->quantity}}</span>
                                 </div>
                               </div>
                             </td>
                             <td>
-                              <div class="base-price price-box"> 
-                                <span class="price">{{$orderLine->product->price}} &euro;</span> 
+                              <div class="base-price price-box">
+                                <span class="price">{{$orderLine->product->price}} &euro;</span>
                               </div>
                             </td>
                           </tr>
@@ -353,4 +353,4 @@
     </div>
   </section>
   @endsection
-  
+

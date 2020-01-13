@@ -3,14 +3,14 @@
 @section('open body')
 <body >
 <div class="se-pre-con"></div>
-<div class="main contact-main"> 
+<div class="main contact-main">
 @endsection
 
-  
+
   @section('bread crumb')
   @include('includes/breadcrumb')
   @endsection
-  
+
   @section('content')
   <!-- CONTAIN START ptb-95-->
   <section class="pt-70">
@@ -21,7 +21,7 @@
             <div class="map-part">
               <div id="map" class="map-inner-part"></div>
             </div>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d2965.0824050173574!2d-93.63905729999999!3d41.998507000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sWebFilings%2C+University+Boulevard%2C+Ames%2C+IA!5e0!3m2!1sen!2sus!4v1390839289319" width="100%" height="200" frameborder="0" style="border:0"></iframe> 
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28049.12497106515!2d13.365312745793338!3d42.357422395223686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132fcd66882dc14f%3A0xbfcd671e4e655ba9!2sUNIVAQ!5e0!3m2!1sit!2sit!4v1578927373829!5m2!1sit!2sit"  width="1200" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
           </div>
         </div>
       </div>
@@ -92,6 +92,6 @@
       </div>
     </div>
   </section>
-  <!-- CONTAINER END --> 
+  <!-- CONTAINER END -->
   @endsection
 
