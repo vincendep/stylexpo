@@ -23,9 +23,12 @@ class PagesController extends Controller
         $bestSellers = \App\Product::orderBy('selling_number', 'desc')
             ->take(20)
             ->get();
-
         $dailyDeals = \App\Product::whereNotNull('sale')
             ->orderBy('sale', 'desc')
+            ->take(10)
+            ->get();
+
+        $latestNews = \App\Post::orderBy('created_at', 'desc')
             ->take(10)
             ->get();
 
@@ -34,7 +37,8 @@ class PagesController extends Controller
             'newArrivals' => $newArrivals,
             'topCategories' => $topCategories,
             'bestSellers' => $bestSellers,
-            'dailyDeals' => $dailyDeals
+            'dailyDeals' => $dailyDeals,
+            'latestNews' => $latestNews
         ]);
     }
 
@@ -51,7 +55,7 @@ class PagesController extends Controller
             $products = \App\Product::where('id', '>', 0);
         }
         $bestSellers = $products->get()->sortByDesc('selling_number')->take(3);
-        
+
         $query = $request->input('q');
         $sizeParams = $request->input('size');
         $colorParams = $request->input('color');
@@ -60,7 +64,7 @@ class PagesController extends Controller
         {
             // TODO query string match
         }
-        if ($sizeParams) 
+        if ($sizeParams)
         {
             $products = $products->whereHas('sizes', function($q) use($sizeParams) {
                 $q->whereIn('name', $sizeParams);
@@ -102,7 +106,7 @@ class PagesController extends Controller
                 # code...
                 break;
         }
-    
+
         $sizes = \App\Size::all();
         $colors = \App\Color::all();
 
@@ -124,7 +128,7 @@ class PagesController extends Controller
             ->take(15)
             ->get()
             ->except($product->id);
-        
+
         return view('product-page', [
             'product' => $product,
             'colors' => $colors,
@@ -134,7 +138,7 @@ class PagesController extends Controller
     }
 
     public function cart()
-    { 
+    {
         return view('cart');
     }
 

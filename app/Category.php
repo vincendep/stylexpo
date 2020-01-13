@@ -8,7 +8,7 @@ class Category extends \TCG\Voyager\Models\Category
 {
 
 	protected $attributes = [
-		'thumbnail' => 'https://via.placeholder.com/430x500.jpg?text=Category'
+		'thumbnail' => 'categories/categoryImageDefault.jpg'
 	];
 
     public function products()

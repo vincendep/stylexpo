@@ -8,7 +8,7 @@ class Product extends Model
 {
     protected $attributes = [
     	'price' => 99.99,
-    	'thumbnail' => "https://via.placeholder.com/750x972.png?text=Product",
+    	'thumbnail' => "products\productImageDefault.png",
     	'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nunc erat, posuere eget augue vel, faucibus efficitur dui. Quisque fringilla maximus purus, id auctor arcu. Phasellus leo massa, ultricies eu ante a, lobortis tincidunt elit. Proin lacus magna, ornare vel metus id, varius suscipit dolor. In elementum ut eros sit.'
     ];
 

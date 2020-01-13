@@ -3,13 +3,13 @@
 @section('body opening')
 <body >
 <div class="se-pre-con"></div>
-<div class="main"> 
+<div class="main">
 @endsection
 
   @section('bread crumb')
-  @include('includes.breadcrumb') 
+  @include('includes.breadcrumb')
   @endsection
-  
+
   @section('content')
   <!-- CONTAIN START -->
   <section class="ptb-70">
@@ -27,13 +27,13 @@
                   @foreach($categories as $category)
                   <li><a href="/shop/{{$category->slug}}">{{$category->name}}</a></li>
                   @endforeach
-                
+
                 </ul>
               </div>
             </div>
             <div class="sidebar-box mb-40"> <span class="opener plus"></span>
               <div class="sidebar-title">
-                <h3><span>Shop by</span></h3> 
+                <h3><span>Shop by</span></h3>
               </div>
               <div class="sidebar-contant">
                 <!--
@@ -73,21 +73,21 @@
                 </form>
               </div>
             </div>
-            <div class="sidebar-box mb-40 d-none d-lg-block"> 
-              <a href="#"> 
-                <img src="{{ asset('img/left-banner.jpg') }}" alt="Stylexpo"> 
-              </a> 
+            <div class="sidebar-box mb-40 d-none d-lg-block">
+              <a href="#">
+                <img src="{{ asset('img/left-banner.jpg') }}" alt="Stylexpo">
+              </a>
             </div>
             <div class="sidebar-box sidebar-item"> <span class="opener plus"></span>
               <div class="sidebar-title">
-                <h3><span>Best Seller</span></h3> 
+                <h3><span>Best Seller</span></h3>
               </div>
               <div class="sidebar-contant">
                 <ul>
 
                   @foreach($bestSellers as $bestSeller)
                   <li>
-                    <div class="pro-media"><a href="#"><img alt="{{$bestSeller->name}}" src="{{$bestSeller->thumbnail}}"></a></div>
+                    <div class="pro-media"><a href="#"><img alt="{{$bestSeller->name}}" src="{{Voyager::image($bestSeller->thumbnail)}}"></a></div>
                     <div class="pro-detail-info"><a href="#">{{$bestSeller->name}}</a>
                       <div class="rating-summary-block">
                         <div class="rating-result" title="53%"> <span style="width:53%"></span> </div>
@@ -107,7 +107,7 @@
             </div>
           </div>
         </div>
-        <div id="product-listing" class="col-xl-10 col-lg-9 col-lgmd-80per"> 
+        <div id="product-listing" class="col-xl-10 col-lg-9 col-lgmd-80per">
           <div class="shorting mb-30">
             <div class="row">
               <div class="col-lg-6">
@@ -146,14 +146,14 @@
           <div class="product-listing">
             <div class="inner-listing">
               <div class="row">
-                
+
                 @foreach($products as $product)
                 <div class="col-md-4 col-6 item-width mb-30 item-box">
                   <div class="product-item">
                     @if ($product->sale)
                     <div class="main-label sale-label"><span>Sale</span></div>
                     @endif
-                    <div class="product-image"><a href="/product-page/{{$product->id}}"><img src="{{$product->thumbnail}}" alt="{{$product->name}}"></a>
+                    <div class="product-image"><a href="/product-page/{{$product->id}}"><img src="{{Voyager::image($product->thumbnail)}}" alt="{{$product->name}}"></a>
                     </div>
                     <div class="product-item-details">
                       <div class="product-item-name"><a href="/product-page/{{$product->id}}">{{$product->name}}</a></div>
@@ -190,7 +190,7 @@
     </div>
   </section>
   <!-- CONTAINER END -->
-  <script type="text/javascript">        
+  <script type="text/javascript">
     var numberOfPages = undefined;
     var currPage = 1;
     var productsPerPage = document.getElementById('products-per-page').value;
@@ -211,7 +211,7 @@
       }
       currPage = 1;
       productsPerPage = select.value;
-      
+
       showProducts();
       generatePagination();
     }
@@ -259,7 +259,7 @@
         location.href = "#product-listing";
       }
     }
-    
+
     updateProductsPerPage();
 
   </script>

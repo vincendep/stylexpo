@@ -9,7 +9,7 @@
               <div class="navbar-header float-none-sm">
                 <a class="navbar-brand page-scroll" href="/">
                   <img alt="Stylexpo" src="{{ asset('img/logo.png') }}">
-                </a> 
+                </a>
               </div>
             </div>
           </div>
@@ -26,7 +26,7 @@
                 </fieldset>
               </div>
               <div class="main-search">
-                <div class="header_search_toggle desktop-view">  
+                <div class="header_search_toggle desktop-view">
                   <div class="search-box">
                     <input id="shop-query" class="input-text" type="text" name="q" placeholder="Search entire store here...">
                     <button onclick="shop()" class="search-btn"></button>
@@ -66,7 +66,7 @@
                     <ul class="cart-list link-dropdown-list">
                       @foreach($cart->cartItems as $item)
                       <li><a class="close-cart"><i class="fa fa-times-circle"></i></a>
-                        <div class="media"> <a class="pull-left"> <img alt="{{$item->product->name}}" src="{{$item->product->thumbnail}}"></a>
+                        <div class="media"> <a class="pull-left"> <img alt="{{$item->product->name}}" src="{{Voyager::image($item->product->thumbnail)}}"></a>
                           <div class="media-body"><span><a href="/product-page/{{$item->product->id}}">{{$item->product->name}}</a></span>
                             <p class="cart-price">{{$item->product->price}}</p>
                             <div class="product-qty">
@@ -94,7 +94,7 @@
         </div>
       </div>
     </div>
-    <div class="header-bottom"> 
+    <div class="header-bottom">
       <div class="container">
         <div class="row position-r">
           <div class="col-xl-2 col-lg-3 col-lgmd-20per position-initial">
@@ -107,8 +107,8 @@
                       <ul>
                         <li class="login-icon content">
                           <a class="content-link">
-                          <span class="content-icon"></span> 
-                          </a> 
+                          <span class="content-icon"></span>
+                          </a>
                           <a href="login.html" title="Login">Login</a> or
                           <a href="register.html" title="Register">Register</a>
                           <div class="content-dropdown">
@@ -127,7 +127,7 @@
                       </ul>
                     </div>
                     <ul class="nav navbar-nav ">
-                      @foreach($categories as $category)       
+                      @foreach($categories as $category)
                       <li class="level">
                         <a href="/shop/{{$category->slug}}" class="page-scroll">{{$category->name}}</a>
                       </li>
@@ -168,7 +168,7 @@
           </div>
           <div class="col-xl-9 col-lg-9 col-lgmd-80per">
             <div class="bottom-inner">
-              <div class="position-r">          
+              <div class="position-r">
                 <div class="nav_sec position-r">
                   <div class="mobilemenu-title mobilemenu">
                     <span>Menu</span>
@@ -225,4 +225,3 @@
     </div>
   </header>
   <!-- HEADER END -->
-  

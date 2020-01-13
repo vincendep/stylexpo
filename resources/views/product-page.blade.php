@@ -3,9 +3,9 @@
 @section('open body')
 <body  class="product-page">
 <div class="se-pre-con"></div>
-<div class="main"> 
+<div class="main">
 @endsection
-  
+
   @section('bread bread crumb')
   @include('includes/breadcrumb')
   @endsection
@@ -18,10 +18,10 @@
           <div class="row">
             <div class="col-lg-5 col-md-5 mb-xs-30">
               <div class="fotorama" data-nav="thumbs" data-allowfullscreen="native">
-                <a href="#"><img src="{{$product->thumbnail}}" alt="{{$product->name}}"></a>
-                
+                <a href="#"><img src="{{Voyager::image($product->thumbnail)}}" alt="{{$product->name}}"></a>
+
                 @foreach($product->images as $image)
-                <a href="#"><img src="{{$image->url}}" alt="{{$product->name}}"></a>
+                <a href="#"><img src="{{Voyager::image($image->url)}}" alt="{{$product->name}}"></a>
                 @endforeach
 
               </div>
@@ -40,12 +40,12 @@
                         <span class="price">{{number_format($product->price - ($product->price * $product->sale), 2, '.', '')}} &euro;</span><del class="price old-price">{{$product->price}} &euro;</del>
                         @else
                         <span class="price">{{$product->price}} &euro;</span>
-                        @endif 
+                        @endif
                       </div>
                       <div class="product-info-stock-sku">
                         <div>
                           <label>Availability: </label>
-                          <span class="info-deta">{{$product->quantity > 0 ? 'In stock' : 'Out of stock'}}</span> 
+                          <span class="info-deta">{{$product->quantity > 0 ? 'In stock' : 'Out of stock'}}</span>
                         </div>
                       </div>
                       <p>{{$product->description}}</p>
@@ -53,7 +53,7 @@
                         <label>Size</label>
                         <fieldset>
                           <select name="size" form="add-to-cart-form" class="selectpicker form-control option-drop" id="select-by-size">
-                            
+
                             @foreach($product->sizes as $size)
                             <option value="{{$size->id}}">{{$size->name}}</option>
                             @endforeach
@@ -65,11 +65,11 @@
                         <label>Color</label>
                         <fieldset>
                           <select form="add-to-cart-form" name="color" class="selectpicker form-control option-drop" id="select-by-color">
-                            
+
                             @foreach($product->colors as $color)
                             <option value="{{$color->id}}">{{$color->name}}</option>
                             @endforeach
-                            
+
                           </select>
                         </fieldset>
                       </div>
@@ -88,7 +88,7 @@
                               <form id="add-to-cart-form" action="/cart-items" method="post">
                                 @csrf
                                 <input type="hidden" name="product" value="{{$product->id}}"/>
-                                <button style="background-color: white" type="submit" title="Add to Cart" class="btn-color"><span></span>Add to Cart</button>
+                                <button type="submit" title="Add to Cart" class="btn-color"><span></span>Add to Cart</button>
                               </form>
                             </li>
                           </ul>
@@ -100,7 +100,7 @@
                             <form action="/wish-items" method="post">
                               @csrf
                               <input type="hidden" name="product" value="{{$product->id}}"/>
-                              <button type="submit">
+                              <button style="background-color: white; color: gray" type="submit">
                                 <span></span>
                                 Wishlist
                               </button>
@@ -131,7 +131,7 @@
         </div>
         <div class="col-lg-3">
           <div class="brand-logo-pro align-center mb-30">
-            <img src="{{ $product->brand->logo }}" alt="{{$product->brand->name}}">
+            <img src="{{Voyager::image($product->brand->logo)}}" alt="{{$product->brand->name}}">
           </div>
           <div class="sub-banner-block align-center">
             <img src="{{ asset('img/pro-banner.jpg') }}" alt="Stylexpo">
@@ -281,7 +281,7 @@
                   <div class="main-label sale-label"><span>Sale</span></div>
                   @endif
                   <div class="product-image">
-                    <a href="\product-page\{{$product->id}}"> <img src="{{$product->thumbnail}}" alt="{{$product->name}}"></a>
+                    <a href="\product-page\{{$product->id}}"> <img src="{{Voyager::image($product->thumbnail)}}" alt="{{$product->name}}"></a>
                     <div class="product-detail-inner">
                       <div class="detail-inner-left align-center">
                         <ul>
@@ -305,7 +305,7 @@
                       <span class="price">{{number_format($product->price - ($product->price * $product->sale), 2, '.', '')}} &euro;</span><del class="price old-price">{{$product->price}} &euro;</del>
                       @else
                       <span class="price">{{$product->price}} &euro;</span>
-                      @endif 
+                      @endif
                     </div>
                   </div>
                 </div>

@@ -14,7 +14,7 @@
   <!-- SUB-BANNER START -->
   @include('includes.subbanner')
   <!-- SUB-BANNER END -->
-    
+
   <!--  New arrivals Products Slider Block Start  -->
   <section class="pt-70">
     <div class="container">
@@ -28,8 +28,8 @@
         </div>
         <div class="pro_cat">
           <div class="row">
-            <div class="owl-carousel pro-cat-slider ">  
-              
+            <div class="owl-carousel pro-cat-slider ">
+
               @foreach($newArrivals as $product)
                 <div class="item">
                   <div class="product-item">
@@ -38,7 +38,7 @@
                     <div class="main-label sale-label"><span>Sale</span></div>
                     @endif
                     <div class="product-image">
-                      <a href="/product-page/{{$product->id}}"><img src="{{ $product->thumbnail }}" alt='Stylexpo'></a>
+                      <a href="/product-page/{{$product->id}}"><img src="{{Voyager::image($product->thumbnail)}}" alt='Stylexpo'></a>
                     </div>
                     <div class="product-item-details">
                       <div class="product-item-name"> <a href="/product-page/{{$product->id}}">{{$product->name}}</a> </div>
@@ -47,13 +47,13 @@
                         <span class="price">{{number_format($product->price - ($product->price * $product->sale), 2, '.', '')}} &euro;</span><del class="price old-price">{{$product->price}} &euro;</del>
                         @else
                         <span class="price">{{$product->price}} &euro;</span>
-                        @endif 
+                        @endif
                       </div>
                     </div>
                   </div>
                 </div>
               @endforeach
-            
+
             </div>
           </div>
         </div>
@@ -76,12 +76,12 @@
         <div class="pro_cat">
           <div class="row">
             <div id="top-cat-pro" class="owl-carousel sell-pro align-center">
-              
+
               @foreach($topCategories as $category)
               <div class="item ">
                 <a href="/shop/{{$category->slug}}">
                   <div class="item-inner">
-                      <img src="{{asset($category->thumbnail)}}" alt="Stylexpo">
+                      <img src="{{Voyager::image($category->thumbnail)}}" alt="Stylexpo">
                     <div class="cate-detail">
                       <span>{{$category->name}}</span>
                     </div>
@@ -105,8 +105,8 @@
           <div class="col-xl-8 offset-xl-2 ptb-70 client-box">
             <div class="perellex-delail align-center">
               <div class="perellex-offer"><span class="line-bottom">Up to 50% Off on Electronics</span></div>
-              <div class="perellex-title ">New computer models are releasing </div> 
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>         
+              <div class="perellex-title ">New computer models are releasing </div>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
               <a href="/shop" class="btn btn-color">Shop Now!</a>
             </div>
           </div>
@@ -130,30 +130,30 @@
         <div class="pro_cat">
           <div class="row">
             <div id="daily_deals" class="owl-carousel ">
-              
+
               @foreach($dailyDeals as $product)
               <div class="item">
                 <div class="product-item">
                   <div class="main-label sale-label"><span>Sale</span></div>
                   <div class="row ">
                     <div class="col-md-6 col-12 deals-img ">
-                      <div class="product-image"> 
-                        <a href="/product-page/{{$product->id}}"> 
-                          <img src="{{$product->thumbnail}}" alt="Stylexpo"> 
+                      <div class="product-image">
+                        <a href="/product-page/{{$product->id}}">
+                          <img src="{{Voyager::image($product->thumbnail)}}" alt="Stylexpo">
                         </a>
                       </div>
                     </div>
                     <div class="col-md-6 col-12 mt-xs-30">
                       <div class="product-item-details">
-                        <div class="product-item-name"> 
-                          <a href="/product-page/{{$product->id}}">{{$product->name}}</a> 
+                        <div class="product-item-name">
+                          <a href="/product-page/{{$product->id}}">{{$product->name}}</a>
                         </div>
-                        <div class="price-box"> 
+                        <div class="price-box">
                           @if($product->sale)
                           <span class="price">{{number_format($product->price - ($product->price * $product->sale), 2, '.', '')}} &euro;</span><del class="price old-price">{{$product->price}} &euro;</del>
                           @else
                           <span class="price">{{$product->price}} &euro;</span>
-                          @endif 
+                          @endif
                         </div>
                         <p style="max-height: 80px;overflow: hidden;text-overflow: ellipsis;">{{$product->description}}</p>
                       </div>
@@ -219,7 +219,7 @@
   <!--  Site Services Features Block End  -->
 
   <!--small banner Block Start-->
-  <section class="pt-70"> 
+  <section class="pt-70">
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
@@ -257,7 +257,7 @@
             <div class="pro_cat">
               <div class="row">
                 <div class="owl-carousel pro-cat-slider">
-                  
+
                   @foreach($bestSellers as $product)
                   <div class="item">
                     <div class="product-item">
@@ -265,7 +265,7 @@
                       <div class="main-label sale-label"><span>Sale</span></div>
                       @endif
                       <div class="product-image">
-                        <a href="/product-page/{{$product->id}}"> <img src="{{$product->thumbnail}}" alt="Stylexpo"></a>
+                        <a href="/product-page/{{$product->id}}"> <img src="{{Voyager::image($product->thumbnail)}}" alt="Stylexpo"></a>
                       </div>
                       <div class="product-item-details">
                         <div class="product-item-name"> <a href="/product-page/{{$product->id}}">{{$product->name}}</a> </div>
@@ -274,7 +274,7 @@
                           <span class="price">{{number_format($product->price - ($product->price * $product->sale), 2, '.', '')}} &euro;</span><del class="price old-price">{{$product->price}} &euro;</del>
                           @else
                           <span class="price">{{$product->price}} &euro;</span>
-                          @endif 
+                          @endif
                         </div>
                       </div>
                     </div>
@@ -301,175 +301,36 @@
           </div>
         </div>
       </div>
-      <div class="row">
+        <div class="row">
         <div id="blog" class="owl-carousel">
-          <div class="item mb-md-30">
+            @foreach($latestNews as $post)
+            <div class="item mb-md-30">
             <div class="blog-item">
               <div class="">
-              <div class="blog-media"> 
-                <img src="{{ asset('img/blog_img1.jpg') }}" alt="Stylexpo">
-                <div class="blog-effect"></div> 
-                <a href="single-blog.html" title="Click For Read More" class="read">&nbsp;</a> 
-              </div>
-              </div>
-              <div class="mt-30">
-                <div class="blog-detail"> 
-                  <div class="blog-title"><a href="single-blog.html">MAURIS LACINIA LECTUS</a></div>
-                  <div class="post-info">
-                    <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet.</p>
-                    <ul>
-                      <li>
-                        <a href="#">0 comment(s)</a>
-                      </li>
-                      <li>
-                        <a href="single-blog.html">Read more 
-                          <i class="fa fa-angle-double-right"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="item mb-md-30">
-            <div class="blog-item">
-              <div class="blog-media"> 
-                <img src="{{ asset('img/blog_img2.jpg') }}" alt="Stylexpo"> 
+              <div class="blog-media">
+                <img src="{{Voyager::image($post->image)}}" alt="Stylexpo">
                 <div class="blog-effect"></div>
                 <a href="single-blog.html" title="Click For Read More" class="read">&nbsp;</a>
               </div>
+              </div>
               <div class="mt-30">
-                <div class="blog-detail"> 
-                  <div class="blog-title"><a href="single-blog.html">MAURIS LACINIA LECTUS</a></div>
-                  <div class="post-info">
-                    <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet.</p>
-                    <ul>
-                      <li>
-                        <a href="#">0 comment(s)</a>
-                      </li>
-                      <li>
-                        <a href="single-blog.html">Read more 
+                <div class="blog-detail">
+                  <div class="blog-title"><a href="single-blog.html">{{$post->title}}</a></div>
+                  <div class="post-info" >
+                    {!!$post->body!!}
+                        <a href="single-blog.html">Read more
                           <i class="fa fa-angle-double-right"></i>
                         </a>
-                      </li>
-                    </ul>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="item">
-            <div class="blog-item">
-              <div class="blog-media"> 
-                <img src="{{ asset('img/blog_img3.jpg') }}" alt="Stylexpo">
-                <div class="blog-effect"></div>  
-                <a href="single-blog.html" title="Click For Read More" class="read">&nbsp;</a>
-              </div>
-              <div class="mt-30">
-                <div class="blog-detail"> 
-                  <div class="blog-title"><a href="single-blog.html">MAURIS LACINIA LECTUS</a></div>
-                  <div class="post-info">
-                    <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet.</p>
-                    <ul>
-                      <li>
-                        <a href="#">0 comment(s)</a>
-                      </li>
-                      <li>
-                        <a href="single-blog.html">Read more 
-                          <i class="fa fa-angle-double-right"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="blog-item">
-              <div class="blog-media"> 
-                <img src="{{ asset('img/blog_img4.jpg') }}" alt="Stylexpo"> 
-                <div class="blog-effect"></div>
-                <a href="single-blog.html" title="Click For Read More" class="read">&nbsp;</a>
-              </div>
-              <div class="mt-30">
-                <div class="blog-detail"> 
-                  <div class="blog-title"><a href="single-blog.html">MAURIS LACINIA LECTUS</a></div>
-                  <div class="post-info">
-                    <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet.</p>
-                    <ul>
-                      <li>
-                        <a href="#">0 comment(s)</a>
-                      </li>
-                      <li>
-                        <a href="single-blog.html">Read more 
-                          <i class="fa fa-angle-double-right"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="blog-item">
-              <div class="blog-media"> 
-                <img src="{{ asset('img/blog_img5.jpg') }}" alt="Stylexpo">
-                <div class="blog-effect"></div>  
-                <a href="single-blog.html" title="Click For Read More" class="read">&nbsp;</a>
-              </div>
-              <div class="mt-30">
-                <div class="blog-detail"> 
-                  <div class="blog-title"><a href="single-blog.html">MAURIS LACINIA LECTUS</a></div>
-                  <div class="post-info">
-                    <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet.</p>
-                    <ul>
-                      <li>
-                        <a href="#">0 comment(s)</a>
-                      </li>
-                      <li>
-                        <a href="single-blog.html">Read more 
-                          <i class="fa fa-angle-double-right"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="blog-item">
-              <div class="blog-media"> 
-                <img src="{{ asset('img/blog_img6.jpg') }}" alt="Stylexpo"> 
-                <div class="blog-effect"></div>
-                <a href="single-blog.html" title="Click For Read More" class="read">&nbsp;</a>
-              </div>
-              <div class="mt-30">
-                <div class="blog-detail"> 
-                  <div class="blog-title"><a href="single-blog.html">MAURIS LACINIA LECTUS</a></div>
-                  <div class="post-info">
-                    <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet.</p>
-                    <ul>
-                      <li>
-                        <a href="#">0 comment(s)</a>
-                      </li>
-                      <li>
-                        <a href="single-blog.html">Read more 
-                          <i class="fa fa-angle-double-right"></i>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+            @endforeach
+
             </div>
           </div>
         </div>
-      </div>
-    </div>
   </section>
   <!--Blog Block End -->
 
@@ -486,11 +347,11 @@
       <div class="row brand">
         <div class="col-md-12">
           <div id="brand-logo" class="owl-carousel align_center">
-            
+
             @foreach($brands as $brand)
-            <div class="item"><a href="#"><img src="{{ asset($brand->logo) }}" alt="{{$brand->name}}"></a></div>
+            <div class="item"><a href="#"><img src="{{Voyager::image($brand->logo)}}" alt="{{$brand->name}}"></a></div>
             @endforeach
-          
+
           </div>
         </div>
       </div>
@@ -524,7 +385,7 @@
       event.target.mute();
       event.target.setPlaybackQuality('hd720');
       //$(".video").fitVids();
-      
+
       $('.video i').on('click',function() {
         if ($('.video').hasClass('on')) {
           event.target.mute();
@@ -534,7 +395,7 @@
           $('.video').addClass('on');
         }
       });
-      
+
     }
 
     function onPlayerStateChange(event) {

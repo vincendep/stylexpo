@@ -1,4 +1,5 @@
 <!-- Bread Crumb START -->
+<!--
 <div class="banner inner-banner1 ">
   <div class="container">
     <section class="banner-detail center-xs">
@@ -12,4 +13,5 @@
     </section>
   </div>
 </div>
+-->
 <!-- Bread Crumb END -->

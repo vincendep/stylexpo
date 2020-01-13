@@ -8,7 +8,7 @@
                 <div class="sub-banner-detail">
                   <div class="sub-banner-title sub-banner-title-color">Most Popular Sunglasses</div>
                   <div class="sub-banner-subtitle">Latest, Stylish and Trendy Collection</div>
-                  <a class="btn btn-color" href="shop.html">Shop Now!</a>
+                  <a class="btn btn-color" href="/shop">Shop Now!</a>
                 </div>
               </div>
             </div>
@@ -19,7 +19,7 @@
                   <div class="sub-banner-detail">
                     <div class="sub-banner-title sub-banner-title-color">Shoes & Footwear</div>
                     <div class="sub-banner-subtitle"> range of footwea & shoes for men & women</div>
-                    <a class="btn btn-color " href="shop.html">Shop Now!</a>
+                    <a class="btn btn-color " href="/shop">Shop Now!</a>
                   </div>
                 </div>
               </div>
@@ -30,7 +30,7 @@
                 <div class="sub-banner-detail">
                   <div class="sub-banner-title sub-banner-title-color">Shop Watches Online</div>
                   <div class="sub-banner-subtitle">Latest range of Digital & Analog Watches</div>
-                  <a class="btn btn-color " href="shop.html">Shop Now!</a>
+                  <a class="btn btn-color " href="/shop">Shop Now!</a>
                 </div>
               </div>
             </div>

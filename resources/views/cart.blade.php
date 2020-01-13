@@ -5,9 +5,9 @@
 @section('open body')
 <body >
 <div class="se-pre-con"></div>
-<div class="main"> 
+<div class="main">
 @endsection
-  
+
   @section('bread crumb')
   @include('includes/breadcrumb')
   @endsection
@@ -40,20 +40,20 @@
                     <td>
                       <a href="/product-page/{{$cartItem->product->id}}">
                         <div class="product-image">
-                          <img alt="{{$cartItem->product->name}}" src="{{$cartItem->product->thumbnail}}">
+                          <img alt="{{$cartItem->product->name}}" src="{{Voyager::image($cartItem->product->thumbnail)}}">
                         </div>
                       </a>
                     </td>
                     <td>
-                      <div class="product-title"> 
-                        <a href="/product-page/{{$cartItem->product->id}}">{{$cartItem->product->name}}</a> 
+                      <div class="product-title">
+                        <a href="/product-page/{{$cartItem->product->id}}">{{$cartItem->product->name}}</a>
                       </div>
                     </td>
                     <td>
                       <ul>
                         <li>
-                          <div class="base-price price-box"> 
-                            <span class="price">{{$cartItem->product->price}} &euro;</span> 
+                          <div class="base-price price-box">
+                            <span class="price">{{$cartItem->product->price}} &euro;</span>
                           </div>
                         </li>
                       </ul>
@@ -68,8 +68,8 @@
                       </div>
                     </td>
                     <td>
-                      <div class="total-price price-box"> 
-                        <span class="price">{{$cartItem->subTotal()}} &euro;</span> 
+                      <div class="total-price price-box">
+                        <span class="price">{{$cartItem->subTotal()}} &euro;</span>
                       </div>
                     </td>
                     <td>
@@ -96,11 +96,11 @@
       <div class="mb-30">
         <div class="row" style="justify-content: space-around;">
           <div>
-            <div class="mt-30"> 
+            <div class="mt-30">
               <a href="\shop" class="btn btn-color">
                 <span><i class="fa fa-angle-left"></i></span>
                 Continue Shopping
-              </a> 
+              </a>
             </div>
           </div>
           @if($cart->cartItems->first())
@@ -108,8 +108,8 @@
             <form id="update-cart-form" action="/carts/{{$cart->id}}" method="POST">
               @csrf
               @method('PUT')
-              <div class="mt-30 right-side float-none-xs"> 
-                <button type="submit" class="btn btn-color">Update Cart</button> 
+              <div class="mt-30 right-side float-none-xs">
+                <button type="submit" class="btn btn-color">Update Cart</button>
               </div>
           </div>
           @endif
@@ -132,24 +132,24 @@
                     <tr>
                       <td>Item(s) Subtotal</td>
                       <td>
-                        <div class="price-box"> 
-                          <span class="price">{{$cart->total()}} &euro;</span> 
+                        <div class="price-box">
+                          <span class="price">{{$cart->total()}} &euro;</span>
                         </div>
                       </td>
                     </tr>
                     <tr>
                       <td>Shipping</td>
                       <td>
-                        <div class="price-box"> 
-                          <span class="price">15 &euro;</span> 
+                        <div class="price-box">
+                          <span class="price">15 &euro;</span>
                         </div>
                       </td>
                     </tr>
                     <tr>
                       <td><b>Amount Payable</b></td>
                       <td>
-                        <div class="price-box"> 
-                          <span class="price"><b>{{$cart->total() + 15}} &euro;</b></span> 
+                        <div class="price-box">
+                          <span class="price"><b>{{$cart->total() + 15}} &euro;</b></span>
                         </div>
                       </td>
                     </tr>
@@ -164,10 +164,10 @@
       <div class="mt-30">
         <div class="row">
           <div class="col-12">
-            <div class="text-center"> 
+            <div class="text-center">
               <a href="/checkout" class="btn btn-color">Proceed to checkout
                 <span><i class="fa fa-angle-right"></i></span>
-              </a> 
+              </a>
             </div>
           </div>
         </div>
@@ -176,4 +176,3 @@
     </div>
   </section>
   @endsection
-  

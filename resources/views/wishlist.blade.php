@@ -2,13 +2,13 @@
 @section('open body')
 <body >
 <div class="se-pre-con"></div>
-<div class="main"> 
+<div class="main">
 @endsection
-  
+
   @section('bread crumb')
   @include('includes/breadcrumb')
   @endsection
-  
+
   @section('content')
   <section class="ptb-70">
     <div class="container">
@@ -32,11 +32,11 @@
                   <tr>
                     <td>
                       <a href="product-page.html">
-                      <div class="product-image"><img alt="{{$item->product->name}}" src="{{$item->product->thumbnail}}"></div>
+                      <div class="product-image"><img alt="{{$item->product->name}}" src="{{Voyager::image($item->product->thumbnail)}}"></div>
                       </a>
                     </td>
                     <td>
-                      <div class="product-title"> 
+                      <div class="product-title">
                         <a href="/product-page/{{$item->product->id}}">{{$item->product->name}}</a>
                       </div>
                     </td>
@@ -49,14 +49,14 @@
                             <span class="price">{{number_format($product->price - ($product->price * $product->sale), 2, '.', '')}} &euro;</span><del class="price old-price">{{$product->price}} &euro;</del>
                             @else
                             <span class="price">{{$product->price}} &euro;</span>
-                            @endif 
+                            @endif
                           </div>
                         </li>
                       </ul>
                     </td>
                     <td>
-                      <div class="total-price price-box"> 
-                        <span class="price">{{$product->quantity > 0 ? 'In stock' : 'Out of stock'}}</span> 
+                      <div class="total-price price-box">
+                        <span class="price">{{$product->quantity > 0 ? 'In stock' : 'Out of stock'}}</span>
                       </div>
                     </td>
                     <td>
@@ -82,10 +82,10 @@
       <div class="mb-30">
         <div class="row">
           <div class="col-md-12">
-            <div class="mt-30 text-center"> 
+            <div class="mt-30 text-center">
               <a href="/shop" class="btn btn-color">
                 <span><i class="fa fa-angle-left"></i></span>Continue Shopping
-              </a> 
+              </a>
             </div>
           </div>
         </div>
@@ -93,4 +93,3 @@
     </div>
   </section>
   @endsection
-  
