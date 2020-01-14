@@ -51,7 +51,7 @@
               <div class="sidebar-contant">
                 <ul>
                     @foreach($categories as $category)
-                        <li><a href="/blog/{{$category->slug}}">{{$category->name}}</a></li>
+                        <li><a class="{{request()->is('blog/' . $category->slug) ? 'active-link' : ''}}" href="/blog/{{$category->slug}}">{{$category->name}}</a></li>
                     @endforeach
                 </ul>
               </div>

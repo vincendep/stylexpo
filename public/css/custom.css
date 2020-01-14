@@ -1,6 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins:300,400,400i,500,500i,600,600i,700,700i,800);
 
-
+.active-link {
+	color: red;
+}
 
 [class~=btn][class~=full],
 [class~=se-pre-con] {
