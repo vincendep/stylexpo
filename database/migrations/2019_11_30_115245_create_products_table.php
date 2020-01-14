@@ -23,9 +23,9 @@ class CreateProductsTable extends Migration
             $table->float('sale', 3,2)->nullable(true);
             $table->unsignedBigInteger('selling_number')->default(0);
             $table->unsignedBigInteger('brand_id');
-            $table->foreign('brand_id')->references('id')->on('brands');
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete("cascade");
             $table->unsignedInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete("cascade");
             $table->timestamps();
         });
     }

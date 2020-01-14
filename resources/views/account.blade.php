@@ -344,7 +344,7 @@
               </div>
               @endforeach
               @else
-              <h2 class="text-center">You have no orders.</h2>
+              <h2 class="text-center my-5">You have no orders yet.</h2>
               @endif
             </div>
           </div>

@@ -76,7 +76,7 @@
           </div>
         </div>
         @else
-        <h2 class="mx-auto">There are no items in your Wish List</h2>
+        <h2 class="mx-auto my-5">There are no items in your Wish List</h2>
         @endif
       </div>
       <div class="mb-30">
@@ -84,7 +84,7 @@
           <div class="col-md-12">
             <div class="mt-30 text-center">
               <a href="/shop" class="btn btn-color">
-                <span><i class="fa fa-angle-left"></i></span>Continue Shopping
+                <span><i class="fa fa-angle-left"></i></span>Back to Shopping
               </a>
             </div>
           </div>

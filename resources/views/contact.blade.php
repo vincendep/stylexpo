@@ -28,7 +28,7 @@
     </div>
   </section>
 
-  <section class="pt-70 client-main align-center">
+  <section class="px-70 my-5 client-main align-center">
     <div class="container">
       <div class="contact-info">
         <div class="row m-0">
@@ -58,40 +58,7 @@
     </div>
   </section>
 
-  <section class="ptb-70">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="heading-part mb-30">
-            <h2 class="main_title  heading"><span>Leave a message!</span></h2>
-          </div>
-        </div>
-      </div>
-      <div class="main-form">
-        <form action="contact-form-handler.php" method="POST" name="contactform">
-          <div class="row">
-            <div class="col-md-4 mb-30">
-              <input type="text" required placeholder="Name" name="name">
-            </div>
-            <div class="col-md-4 mb-30">
-              <input type="email" required placeholder="Email" name="email">
-            </div>
-            <div class="col-md-4 mb-30">
-              <input type="text" required placeholder="Website" name="website">
-            </div>
-            <div class="col-12 mb-30">
-              <textarea required placeholder="Message" rows="3" cols="30" name="message"></textarea>
-            </div>
-            <div class="col-12">
-              <div class="align-center">
-                <button type="submit" name="submit" class="btn btn-color">Submit</button>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
+  
   <!-- CONTAINER END -->
   @endsection
 

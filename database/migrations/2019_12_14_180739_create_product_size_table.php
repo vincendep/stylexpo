@@ -17,8 +17,8 @@ class CreateProductSizeTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('product_id')->notNull();
             $table->unsignedBigInteger('size_id')->notNull();
-            $table->foreign('product_id')->references('id')->on('products');
-            $table->foreign('size_id')->references('id')->on('sizes');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete("cascade");
+            $table->foreign('size_id')->references('id')->on('sizes')->onDelete("cascade");
             $table->unique( array('product_id','size_id') );
             $table->timestamps();
         });

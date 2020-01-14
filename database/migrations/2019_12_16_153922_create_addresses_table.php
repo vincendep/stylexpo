@@ -26,7 +26,7 @@ class CreateAddressesTable extends Migration
             $table->string('postcode');
             $table->string('address_type');
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

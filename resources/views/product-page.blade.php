@@ -32,9 +32,7 @@
                   <div class="product-detail-main">
                     <div class="product-item-details">
                       <h1 class="product-item-name">{{$product->name}}</h1>
-                      <div class="rating-summary-block">
-                        <div title="53%" class="rating-result"><span style="width:53%"></span> </div>
-                      </div>
+                      
                       <div class="price-box">
                         @if($product->sale)
                         <span class="price">{{number_format($product->price - ($product->price * $product->sale), 2, '.', '')}} &euro;</span><del class="price old-price">{{$product->price}} &euro;</del>
@@ -106,18 +104,16 @@
                               </button>
                             </form>
                           </li>
-                          <li class="pro-email-icon"><a href="#"><span></span>Email to Friends</a></li>
+                          
                         </ul>
                       </div>
-                      <div class="share-link">
-                        <label>Share This : </label>
+                      <div style="display: inline-block; text-align: center;" class="share-link">
+                        <label class="ml-4">Share This</label>
                         <div class="social-link">
                           <ul class="social-icon">
-                            <li><a class="facebook" title="Facebook" href="#"><i class="fa fa-facebook"> </i></a></li>
-                            <li><a class="twitter" title="Twitter" href="#"><i class="fa fa-twitter"> </i></a></li>
-                            <li><a class="linkedin" title="Linkedin" href="#"><i class="fa fa-linkedin"> </i></a></li>
-                            <li><a class="rss" title="RSS" href="#"><i class="fa fa-rss"> </i></a></li>
-                            <li><a class="pinterest" title="Pinterest" href="#"><i class="fa fa-pinterest"> </i></a></li>
+                            <li><a class="facebook" title="Facebook" href="http:\\www.facebook.com"><i class="fa fa-facebook"> </i></a></li>
+                            <li><a class="twitter" title="Twitter" href="http:\\www.twitter.com"><i class="fa fa-twitter"> </i></a></li>
+                            <li><a class="pinterest" title="Pinterest" href="http:\\www.pinterest.com"><i class="fa fa-pinterest"> </i></a></li>
                           </ul>
                         </div>
                       </div>
@@ -132,9 +128,7 @@
           <div class="brand-logo-pro align-center mb-30">
             <img src="{{Voyager::image($product->brand->logo)}}" alt="{{$product->brand->name}}">
           </div>
-          <div class="sub-banner-block align-center">
-            <img src="{{ asset('img/pro-banner.jpg') }}" alt="Stylexpo">
-          </div>
+          
         </div>
       </div>
     </div>
@@ -147,9 +141,7 @@
           <div class="col-lg-12">
             <div id="tabs">
               <ul class="nav nav-tabs">
-                <li><a class="tab-Description selected" title="Description">Description</a></li>
-                <li><a class="tab-Product-Tags" title="Product-Tags">Product-Tags</a></li>
-                <li><a class="tab-Reviews" title="Reviews">Reviews</a></li>
+                <li><h3 style="color: red">Description</h3></li>
               </ul>
             </div>
             <div id="items">
@@ -159,95 +151,6 @@
                     <div class="items-Description selected ">
                       <div class="Description"> <strong>{{$product->name}}</strong><br />
                         <p>{{$product->description}}</p>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="items-Product-Tags"><strong>Section 1.10.32 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC</strong><br />
-                      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur</div>
-                  </li>
-                  <li>
-                    <div class="items-Reviews">
-                      <div class="comments-area">
-                        <h4>Comments<span>(2)</span></h4>
-                        <ul class="comment-list mt-30">
-                          <li>
-                            <div class="comment-user"> <img src="{{ asset('img/comment-user.jpg') }}" alt="Stylexpo"> </div>
-                            <div class="comment-detail">
-                              <div class="user-name">John Doe</div>
-                              <div class="post-info">
-                                <ul>
-                                  <li>Fab 11, 2016</li>
-                                  <li><a href="#"><i class="fa fa-reply"></i>Reply</a></li>
-                                </ul>
-                              </div>
-                              <p>Consectetur adipiscing elit integer sit amet augue laoreet maximus nuncac.</p>
-                            </div>
-                            <ul class="comment-list child-comment">
-                              <li>
-                                <div class="comment-user"> <img src="{{ asset('img/comment-user.jpg') }}" alt="Stylexpo"> </div>
-                                <div class="comment-detail">
-                                  <div class="user-name">John Doe</div>
-                                  <div class="post-info">
-                                    <ul>
-                                      <li>Fab 11, 2016</li>
-                                      <li><a href="#"><i class="fa fa-reply"></i>Reply</a></li>
-                                    </ul>
-                                  </div>
-                                  <p>Consectetur adipiscing elit integer sit amet augue laoreet maximus nuncac.</p>
-                                </div>
-                              </li>
-                              <li>
-                                <div class="comment-user"> <img src="{{ asset('img/comment-user.jpg') }}" alt="Stylexpo"> </div>
-                                <div class="comment-detail">
-                                  <div class="user-name">John Doe</div>
-                                  <div class="post-info">
-                                    <ul>
-                                      <li>Fab 11, 2016</li>
-                                      <li><a href="#"><i class="fa fa-reply"></i>Reply</a></li>
-                                    </ul>
-                                  </div>
-                                  <p>Consectetur adipiscing elit integer sit amet augue laoreet maximus nuncac.</p>
-                                </div>
-                              </li>
-                            </ul>
-                          </li>
-                          <li>
-                            <div class="comment-user"> <img src="{{ asset('img/comment-user.jpg') }}" alt="Stylexpo"> </div>
-                            <div class="comment-detail">
-                              <div class="user-name">John Doe</div>
-                              <div class="post-info">
-                                <ul>
-                                  <li>Fab 11, 2016</li>
-                                  <li><a href="#"><i class="fa fa-reply"></i>Reply</a></li>
-                                </ul>
-                              </div>
-                              <p>Consectetur adipiscing elit integer sit amet augue laoreet maximus nuncac.</p>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="main-form mt-30">
-                        <h4>Leave a comments</h4>
-                        <form >
-                          <div class="row mt-30">
-                            <div class="col-md-4 mb-30">
-                              <input type="text" placeholder="Name" required>
-                            </div>
-                            <div class="col-md-4 mb-30">
-                              <input type="email" placeholder="Email" required>
-                            </div>
-                            <div class="col-md-4 mb-30">
-                              <input type="text" placeholder="Website" required>
-                            </div>
-                            <div class="col-12 mb-30">
-                              <textarea cols="30" rows="3" placeholder="Message" required></textarea>
-                            </div>
-                            <div class="col-12 mb-30">
-                              <button class="btn btn-color" name="submit" type="submit">Submit</button>
-                            </div>
-                          </div>
-                        </form>
                       </div>
                     </div>
                   </li>

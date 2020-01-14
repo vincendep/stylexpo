@@ -90,7 +90,7 @@
           </div>
         </div>
         @else
-        <h2 class="mx-auto">There are no items in your Shopping Cart</h2>
+        <h2 class="mx-auto my-5">Your shopping cart is empty.</h2>
         @endif
       </div>
       <div class="mb-30">
@@ -99,7 +99,7 @@
             <div class="mt-30">
               <a href="\shop" class="btn btn-color">
                 <span><i class="fa fa-angle-left"></i></span>
-                Continue Shopping
+                Back to Shopping
               </a>
             </div>
           </div>

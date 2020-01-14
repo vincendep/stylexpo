@@ -71,11 +71,7 @@
                 </form>
               </div>
             </div>
-            <div class="sidebar-box mb-40 d-none d-lg-block">
-              <a href="#">
-                <img src="{{ asset('img/left-banner.jpg') }}" alt="Stylexpo">
-              </a>
-            </div>
+            
             <div class="sidebar-box sidebar-item"> <span class="opener plus"></span>
               <div class="sidebar-title">
                 <h3><span>Best Seller</span></h3>
@@ -85,17 +81,9 @@
 
                   @foreach($bestSellers as $bestSeller)
                   <li>
-                    <div class="pro-media"><a href="#"><img alt="{{$bestSeller->name}}" src="{{Voyager::image($bestSeller->thumbnail)}}"></a></div>
+                    <div class="pro-media"><a href="product-page/{{$bestSeller->id}}"><img alt="{{$bestSeller->name}}" src="{{Voyager::image($bestSeller->thumbnail)}}"></a></div>
                     <div class="pro-detail-info"><a href="#">{{$bestSeller->name}}</a>
-                      <div class="rating-summary-block">
-                        <div class="rating-result" title="53%"> <span style="width:53%"></span> </div>
-                      </div>
-                      <div class="price-box"> <span class="price">{{$bestSeller->price}}</span> </div>
-                      <div class="cart-link">
-                        <form>
-                          <button title="Add to Cart">Add To Cart</button>
-                        </form>
-                      </div>
+                      <div class="price-box"> <span class="price">{{$bestSeller->discountPrice()}} &euro;</span> </div>
                     </div>
                   </li>
                   @endforeach
