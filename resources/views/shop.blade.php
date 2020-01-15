@@ -215,7 +215,7 @@
           if (currPage == i) {
             pageClass = ' class="active"';
           }
-          let page = '<li' + pageClass + '><a onclick="changePage(' + i + ')" href="#product-listing">' + i + '</a></li>';
+          let page = '<li' + pageClass + '><a onclick="changePage(' + i + ')" >' + i + '</a></li>';
           paginationBar.innerHTML += page;
         }
         paginationBar.innerHTML += rarrow;
@@ -226,8 +226,8 @@
       if (currPage > 1) {
         currPage--;
         showProducts();
-        generatePagination()
-        location.href = "#product-listing";
+        generatePagination();
+        scrollToTop(500);
       }
     }
 
@@ -235,6 +235,7 @@
       currPage = newPage;
       showProducts();
       generatePagination();
+      scrollToTop(500);
     }
 
     function next() {
@@ -242,8 +243,18 @@
         currPage++;
         showProducts();
         generatePagination();
-        location.href = "#product-listing";
+        scrollToTop(500);
       }
+    }
+
+    function scrollToTop(scrollDuration) {
+      var scrollStep = -window.scrollY / (scrollDuration / 15),
+          scrollInterval = setInterval(function(){
+          if ( window.scrollY != 0 ) {
+              window.scrollBy( 0, scrollStep );
+          }
+          else clearInterval(scrollInterval); 
+      },15);
     }
 
     updateProductsPerPage();
