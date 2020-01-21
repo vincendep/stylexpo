@@ -28,8 +28,11 @@ class ViewComposerServiceProvider extends ServiceProvider
         View::composer('*', function ($view) {
             $cart = \App\Cart::where('user_id', '=', Auth::id())->first();
             $categories = \App\Category::all();
+            $pages = \App\Page::where('status', '=', 'ACTIVE')->get();
+            
             $view->with('categories', $categories)
-                ->with('cart', $cart);
+                ->with('cart', $cart)
+                ->with('pages', $pages);
         });
     }
 }

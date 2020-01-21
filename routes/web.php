@@ -23,6 +23,8 @@ Route::get('/payment', 'PagesController@payment')->middleware('auth');
 Route::get('/account', 'PagesController@account')->middleware('auth');
 Route::get('/wishlist', 'PagesController@wishList')->middleware('auth');
 
+Route::get('/{pageSlug}.page', 'PagesController@dinamicPage')->where('pageSlug', '.*');
+
 Route::get('/checkout', 'CheckoutController@shipping')->middleware('auth');
 Route::post('/checkout', 'CheckoutController@orderOverview')->middleware('auth');
 Route::get('/payment', 'CheckoutController@payment')->middleware('auth');

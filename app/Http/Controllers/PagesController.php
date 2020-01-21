@@ -217,4 +217,12 @@ class PagesController extends Controller
             'orders' => $orders
         ]);
     }
+
+    public function dinamicPage($pageSlug)
+    {
+        $page = \App\Page::where('slug', '=', $pageSlug)->firstOrFail();
+        return view('dinamic-page', [
+            'page' => $page
+        ]);
+    }
 }
