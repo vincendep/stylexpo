@@ -177,15 +177,19 @@
                       <li class="{{ request()->is('shop*') ? 'active' : '' }}">
                         <a href="/shop"><span>Shop</span></a>
                       </li>
-                      <!--<li class="{{ request()->is('about') ? 'active' : '' }}">
-                        <a href="/about"><span>About Us</span></a>
-                      </li>-->
                       <li class="{{ request()->is('blog/*') ? 'active' : '' }}">
                         <a href="/blog"><span>Blog</span></a>
                       </li>
                       <li class="{{ request()->is('contact') ? 'active' : '' }}">
                         <a href="/contact"><span>Contact</span></a>
                       </li>
+                      
+                      @foreach ($pages as $page)
+                      <li class="{{ request()->is($page->slug) ? 'active' : '' }}">
+                        <a href="/{{$page->slug}}"><span>{{$page->title}}</span></a>
+                      </li>
+                      @endforeach
+
                       @guest
                       @if (Route::has('register'))
                       <li class="float-right {{ request()->is('register') ? 'active' : '' }}">
