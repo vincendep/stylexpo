@@ -32,7 +32,7 @@
                 </div>
               </div>
               <div class="col-sm-5 mb-xs-30">
-                <div class="image-part center-xs"> <img alt="Stylexpo" src={{ asset('img/about-sub.jpg') }}> </div>
+                <div class="image-part center-xs"> <img alt="Stylexpo" src="{{ asset('img/about-sub.jpg') }}"> </div>
               </div>
               <div class="col-sm-7">
                 <div class="heading-part-desc align_left center-md">
@@ -55,17 +55,17 @@
               <div class="col-sm-12">
                 <div class="partner-block mb-sm-30 light-gray-bg">
                   <ul>
-                    <li><span><img src={{ asset('img/brand1.png') }} alt="Stylexpo"></span></li>
-                    <li><span><img src={{ asset('img/brand2.png') }} alt="Stylexpo"></span></li>
-                    <li><span><img src={{ asset('img/brand3.png') }} alt="Stylexpo"></span></li>
-                    <li><span><img src={{ asset('img/brand4.png') }} alt="Stylexpo"></span></li>
+                    <li><span><img src="{{ asset('img/brand1.png') }}" alt="Stylexpo"></span></li>
+                    <li><span><img src="{{ asset('img/brand2.png') }}" alt="Stylexpo"></span></li>
+                    <li><span><img src="{{ asset('img/brand3.png') }}" alt="Stylexpo"></span></li>
+                    <li><span><img src="{{ asset('img/brand4.png') }}" alt="Stylexpo"></span></li>
                     <li class="owner-logo ">
-                      <span><img src={{ asset('img/owner-logo.png') }} alt="Stylexpo"></span>
+                      <span><img src="{{ asset('img/owner-logo.png') }}" alt="Stylexpo"></span>
                     </li>
-                    <li><span><img src={{ asset('img/brand5.png') }} alt="Stylexpo"></span></li>
-                    <li><span><img src={{ asset('img/brand6.png') }} alt="Stylexpo"></span></li>
-                    <li><span><img src={{ asset('img/brand7.png') }} alt="Stylexpo"></span></li>
-                    <li><span><img src={{ asset('img/brand8.png') }} alt="Stylexpo"></span></li>
+                    <li><span><img src="{{ asset('img/brand5.png') }}" alt="Stylexpo"></span></li>
+                    <li><span><img src="{{ asset('img/brand6.png') }}" alt="Stylexpo"></span></li>
+                    <li><span><img src="{{ asset('img/brand7.png') }}" alt="Stylexpo"></span></li>
+                    <li><span><img src="{{ asset('img/brand8.png') }}" alt="Stylexpo"></span></li>
                   </ul>
                 </div>
               </div>
@@ -79,7 +79,7 @@
   <!--Testimonial Block Start -->
   <section class="client-bg ptb-70">
     <div class="top-shadow">
-      <img alt="Stylexpo" src={{ asset('img/top-shadow.png') }}>
+      <img alt="Stylexpo" src="{{ asset('img/top-shadow.png') }}">
     </div>
     <div class="container">
       <div class="row">
@@ -89,54 +89,54 @@
               <div id="client" class="owl-carousel">
                 <div class="item client-detail">
                   <div class="client-img left-side mt-40">
-                      <img alt="Stylexpo" src={{ asset('img/testimonial_img1.jpg') }}> 
+                      <img alt="Stylexpo" src="{{ asset('img/testimonial_img1.jpg') }}"> 
                     <h4 class="sub-title client-title">- Joseph deboungawer - </h4>
                     <div class="designation">Maneger of Business  Development, 2base</div>
                   </div>
                   <div class="quote right-side">
                     <div class="quote1-img">
-                      <img src={{ asset('img/quote1.png') }} alt="Stylexpo">
+                      <img src="{{ asset('img/quote1.png') }}" alt="Stylexpo">
                     </div>
                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters
                     </p>
                     <div class="quote2-img">
-                      <img src={{ asset('img/quote2.png') }} alt="Stylexpo">
+                      <img src="{{ asset('img/quote2.png') }}" alt="Stylexpo">
                     </div>
                   </div>
                 </div>
                 <div class="item client-detail">
                   <div class="client-img left-side mt-40">
-                      <img alt="Stylexpo" src={{ asset('img/testimonial_img2.jpg') }}> 
+                      <img alt="Stylexpo" src="{{ asset('img/testimonial_img2.jpg') }}"> 
                     <h4 class="sub-title client-title">- Joseph deboungawer - </h4>
                     <div class="designation">Maneger of Business  Development, 2base</div>
                   </div>
                   <div class="quote-border right-side">
                     <div class="quote">
                       <div class="quote1-img">
-                        <img src={{ asset('img/quote1.png') }} alt="Stylexpo">
+                        <img src="{{ asset('img/quote1.png') }}" alt="Stylexpo">
                       </div>
                       <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters
                       </p>
                       <div class="quote2-img">
-                        <img src={{ asset('img/quote2.png') }} alt="Stylexpo">
+                        <img src="{{ asset('img/quote2.png') }}" alt="Stylexpo">
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="item client-detail">
                   <div class="client-img left-side mt-40">
-                      <img alt="Stylexpo" src={{ asset('img/testimonial_img3.jpg') }}> 
+                      <img alt="Stylexpo" src="{{ asset('img/testimonial_img3.jpg') }}"> 
                     <h4 class="sub-title client-title">- Joseph deboungawer - </h4>
                     <div class="designation">Maneger of Business  Development, 2base</div>
                   </div>
                   <div class="quote right-side">
                     <div class="quote1-img">
-                      <img src={{ asset('img/quote1.png') }} alt="Stylexpo">
+                      <img src="{{ asset('img/quote1.png') }}" alt="Stylexpo">
                     </div>
                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters
                     </p>
                     <div class="quote2-img">
-                      <img src={{ asset('img/quote2.png') }} alt="Stylexpo">
+                      <img src="{{ asset('img/quote2.png') }}" alt="Stylexpo">
                     </div>
                   </div>
                 </div>
@@ -147,7 +147,7 @@
       </div>
     </div>
     <div class="bottom-shadow">
-      <img alt="Stylexpo" src={{ asset('img/bottom-shadow.png') }}>
+      <img alt="Stylexpo" src="{{ asset('img/bottom-shadow.png') }}">
     </div>
   </section>
   <!--Testimonial Block End -->
@@ -167,7 +167,7 @@
           <div class="row">
             <div class="owl-carousel our-team ">
               <div class="item">
-                <div class="team-item listing-effect col-sm-margin-b"> <img alt="Stylexpo" src={{ asset('img/tm1.jpg') }}>
+                <div class="team-item listing-effect col-sm-margin-b"> <img alt="Stylexpo" src="{{ asset('img/tm1.jpg') }}">
                   <div class="team-item-detail">
                     <h3 class="sub-title listing-effect-title">Adamaris Corliss</h3>
                     <div class="listing-meta">Co-Founder</div>
@@ -183,7 +183,7 @@
                 </div>
               </div>
               <div class="item">
-                <div class="team-item listing-effect col-sm-margin-b"> <img alt="Stylexpo" src={{ asset('img/tm2.jpg') }}>
+                <div class="team-item listing-effect col-sm-margin-b"> <img alt="Stylexpo" src="{{ asset('img/tm2.jpg') }}">
                   <div class="team-item-detail">
                     <h3 class="sub-title listing-effect-title">Lusi Rose</h3>
                     <div class="listing-meta">Project Manager</div>
@@ -199,7 +199,7 @@
                 </div>
               </div>
               <div class="item">
-                <div class="team-item listing-effect col-sm-margin-b"> <img alt="Stylexpo" src={{ asset('img/tm3.jpg') }}>
+                <div class="team-item listing-effect col-sm-margin-b"> <img alt="Stylexpo" src="{{ asset('img/tm3.jpg') }}">
                   <div class="team-item-detail">
                     <h3 class="sub-title listing-effect-title">Adamaris Corliss</h3>
                     <div class="listing-meta">Co-Founder</div>
@@ -215,7 +215,7 @@
                 </div>
               </div>
               <div class="item">
-                <div class="team-item listing-effect col-sm-margin-b"> <img alt="Stylexpo" src={{ asset('img/tm4.jpg') }}>
+                <div class="team-item listing-effect col-sm-margin-b"> <img alt="Stylexpo" src="{{ asset('img/tm4.jpg') }}">
                   <div class="team-item-detail">
                     <h3 class="sub-title listing-effect-title">Adamaris Corliss</h3>
                     <div class="listing-meta">Co-Founder</div>
@@ -231,7 +231,7 @@
                 </div>
               </div>
               <div class="item">
-                <div class="team-item listing-effect col-sm-margin-b"> <img alt="Stylexpo" src={{ asset('img/tm1.jpg') }}>
+                <div class="team-item listing-effect col-sm-margin-b"> <img alt="Stylexpo" src="{{ asset('img/tm1.jpg') }}">
                   <div class="team-item-detail">
                     <h3 class="sub-title listing-effect-title">Adamaris Corliss</h3>
                     <div class="listing-meta">Co-Founder</div>
@@ -247,7 +247,7 @@
                 </div>
               </div>
               <div class="item">
-                <div class="team-item listing-effect col-sm-margin-b"> <img alt="Stylexpo" src={{ asset('img/tm2.jpg') }}>
+                <div class="team-item listing-effect col-sm-margin-b"> <img alt="Stylexpo" src="{{ asset('img/tm2.jpg') }}">
                   <div class="team-item-detail">
                     <h3 class="sub-title listing-effect-title">Lusi Rose</h3>
                     <div class="listing-meta">Project Manager</div>
@@ -263,7 +263,7 @@
                 </div>
               </div>
               <div class="item">
-                <div class="team-item listing-effect col-sm-margin-b"> <img alt="Stylexpo" src={{ asset('img/tm1.jpg') }}>
+                <div class="team-item listing-effect col-sm-margin-b"> <img alt="Stylexpo" src="{{ asset('img/tm1.jpg') }}">
                   <div class="team-item-detail">
                     <h3 class="sub-title listing-effect-title">Adamaris Corliss</h3>
                     <div class="listing-meta">Co-Founder</div>

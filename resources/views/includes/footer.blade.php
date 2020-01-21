@@ -63,7 +63,7 @@
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/contact">Contact Us</a></li>
                 @foreach ($pages as $page)
-                <li><a href="/{{$page->slug}}.page"></a>{{$page->title}}</li>
+                <li><a href="/{{$page->slug}}">{{$page->title}}</a></li>
                 @endforeach
               </ul>
             </div>

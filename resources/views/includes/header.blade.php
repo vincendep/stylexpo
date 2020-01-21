@@ -177,9 +177,9 @@
                       <li class="{{ request()->is('shop*') ? 'active' : '' }}">
                         <a href="/shop"><span>Shop</span></a>
                       </li>
-                      <li class="{{ request()->is('about') ? 'active' : '' }}">
+                      <!--<li class="{{ request()->is('about') ? 'active' : '' }}">
                         <a href="/about"><span>About Us</span></a>
-                      </li>
+                      </li>-->
                       <li class="{{ request()->is('blog/*') ? 'active' : '' }}">
                         <a href="/blog"><span>Blog</span></a>
                       </li>
