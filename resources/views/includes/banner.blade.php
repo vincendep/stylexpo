@@ -2,26 +2,29 @@
 <section class="">
     <div id="owl-example" class="banner owl-carousel">
       <div class="main-banner">
+        @foreach ($banners as $banner)
         <div class="item">
-          <div class="banner-1"> <img src="{{ asset('img/banner1.jpg') }}" alt="Stylexpo">
+          <div class="banner-1"> <img src="{{$banner->image}}" alt="Stylexpo">
             <div class="banner-detail">
               <div class="container">
                 <div class="row">
                   <div class="col-4"></div>
                   <div class="co-8">
                     <div class="banner-detail-inner"> 
-                      <span class="slogan">UP TO 25% OFF</span>
-                      <h1 class="banner-title">More Fashion Styles</h1>
-                      <span class="offer">The latest fashion trends online.</span>
+                      <span style="text-transform: uppercase;" class="slogan">{{$banner->sale_text}}</span>
+                      <h1 class="banner-title">{!! $banner->title !!}</h1>
+                      <span class="offer">{{$banner->excerpt}}</span>
                     </div>
-                    <a class="btn btn-color" href="/shop">Shop Now!</a>
+                    <a class="btn btn-color" href="/shop/@isset($banner->category) $banner->category->slug @endisset">Shop Now!</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="item">
+        @endforeach
+
+        {{-- <div class="item">
           <div class="banner-video wrap-video">
             <div class="video fluid-width-video-wrapper" style="padding-top: 56.25%;">
               <div id="player"></div>
@@ -78,7 +81,7 @@
               </div> 
             </div>
           </div>
-        </div>
+        </div> --}}
       </div>
     </div>
   </section>

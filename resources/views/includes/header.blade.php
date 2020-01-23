@@ -180,9 +180,6 @@
                       <li class="{{ request()->is('blog/*') ? 'active' : '' }}">
                         <a href="/blog"><span>Blog</span></a>
                       </li>
-                      <li class="{{ request()->is('contact') ? 'active' : '' }}">
-                        <a href="/contact"><span>Contact</span></a>
-                      </li>
                       
                       @foreach ($pages as $page)
                       <li class="{{ request()->is($page->slug) ? 'active' : '' }}">

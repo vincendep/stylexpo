@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use \App\WishList;
 
 class WishListsTableSeeder extends Seeder
 {
@@ -11,7 +12,10 @@ class WishListsTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\WishList::create(['user_id' => 1]);
-		\App\WishList::create(['user_id' => 2]); 
+        if (WishList::count() == 0)
+        {
+            \App\WishList::create(['user_id' => 1]);
+            \App\WishList::create(['user_id' => 2]); 
+        }
     }
 }

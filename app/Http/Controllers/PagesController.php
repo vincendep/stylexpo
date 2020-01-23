@@ -32,13 +32,24 @@ class PagesController extends Controller
             ->take(10)
             ->get();
 
+        $banners = \App\Banner::orderBy('created_at', 'desc')
+            ->where('active', '=', true)
+            ->get();
+
+        $subbanners = \App\SubBanner::orderBy('created_at', 'desc')
+            ->where('active', '=', true)
+            ->take(3)
+            ->get();
+
         return view('home', [
         	'brands' => $brands,
             'newArrivals' => $newArrivals,
             'topCategories' => $topCategories,
             'bestSellers' => $bestSellers,
             'dailyDeals' => $dailyDeals,
-            'latestNews' => $latestNews
+            'latestNews' => $latestNews,
+            'banners' => $banners,
+            'subbanners' => $subbanners
         ]);
     }
 

@@ -12,9 +12,12 @@ class SizesTableSeeder extends Seeder
      */
     public function run()
     {
-        Size::create(['name' => 's']);
-        Size::create(['name' => 'm']);
-        Size::create(['name' => 'l']);
-        Size::create(['name' => 'xl']);
+        if (Size::count() == 0)
+        {
+            Size::create(['name' => 's']);
+            Size::create(['name' => 'm']);
+            Size::create(['name' => 'l']);
+            Size::create(['name' => 'xl']);
+        }
     }
 }

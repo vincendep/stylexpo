@@ -60,8 +60,6 @@
           <div class="col-12 ">
             <div class="site-link">
               <ul>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/contact">Contact Us</a></li>
                 @foreach ($pages as $page)
                 <li><a href="/{{$page->slug}}">{{$page->title}}</a></li>
                 @endforeach

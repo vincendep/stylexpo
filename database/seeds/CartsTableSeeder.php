@@ -12,7 +12,10 @@ class CartsTableSeeder extends Seeder
      */
     public function run()
     {
-        Cart::create(['user_id' => 1]);
-		Cart::create(['user_id' => 2]); 
+        if (Cart::count() == 0)
+        {
+            Cart::create(['user_id' => 1]);
+            Cart::create(['user_id' => 2]); 
+        }
     }
 }

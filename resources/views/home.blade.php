@@ -14,7 +14,7 @@
   <!-- SUB-BANNER START -->
   @include('includes.subbanner')
   <!-- SUB-BANNER END -->
-
+  
   <!--  New arrivals Products Slider Block Start  -->
   <section class="pt-70">
     <div class="container">
@@ -97,7 +97,7 @@
   </section>
   <!-- Top Categories End-->
 
-  <!-- perellex-banner Start -->
+  <!-- perellex-banner Start 
   <section>
     <div class="perellex-banner">
       <div class="container">
@@ -114,7 +114,7 @@
       </div>
     </div>
   </section>
-  <!-- perellex-banner End -->
+   perellex-banner End -->
 
   <!-- Daily Deals Start -->
   <section class=" ptb-70">
@@ -218,7 +218,7 @@
   </div>
   <!--  Site Services Features Block End  -->
 
-  <!--small banner Block Start-->
+  <!--small banner Block Start
   <section class="pt-70">
     <div class="container">
       <div class="row">
@@ -239,7 +239,7 @@
       </div>
     </div>
   </section>
-  <!--small banner Block Start-->
+  small banner Block Start-->
 
   <!--  Special products Products Slider Block Start  -->
   <section class="ptb-70">
