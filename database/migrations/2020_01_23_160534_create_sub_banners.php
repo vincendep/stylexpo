@@ -18,7 +18,7 @@ class CreateSubBanners extends Migration
             $table->string('title')->notNull();
             $table->string('excerpt');
             $table->unsignedInteger('category_id')->nullable()->default(null);
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
             $table->string('image')->notNull();
             $table->boolean('active')->notNull()->default(true);
             $table->timestamps();
