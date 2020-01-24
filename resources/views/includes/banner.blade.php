@@ -15,7 +15,7 @@
                       <h1 class="banner-title">{!! $banner->title !!}</h1>
                       <span class="offer">{{$banner->excerpt}}</span>
                     </div>
-                    <a class="btn btn-color" href="/shop/@isset($banner->category) $banner->category->slug @endisset">Shop Now!</a>
+                    <a class="btn btn-color" href="/shop/{{$banner->category->slug ?? ''}}">Shop Now!</a>
                   </div>
                 </div>
               </div>

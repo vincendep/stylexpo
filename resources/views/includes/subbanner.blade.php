@@ -9,7 +9,7 @@
                 <div class="sub-banner-detail">
                   <div style="text-transform: uppercase;" class="sub-banner-title sub-banner-title-color">{{$subbanner->title}}</div>
                   <div class="sub-banner-subtitle">{{$subbanner->excerpt}}</div>
-                  <a class="btn btn-color" href="/shop/@isset($subbanner->category) $subbanner->category->slug @endisset">Shop Now!</a>
+                  <a class="btn btn-color" href="/shop/{{$subbanner->category->slug ?? ''}}">Shop Now!</a>
                 </div>
               </div>
             </div>
