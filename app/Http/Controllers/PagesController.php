@@ -100,7 +100,7 @@ class PagesController extends Controller
                 $products = $products->sortBy(function($product) {
                     if ($product->sale)
                     {
-                        return $product->price * $product->sale;
+                        return $product->price - $product->price * $product->sale;
                     }
                     return $product->price;
                 });
@@ -109,7 +109,7 @@ class PagesController extends Controller
                 $products = $products->sortByDesc(function($product) {
                     if ($product->sale)
                     {
-                        return $product->price * $product->sale;
+                        return $product->price - $product->price * $product->sale;
                     }
                     return $product->price;
                 });
