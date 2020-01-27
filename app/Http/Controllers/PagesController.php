@@ -23,6 +23,7 @@ class PagesController extends Controller
         $bestSellers = \App\Product::orderBy('selling_number', 'desc')
             ->take(20)
             ->get();
+
         $dailyDeals = \App\Product::whereNotNull('sale')
             ->orderBy('sale', 'desc')
             ->take(10)
@@ -189,7 +190,6 @@ class PagesController extends Controller
             $recent_posts = \App\Post::orderBy('created_at', 'desc')
                 ->take(3)
                 ->get();
-            
 
 
         	return view('blog', [
@@ -232,6 +232,7 @@ class PagesController extends Controller
     public function dinamicPage($pageSlug)
     {
         $page = \App\Page::where('slug', '=', $pageSlug)->firstOrFail();
+
         return view('dinamic-page', [
             'page' => $page
         ]);

@@ -180,12 +180,12 @@
                       <li class="{{ request()->is('blog/*') ? 'active' : '' }}">
                         <a href="/blog"><span>Blog</span></a>
                       </li>
-                      
-                      @foreach ($pages as $page)
-                      <li class="{{ request()->is($page->slug) ? 'active' : '' }}">
-                        <a href="/{{$page->slug}}"><span>{{$page->title}}</span></a>
+
+                      @for ($i = 0; $i < count($pages) && $i < 2; $i++)
+                      <li class="{{ request()->is($pages[$i]->slug) ? 'active' : '' }}">
+                        <a href="/{{$pages[$i]->slug}}"><span>{{$pages[$i]->title}}</span></a>
                       </li>
-                      @endforeach
+                      @endfor
 
                       @guest
                       @if (Route::has('register'))

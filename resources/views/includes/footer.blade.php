@@ -6,10 +6,10 @@
         <div style="justify-content: space-around;" class="row">
           <div class="col-xl-3 f-col">
             <div class="footer-static-block"> <span class="opener plus"></span>
-              <div class="f-logo"> 
-                <a href="index.html" class=""> 
-                  <img src="{{ asset('img/footer-logo.png') }}" alt="Stylexpo"> 
-                </a> 
+              <div class="f-logo">
+                <a href="index.html" class="">
+                  <img src="{{ asset('img/footer-logo.png') }}" alt="Stylexpo">
+                </a>
               </div>
               <div class="footer-block-contant">
                   <p>Lorem khaled ipsum is a major key to success. It’s on you how you want to live your life. Always remember in the jungle there’s a lot of they in.</p>
@@ -17,8 +17,8 @@
               </div>
             </div>
           </div>
-          
-          
+
+
           <div class="col-xl-3 f-col">
             <div class="footer-static-block"> <span class="opener plus"></span>
               <h3 class="title">address<span></span></h3>
@@ -27,7 +27,7 @@
                   <p> Università degli Studi dell'Aquila Palazzo Camponeschi, <br>piazza Santa Margherita 2, 67100 L'Aquila.</p>
                 </li>
                 <li class="item"> <i class="fa fa-envelope"> </i>
-                  <p> <a href="#">infoservices@stylexpo.com </a> </p>
+                  <p> <a href="https://outlook.live.com" target="blank">infoservicesStylexpo@outlook.com </a> </p>
                 </li>
                 <li class="item"> <i class="fa fa-phone"> </i>
                   <p>(+39) 085000900020</p>
@@ -47,7 +47,7 @@
             <div class="footer_social pt-xs-15 center-sm">
               <ul class="social-icon">
                 <li><div class="title">Follow us on :</div></li>
-                <li><a target="blank" href="https://www.facebook.com/denis.dipatrizio" title="Facebook" class="facebook"><i class="fa fa-facebook"> </i></a></li>
+                <li><a target="blank" href="https://www.facebook.com" title="Facebook" class="facebook"><i class="fa fa-facebook"> </i></a></li>
                 <li><a href="https://www.twitter.com" target="blank" title="Twitter" class="twitter"><i class="fa fa-twitter"> </i></a></li>
                 <li><a target="blank" href="https://www.linkedin.com" title="Linkedin" class="linkedin"><i class="fa fa-linkedin"> </i></a></li>
                 <li><a target="blank" title="Pinterest" href="https://www.pinterest.com" class="pinterest"><i class="fa fa-pinterest"> </i></a></li>

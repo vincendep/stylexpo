@@ -147,6 +147,12 @@ return [
             'TCG\\Voyager\\Widgets\\UserDimmer',
             'TCG\\Voyager\\Widgets\\PostDimmer',
             'TCG\\Voyager\\Widgets\\PageDimmer',
+            'TCG\\Voyager\\Widgets\\ProductDimmer',
+            'TCG\\Voyager\\Widgets\\CategoryDimmer',
+            'TCG\\Voyager\\Widgets\\BrandDimmer',
+            'TCG\\Voyager\\Widgets\\BannerDimmer',
+            'TCG\\Voyager\\Widgets\\SubBannerDimmer',
+
         ],
 
     ],

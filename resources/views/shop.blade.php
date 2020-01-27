@@ -71,7 +71,7 @@
                 </form>
               </div>
             </div>
-            
+
             <div class="sidebar-box sidebar-item"> <span class="opener plus"></span>
               <div class="sidebar-title">
                 <h3><span>Best Seller</span></h3>
@@ -117,8 +117,8 @@
                   <div class="select-item select-dropdown">
                     <fieldset>
                       <select onchange="updateProductsPerPage(this)" id="products-per-page">
-                        <option value="4" selected="selected">4</option>
-                        <option value="8">8</option>
+                        <option value="3" >3</option>
+                        <option value="6"  selected="selected">6</option>
                         <option value="12">12</option>
                         <option value="24">24</option>
                       </select>
@@ -253,7 +253,7 @@
           if ( window.scrollY != 0 ) {
               window.scrollBy( 0, scrollStep );
           }
-          else clearInterval(scrollInterval); 
+          else clearInterval(scrollInterval);
       },15);
     }
 

@@ -32,7 +32,7 @@
                   <div class="product-detail-main">
                     <div class="product-item-details">
                       <h1 class="product-item-name">{{$product->name}}</h1>
-                      
+
                       <div class="price-box">
                         @if($product->sale)
                         <span class="price">{{number_format($product->price - ($product->price * $product->sale), 2, '.', '')}} &euro;</span><del class="price old-price">{{$product->price}} &euro;</del>
@@ -46,7 +46,7 @@
                           <span class="info-deta">{{$product->quantity > 0 ? 'In stock' : 'Out of stock'}}</span>
                         </div>
                       </div>
-                      <p>{{$product->description}}</p>
+                      <p>{!!$product->description!!}</p>
                       <div class="product-size select-arrow input-box select-dropdown mb-20 mt-30">
                         <label>Size</label>
                         <fieldset>
@@ -104,7 +104,7 @@
                               </button>
                             </form>
                           </li>
-                          
+
                         </ul>
                       </div>
                       <div style="display: inline-block; text-align: center;" class="share-link">
@@ -128,7 +128,7 @@
           <div class="brand-logo-pro align-center mb-30">
             <img src="{{Voyager::image($product->brand->logo)}}" alt="{{$product->brand->name}}">
           </div>
-          
+
         </div>
       </div>
     </div>
@@ -150,7 +150,7 @@
                   <li>
                     <div class="items-Description selected ">
                       <div class="Description"> <strong>{{$product->name}}</strong><br />
-                        <p>{{$product->description}}</p>
+                        <p>{!!$product->description!!}</p>
                       </div>
                     </div>
                   </li>

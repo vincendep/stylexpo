@@ -14,7 +14,7 @@
   <!-- SUB-BANNER START -->
   @include('includes.subbanner')
   <!-- SUB-BANNER END -->
-  
+
   <!--  New arrivals Products Slider Block Start  -->
   <section class="pt-70">
     <div class="container">
@@ -97,7 +97,7 @@
   </section>
   <!-- Top Categories End-->
 
-  <!-- perellex-banner Start 
+  <!-- perellex-banner Start
   <section>
     <div class="perellex-banner">
       <div class="container">
@@ -117,7 +117,7 @@
    perellex-banner End -->
 
   <!-- Daily Deals Start -->
-  <section class=" ptb-70">
+  <section class=" pb-70">
     <div class="container">
       <div class="daily-deals">
         <div class="row m-0">
@@ -155,7 +155,7 @@
                           <span class="price">{{$product->price}} &euro;</span>
                           @endif
                         </div>
-                        <p style="max-height: 80px;overflow: hidden;text-overflow: ellipsis;">{{$product->description}}</p>
+                        <p style="max-height: 80px;overflow: hidden;text-overflow: ellipsis;">{!!$product->description!!}</p>
                       </div>
                     </div>
                   </div>
@@ -316,9 +316,6 @@
               <div class="mt-30">
                 <div class="blog-detail">
                   <div class="blog-title"><a href="/single-blog/{{$post->id}}">{{$post->title}}</a></div>
-                  <div class="post-info"  style="max-height:190px; text-overflow: ellipsis; overflow: hidden">
-                    {!!$post->body!!}
-                  </div>
                     <a href="/single-blog/{{$post->id}}">Read more
                         <i class="fa fa-angle-double-right"></i>
                     </a>
@@ -349,7 +346,7 @@
           <div id="brand-logo" class="owl-carousel align_center">
 
             @foreach($brands as $brand)
-            <div class="item"><a href="#"><img src="{{Voyager::image($brand->logo)}}" alt="{{$brand->name}}"></a></div>
+            <div class="item"><img src="{{Voyager::image($brand->logo)}}" alt="{{$brand->name}}"></div>
             @endforeach
 
           </div>
